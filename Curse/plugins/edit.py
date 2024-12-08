@@ -2,8 +2,9 @@ import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from moviepy import VideoFileClip, TextClip, CompositeVideoClip, vfx, ImageClip
+from Curse.bot_class import app
 
-app = Client("nuezko_bot")
+
 TEMP_DIR = "temp_videos"
 WATERMARK_PATH = os.path.join(TEMP_DIR, "watermark.png")
 os.makedirs(TEMP_DIR, exist_ok=True)
@@ -108,4 +109,4 @@ async def edit_video(client, message):
         if os.path.exists(output_path):
             os.remove(output_path)
 
-app.run()
+
