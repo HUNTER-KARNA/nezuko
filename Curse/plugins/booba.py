@@ -44,5 +44,4 @@ async def es_img(_, message):
     sent_message = await message.reply_video(video=image, caption=f"ʙʏ [ɴᴇᴢᴜᴋᴏ ᴄʜᴀɴ](https://t.me/Nezuko_RoxBot)")
 
     await asyncio.sleep(20)
-
-await sent_message.delete()
+    await sent_message.delete()
