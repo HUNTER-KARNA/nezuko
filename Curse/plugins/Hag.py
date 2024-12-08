@@ -3,8 +3,8 @@ import random
 import asyncio
 from pyrogram import filters
 from pyrogram.types import Message
+from Curse.bot_class import app
 
-app = Client("my_bot")
 
 
 waifu_images = [
@@ -49,5 +49,5 @@ async def es_img(_, message):
 
     await sent_message.delete()
 
-app.run()
+
 
