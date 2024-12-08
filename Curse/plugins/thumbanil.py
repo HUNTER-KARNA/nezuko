@@ -1,7 +1,7 @@
 from pyrogram import Client, filters
 from PIL import Image
 import io
-
+from Curse.bot_class import app
 
 @app.on_message(filters.command("autogen") & filters.reply)
 async def auto_thumbnail(client, message):
