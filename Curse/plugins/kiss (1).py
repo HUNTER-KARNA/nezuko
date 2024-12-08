@@ -3,8 +3,8 @@ import random
 import asyncio
 from pyrogram import filters
 from pyrogram.types import Message
+from Curse.bot_class import app
 
-app = Client("my_bot")
 
 waifu_images = [
     "https://telegra.ph/file/e36393e2c66ecb0da4eaa.mp4",
@@ -39,7 +39,7 @@ waifu_images = [
     "https://telegra.ph/file/51dd20e6ad3df9f9afafd.mp4",
 ]
 
-@pgram.on_message(filters.command("kiss"))
+@app.on_message(filters.command("kiss"))
 async def es_img(_, message):
     image = random.choice(waifu_images)
     sent_message = await message.reply_video(video=image)
@@ -48,4 +48,4 @@ async def es_img(_, message):
 
     await sent_message.delete()
 
-app.run()
+
