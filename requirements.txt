@@ -52,3 +52,5 @@ Python_ARQ
 rich
 gtts
 openai==0.28.0
+moviepy==1.0.3
+imageio[ffmpeg]
