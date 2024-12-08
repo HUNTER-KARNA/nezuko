@@ -12,7 +12,7 @@ os.makedirs(TEMP_DIR, exist_ok=True)
 # Command to upload a watermark image
 @app.on_message(filters.command("setwatermark") & filters.photo)
 async def set_watermark_image(client, message):
-    await message.reply("Uploading watermark image, please wait...")
+    await message.reply("Uploading watermark image, please wait....")
 
     watermark_path = await client.download_media(
         message.photo.file_id, file_name=WATERMARK_PATH
