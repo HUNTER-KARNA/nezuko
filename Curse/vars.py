@@ -69,7 +69,7 @@ class Development:
     DEV_USERS = ["6864672519", "6848223695"]  # Converted to int
     SUDO_USERS = ["5458968679"]  # Converted to int
     WHITELIST_USERS = [""]  # Converted to int
-    DB_URI = "mongodb+srv://nezukoownwrhunterKAran:3E2ee8WAH7T5kwLk@nezukoownwrhunterkaran.nihsk.mongodb.net/?retryWrites=true&w=majority&appName=nezukoownwrhunterKAran"  # Your mongo DB URI
+    DB_URI = "mongodb+srv://nezukoownwrhunterKAran:3E2ee8WAH7T5kwLk@nezukoownwrhunterkaran.nihsk.mongodb.net/mydatabase?retryWrites=true&w=majority&tls=true"  # Your mongo DB URI
     DB_NAME = "Curse"  # Your DB name
     NO_LOAD = []
     GENIUS_API_TOKEN = ""
