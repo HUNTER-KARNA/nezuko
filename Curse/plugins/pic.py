@@ -1,8 +1,8 @@
 from pyrogram import Client, filters
 from PIL import Image, ImageDraw, ImageFont
 import os
+from Curse.bot_class import app
 
-app = Client("image_text_bot")
 
 def create_image_with_text(background_image, text):
     img = Image.open(background_image)
@@ -38,4 +38,4 @@ async def generate_image(client, message):
     except Exception as e:
         await message.reply(f"An error occurred: {e}")
 
-app.run()
+
