@@ -3,9 +3,9 @@ import requests
 import random
 import asyncio
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup  
+from Curse.bot_class import app
 
 
-app = Client("my_bot")
 
 async def delete_message_after_timeout(message, timeout):
     await asyncio.sleep(timeout)
@@ -31,4 +31,4 @@ async def get_waifu(client, message):
     else:
         await message.reply("Request failed, try /again")
 
-app.run()
+
