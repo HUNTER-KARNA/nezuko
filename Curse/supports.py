@@ -9,8 +9,14 @@ async def load_support_users():
     for i in SUDO_USERS:
         support.insert_support_user(int(i),"sudo")
     for i in WHITELIST_USERS:
-        support.insert_support_user(int(i),"whitelist")
-    return
+    if i.strip(): 
+        try:
+            support.insert_support_user(int(i), "whitelist")
+        except ValueError:
+            print(f"Invalid user ID: {i}")
+    else:
+        print(f"Empty user ID encountered: {i}")
+
 
 def get_support_staff(want = "all"):
     """
