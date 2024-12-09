@@ -13,10 +13,10 @@ collection = db["media"]
 
 
 commands = [
-    "anal", "ass", "bdsm", "cum", "classic", "creampie", "xmanga", "femdom", "hentai", "incest",
-    "masturbation", "public", "ero", "orgy", "yuri", "pantsu", "glasses", "cuckold", "blowjob",
-    "footjob", "handjob", "boobs", "thighs", "pussy", "ahegao", "uniform", "gangbang", "gifx",
-    "zettai", "paizuri", "hass"
+    "anal", "ass", "violence", "cum", "classic", "creampie", "xxmanga", "femdom", "hentai",
+    "masturbation", "public", "ero", "orgy", "yuri","glasses", "cockold", "blowjob",
+    "footjob", "handjob", "boobs", "thighs", "pussy", "uniform", "gangbang",
+    "hass"
 ]
 
 @app.on_message(filters.command("upload") & filters.reply)
