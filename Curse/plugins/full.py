@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from pymongo import MongoClient
 import asyncio
-
+from Curse.bot_class import app
 
 MONGO_URI = "mongodbmeow"
 
