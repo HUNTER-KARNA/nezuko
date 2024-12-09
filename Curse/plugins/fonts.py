@@ -52,16 +52,16 @@ async def apply_font(c, m):
     font_function = fonts[style]
     user_text = m.message.reply_to_message.text.split(None, 1)[1]
 
-    # Apply the font transformation
+    
     transformed_text = font_function(user_text)
 
-    # Generate the image
+    
     img = await generate_image(transformed_text, style)
     img_byte_array = BytesIO()
     img.save(img_byte_array, format="PNG")
     img_byte_array.seek(0)
 
-    # Send the generated image with the text in caption for copy
+    
     await m.message.reply_photo(
         img_byte_array, 
         caption=f"`{transformed_text}`\n\nClick to copy the text.",
@@ -69,27 +69,27 @@ async def apply_font(c, m):
     )
 
 async def generate_image(text, style):
-    # Load the background image
+    
     response = requests.get(BACKGROUND_URL)
     bg_image = Image.open(BytesIO(response.content)).convert("RGBA")
 
-    # Load a font file (adjust path and size as needed)
+    
     font_path = f"fonts/{style}.ttf"
-    font_size = 40  # Adjust font size
+    font_size = 40  
     try:
         font = ImageFont.truetype(font_path, font_size)
     except IOError:
         font = ImageFont.load_default()
 
-    # Create a draw object
+    
     draw = ImageDraw.Draw(bg_image)
 
-    # Calculate text position (centered)
+    
     text_width, text_height = draw.textsize(text, font=font)
     x = (bg_image.width - text_width) // 2
     y = (bg_image.height - text_height) // 2
 
-    # Draw the text on the image
+    
     draw.text((x, y), text, font=font, fill="white")
 
     return bg_image
