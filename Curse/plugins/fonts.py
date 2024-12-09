@@ -1,53 +1,31 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+from PIL import Image, ImageDraw, ImageFont
+import requests
+from io import BytesIO
 
 from Curse.bot_class import app
 from Curse.extras.fonts import Fonts
 
+BACKGROUND_URL = "https://i.ibb.co/4VGp24g/7425ea20729a.jpg"
 
 @app.on_message(filters.command(["font", "fonts"]))
 async def style_buttons(c, m, cb=False):
     buttons = [
         [
-            InlineKeyboardButton("𝚃𝚢𝚙𝚎𝚠𝚛𝚒𝚝𝚎𝚛", callback_data="style+typewriter"),
-            InlineKeyboardButton("𝕆𝕦𝕥𝕝𝕚𝕟𝕖", callback_data="style+outline"),
-            InlineKeyboardButton("𝐒𝐞𝐫𝐢𝐟", callback_data="style+serif"),
+            InlineKeyboardButton("𝚃𝚢𝚙𝚎𝚠𝚛𝚒𝚝𝚎𝚛", callback_data="font+typewriter"),
+            InlineKeyboardButton("𝕆𝕦𝕥𝕝𝕚𝕟𝕖", callback_data="font+outline"),
+            InlineKeyboardButton("𝐒𝐞𝐫𝐢𝐟", callback_data="font+serif"),
         ],
         [
-            InlineKeyboardButton("𝑺𝒆𝒓𝒊𝒇", callback_data="style+bold_cool"),
-            InlineKeyboardButton("𝑆𝑒𝑟𝑖𝑓", callback_data="style+cool"),
-            InlineKeyboardButton("Sᴍᴀʟʟ Cᴀᴘs", callback_data="style+small_cap"),
+            InlineKeyboardButton("𝓈𝒸𝓇𝒾𝓅𝓉", callback_data="font+script"),
+            InlineKeyboardButton("𝓼𝓬𝓻𝓲𝓹𝓽", callback_data="font+script_bolt"),
+            InlineKeyboardButton("🅒︎🅘︎🅡︎🅒︎🅛︎🅔︎🅢︎", callback_data="font+circles"),
         ],
-        [
-            InlineKeyboardButton("𝓈𝒸𝓇𝒾𝓅𝓉", callback_data="style+script"),
-            InlineKeyboardButton("𝓼𝓬𝓻𝓲𝓹𝓽", callback_data="style+script_bolt"),
-            InlineKeyboardButton("ᵗⁱⁿʸ", callback_data="style+tiny"),
-        ],
-        [
-            InlineKeyboardButton("ᑕOᗰIᑕ", callback_data="style+comic"),
-            InlineKeyboardButton("𝗦𝗮𝗻𝘀", callback_data="style+sans"),
-            InlineKeyboardButton("𝙎𝙖𝙣𝙨", callback_data="style+slant_sans"),
-        ],
-        [
-            InlineKeyboardButton("𝘚𝘢𝘯𝘴", callback_data="style+slant"),
-            InlineKeyboardButton("𝖲𝖺𝗇𝗌", callback_data="style+sim"),
-            InlineKeyboardButton("Ⓒ︎Ⓘ︎Ⓡ︎Ⓒ︎Ⓛ︎Ⓔ︎Ⓢ︎", callback_data="style+circles"),
-        ],
-        [
-            InlineKeyboardButton("🅒︎🅘︎🅡︎🅒︎🅛︎🅔︎🅢︎", callback_data="style+circle_dark"),
-            InlineKeyboardButton("𝔊𝔬𝔱𝔥𝔦𝔠", callback_data="style+gothic"),
-            InlineKeyboardButton("𝕲𝖔𝖙𝖍𝖎𝖈", callback_data="style+gothic_bolt"),
-        ],
-        [
-            InlineKeyboardButton("C͜͡l͜͡o͜͡u͜͡d͜͡s͜͡", callback_data="style+cloud"),
-            InlineKeyboardButton("H̆̈ă̈p̆̈p̆̈y̆̈", callback_data="style+happy"),
-            InlineKeyboardButton("S̑̈ȃ̈d̑̈", callback_data="style+sad"),
-        ],
-        [InlineKeyboardButton("ɴᴇxᴛ ➻", callback_data="nxt")],
     ]
     if not cb:
         await m.reply_text(
-            text=m.text.split(None, 1)[1],
+            text="Select a font style:",
             reply_markup=InlineKeyboardMarkup(buttons),
             quote=True,
         )
@@ -55,156 +33,63 @@ async def style_buttons(c, m, cb=False):
         await m.answer()
         await m.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
 
-
-@app.on_callback_query(filters.regex("^nxt"))
-async def nxt(c, m):
-    if m.data == "nxt":
-        buttons = [
-            [
-                InlineKeyboardButton("🇸 🇵 🇪 🇨 🇮 🇦 🇱 ", callback_data="style+special"),
-                InlineKeyboardButton("🅂🅀🅄🄰🅁🄴🅂", callback_data="style+squares"),
-                InlineKeyboardButton(
-                    "🆂︎🆀︎🆄︎🅰︎🆁︎🅴︎🆂︎", callback_data="style+squares_bold"
-                ),
-            ],
-            [
-                InlineKeyboardButton("ꪖꪀᦔꪖꪶꪊᥴ𝓲ꪖ", callback_data="style+andalucia"),
-                InlineKeyboardButton("爪卂几ᘜ卂", callback_data="style+manga"),
-                InlineKeyboardButton("S̾t̾i̾n̾k̾y̾", callback_data="style+stinky"),
-            ],
-            [
-                InlineKeyboardButton(
-                    "B̥ͦu̥ͦb̥ͦb̥ͦl̥ͦe̥ͦs̥ͦ", callback_data="style+bubbles"
-                ),
-                InlineKeyboardButton(
-                    "U͟n͟d͟e͟r͟l͟i͟n͟e͟", callback_data="style+underline"
-                ),
-                InlineKeyboardButton("꒒ꍏꀷꌩꌃꀎꁅ", callback_data="style+ladybug"),
-            ],
-            [
-                InlineKeyboardButton("R҉a҉y҉s҉", callback_data="style+rays"),
-                InlineKeyboardButton("B҈i҈r҈d҈s҈", callback_data="style+birds"),
-                InlineKeyboardButton("S̸l̸a̸s̸h̸", callback_data="style+slash"),
-            ],
-            [
-                InlineKeyboardButton("s⃠t⃠o⃠p⃠", callback_data="style+stop"),
-                InlineKeyboardButton(
-                    "S̺͆k̺͆y̺͆l̺͆i̺͆n̺͆e̺͆", callback_data="style+skyline"
-                ),
-                InlineKeyboardButton("A͎r͎r͎o͎w͎s͎", callback_data="style+arrows"),
-            ],
-            [
-                InlineKeyboardButton("ዪሀክቿነ", callback_data="style+qvnes"),
-                InlineKeyboardButton("S̶t̶r̶i̶k̶e̶", callback_data="style+strike"),
-                InlineKeyboardButton("F༙r༙o༙z༙e༙n༙", callback_data="style+frozen"),
-            ],
-            [InlineKeyboardButton("ʙᴀᴄᴋ", callback_data="suku_back")],
-        ]
-        await m.answer()
-        await m.message.edit_reply_markup(InlineKeyboardMarkup(buttons))
-    else:
-        await style_buttons(c, m, cb=True)
-
-
-@app.on_callback_query(filters.regex("^suku_back"))
-async def neko_back(c, m):
-    await style_buttons(c, m, cb=True)           
-
-
-@app.on_callback_query(filters.regex("^style"))
-async def style(c, m):
+@app.on_callback_query(filters.regex("^font"))
+async def apply_font(c, m):
     await m.answer()
     cmd, style = m.data.split("+")
+    fonts = {
+        "typewriter": Fonts.typewriter,
+        "outline": Fonts.outline,
+        "serif": Fonts.serif,
+        "script": Fonts.script,
+        "script_bolt": Fonts.bold_script,
+        "circles": Fonts.circles,
+    }
+    if style not in fonts:
+        await m.message.edit_text("Invalid font style selected.")
+        return
+    
+    font_function = fonts[style]
+    user_text = m.message.reply_to_message.text.split(None, 1)[1]
 
-    if style == "typewriter":
-        cls = Fonts.typewriter
-    if style == "outline":
-        cls = Fonts.outline
-    if style == "serif":
-        cls = Fonts.serief
-    if style == "bold_cool":
-        cls = Fonts.bold_cool
-    if style == "cool":
-        cls = Fonts.cool
-    if style == "small_cap":
-        cls = Fonts.smallcap
-    if style == "script":
-        cls = Fonts.script
-    if style == "script_bolt":
-        cls = Fonts.bold_script
-    if style == "tiny":
-        cls = Fonts.tiny
-    if style == "comic":
-        cls = Fonts.comic
-    if style == "sans":
-        cls = Fonts.san
-    if style == "slant_sans":
-        cls = Fonts.slant_san
-    if style == "slant":
-        cls = Fonts.slant
-    if style == "sim":
-        cls = Fonts.sim
-    if style == "circles":
-        cls = Fonts.circles
-    if style == "circle_dark":
-        cls = Fonts.dark_circle
-    if style == "gothic":
-        cls = Fonts.gothic
-    if style == "gothic_bolt":
-        cls = Fonts.bold_gothic
-    if style == "cloud":
-        cls = Fonts.cloud
-    if style == "happy":
-        cls = Fonts.happy
-    if style == "sad":
-        cls = Fonts.sad
-    if style == "special":
-        cls = Fonts.special
-    if style == "squares":
-        cls = Fonts.square
-    if style == "squares_bold":
-        cls = Fonts.dark_square
-    if style == "andalucia":
-        cls = Fonts.andalucia
-    if style == "manga":
-        cls = Fonts.manga
-    if style == "stinky":
-        cls = Fonts.stinky
-    if style == "bubbles":
-        cls = Fonts.bubbles
-    if style == "underline":
-        cls = Fonts.underline
-    if style == "ladybug":
-        cls = Fonts.ladybug
-    if style == "rays":
-        cls = Fonts.rays
-    if style == "birds":
-        cls = Fonts.birds
-    if style == "slash":
-        cls = Fonts.slash
-    if style == "stop":
-        cls = Fonts.stop
-    if style == "skyline":
-        cls = Fonts.skyline
-    if style == "arrows":
-        cls = Fonts.arrows
-    if style == "qvnes":
-        cls = Fonts.rvnes
-    if style == "strike":
-        cls = Fonts.strike
-    if style == "frozen":
-        cls = Fonts.frozen
-    new_text = cls(m.message.reply_to_message.text.split(None, 1)[1])
+    # Apply the font transformation
+    transformed_text = font_function(user_text)
+
+    # Generate the image
+    img = await generate_image(transformed_text, style)
+    img_byte_array = BytesIO()
+    img.save(img_byte_array, format="PNG")
+    img_byte_array.seek(0)
+
+    # Send the generated image with the text in caption for copy
+    await m.message.reply_photo(
+        img_byte_array, 
+        caption=f"`{transformed_text}`\n\nClick to copy the text.",
+        parse_mode="markdown"
+    )
+
+async def generate_image(text, style):
+    # Load the background image
+    response = requests.get(BACKGROUND_URL)
+    bg_image = Image.open(BytesIO(response.content)).convert("RGBA")
+
+    # Load a font file (adjust path and size as needed)
+    font_path = f"fonts/{style}.ttf"
+    font_size = 40  # Adjust font size
     try:
-        await m.message.edit_text(new_text, reply_markup=m.message.reply_markup)
-    except:
-        pass
+        font = ImageFont.truetype(font_path, font_size)
+    except IOError:
+        font = ImageFont.load_default()
 
-__PLUGIN__ = "𝗙𝗢𝗡𝗧𝗦"
+    # Create a draw object
+    draw = ImageDraw.Draw(bg_image)
 
-__HELP__ = """
+    # Calculate text position (centered)
+    text_width, text_height = draw.textsize(text, font=font)
+    x = (bg_image.width - text_width) // 2
+    y = (bg_image.height - text_height) // 2
 
-➻ `/font` or `/fonts` <text> : Choose a font style for the text.
+    # Draw the text on the image
+    draw.text((x, y), text, font=font, fill="white")
 
-"""
-
+    return bg_image
