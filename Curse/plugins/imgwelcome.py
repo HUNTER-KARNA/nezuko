@@ -19,8 +19,8 @@ from Curse.database.toggle_mongo import dwelcome_off, dwelcome_on, is_dwelcome_o
 from Curse.extras.utils import temp
 from Curse.utils.custom_filters import admin_filter
 
-BOT_USERNAME = "Komi_Roxbot"
-LOG_CHANNEL = -1001912086339
+BOT_USERNAME = "Nezuko_roxbot"
+LOG_CHANNEL = -1001836376079
 
 
 def circle(pfp, size=(250, 250)):
@@ -115,12 +115,14 @@ async def member_has_joined(client, member: ChatMemberUpdated):
             temp.MELCOW[f"welcome-{chat_id}"] = await client.send_photo(
                 member.chat.id,
                 photo=welcomeimg,
-                caption=f"""Hᴇʏ ᴅᴇᴀʀ 💋 {mention}, Wᴇʟᴄᴏᴍᴇ ᴛᴏ {member.chat.title} Gʀᴏᴜᴘ. \n
-┏━━━━»»❀
-♛ ɴᴀᴍᴇ : {first_name}
-⍟ I'ᴅ : {user_id}
-⍟ ᴅᴀᴛᴇ Jᴏɪɴᴇᴅ : {joined_date}
-┕━━━━━━━━━━━━»»❀ """)
+                caption=f"""🌟 Hᴇʏ ᴅᴇᴀʀ {mention} 🎉, Wᴇʟᴄᴏᴍᴇ Tᴏ {member.chat.title} Gʀᴏᴜᴘ! \n
+
+🌼 ᴄᴏᴍᴘʟᴇᴛᴇ ɪɴғᴏ: ⭒ ɴᴀᴍᴇ: {first_name}
+⭒ ɪᴅ: {user_id}
+⭒ ᴅᴀᴛᴇ ᴏғ ᴊᴏɪɴ: {joined_date}
+
+👑 Tʜᴀɴᴋs ғᴏʀ ᴊᴏɪɴɪɴɢ ᴜs! ᴡᴇ'ʀᴇ ɢʟᴀᴅ ᴛᴏ ʜᴀᴠᴇ ʏᴏᴜ! 🎉""")
+            
         except Exception as e:
             print(e)
         try:
