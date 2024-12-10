@@ -36,7 +36,7 @@ async def restart(client, m: Message):
     await m.reply_photo(
         random.choice(StartPic),
         caption=f"""━━━━━━ 🝮✿🝮 ━━━━━━
-♛ Dᴇᴠᴏᴛᴇᴅ Tᴏ : [𝑲𝒂𝒓𝒂𝒏]](https://t.me/hunter_karna)
+♛ Dᴇᴠᴏᴛᴇᴅ Tᴏ : [𝑲𝒂𝒓𝒂𝒏](https://t.me/hunter_karna)
 » Pʏʀᴏɢʀᴀᴍ Vᴇʀsɪᴏɴ : {pver}
 » Pʏᴛʜᴏɴ Vᴇʀsɪᴏɴ : {version_info[0]}.{version_info[1]}.{version_info[2]}
 » Bᴏᴛ Vᴇʀꜱɪᴏɴ : 3.0
