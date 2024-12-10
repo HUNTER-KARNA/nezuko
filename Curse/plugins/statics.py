@@ -1,5 +1,5 @@
-from pyrogram import enums,filters
-from pyrogram.types import Message
+from pyrogram import enums, filters
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 from Curse.bot_class import app
 from Curse.database.antispam_db import GBan
@@ -14,20 +14,20 @@ from Curse.database.pins_db import Pins
 from Curse.database.rules_db import Rules
 from Curse.database.users_db import Users
 from Curse.database.warns_db import Warns, WarnSettings
-from Curse.utils.custom_filters import command
-from Curse.supports import get_support_staff
 
-SUPPORT_STAFF = get_support_staff()
-C_HANDLER = ["/", "komi ", "Komi ", "."]
+OWNER_ID = 7282828
+C_HANDLER = ["/", "nuezko ", "nuezko ", "."]
 
 @app.on_message(filters.command(["stats"], C_HANDLER), group=9696)
 async def get_stats(_, m: Message):
-    if m.from_user.id not in SUPPORT_STAFF:
+    
+    if m.from_user.id != OWNER_ID:
+        await m.reply_text("This command is only for the owner baka.", quote=True)
         return
-    # initialise
+
     bldb = Blacklist
     gbandb = GBan()
-    notesdb = Notes()    
+    notesdb = Notes()
     grtdb = Greetings
     rulesdb = Rules
     userdb = Users
@@ -40,43 +40,50 @@ async def get_stats(_, m: Message):
     warns_db = Warns
     warns_settings_db = WarnSettings
 
-    replymsg = await m.reply_text("<b><i>Fetching Stats...</i></b>", quote=True)
-    rply = (
-        "📊 𝗞𝗢𝗠𝗜 𝗕𝗢𝗧 𝗦𝗧𝗔𝗧𝗜𝗦𝗧𝗜𝗖𝗦 📊\n\n"
-        "<b>Here are the statistics of the bot:</b>\n\n"
-        f"<b>👥 Users:</b> <code>{(userdb.count_users())}</code> in <code>{(chatdb.count_chats())}</code> chats\n"
-        f"<b>🚫 Anti Channel Pin:</b> <code>{(pinsdb.count_chats('antichannelpin'))}</code> enabled chats\n"
-        f"<b>🧹 Clean Linked:</b> <code>{(pinsdb.count_chats('cleanlinked'))}</code> enabled chats\n"
-        f"<b>🔍 Filters:</b> <code>{(fldb.count_filters_all())}</code> in <code>{(fldb.count_filters_chats())}</code> chats\n"
-        f"<b>📝 Aliases:</b> <code>{(fldb.count_filter_aliases())}</code>\n"
-        f"<b>⛔️ Blacklists:</b> <code>{(bldb.count_blacklists_all())}</code> in <code>{(bldb.count_blackists_chats())}</code> chats\n"
-        f"    <b>🔧 Action Specific:</b>\n"
-        f"        <b>- None:</b> <code>{(bldb.count_action_bl_all('none'))}</code> chats\n"
-        f"        <b>- Kick</b> <code>{(bldb.count_action_bl_all('kick'))}</code> chats\n"
-        f"        <b>- Warn:</b> <code>{(bldb.count_action_bl_all('warn'))}</code> chats\n"
-        f"        <b>- Ban</b> <code>{(bldb.count_action_bl_all('ban'))}</code> chats\n"
-        f"<b>📜 Rules:</b> Set in <code>{(rulesdb.count_chats_with_rules())}</code> chats\n"
-        f"<b>🔒 Private Rules:</b> <code>{(rulesdb.count_privrules_chats())}</code> chats\n"
-        f"<b>⚠️ Warns:</b> <code>{(warns_db.count_warns_total())}</code> in <code>{(warns_db.count_all_chats_using_warns())}</code> chats\n"
-        f"<b>👤 Users Warned:</b> <code>{(warns_db.count_warned_users())}</code> users\n"
-        f"    <b>🔧 Action Specific:</b>\n"
-        f"        <b>- Kick</b>: <code>{(warns_settings_db.count_action_chats('kick'))}</code>\n"
-        f"        <b>- Mute</b>: <code>{(warns_settings_db.count_action_chats('mute'))}</code>\n"
-        f"        <b>- Ban</b>: <code>{warns_settings_db.count_action_chats('ban')}</code>\n"
-        f"<b>📝 Notes:</b> <code>{(notesdb.count_all_notes())}</code> in <code>{(notesdb.count_notes_chats())}</code> chats\n"
-        f"<b>🔒 Private Notes:</b> <code>{(notesettings_db.count_chats())}</code> chats\n"
-        f"<b>🚫 GBanned Users:</b> <code>{(gbandb.count_gbans())}</code>\n"
-        f"<b>🌟 Welcoming Users in:</b> <code>{(grtdb.count_chats('welcome'))}</code> chats\n"
-        f"<b>👍 Approved People</b>: <code>{(appdb.count_all_approved())}</code> in <code>{(appdb.count_approved_chats())}</code> chats\n"
-        f"<b>🗝 Disabling:</b> <code>{(dsbl.count_disabled_all())}</code> items in <code>{(dsbl.count_disabling_chats())}</code> chats.\n"
-        "     <b>🔧 Action:</b>\n"
-        f"        <b>- ❌ Del:</b> Applied in <code>{(dsbl.count_action_dis_all('del'))}</code> chats.\n\n"
-        "<a href='https://t.me/hunter_association'>𝙐𝙋𝘿𝘼𝙏𝙀𝙎</a> | "
-        "<a href='https://t.me/hunterXsupport'>𝙎𝙐𝙋𝙋𝙊𝙍𝙏</a>\n\n"
-        f"「 𝙈𝘼𝘿𝙀 𝘽𝙔 <a href='t.me/hunter_karna'>𝑲𝒂𝒓𝒂𝒏</a> 」\n"
+    stats = (
+        f"╒═══「 <b>System Statistics</b> 」\n\n"
+        f"➢ <b>System Start Time:</b> 2024-10-26 16:57:36\n"
+        f"➢ <b>System:</b> Linux\n"
+        f"➢ <b>Node Name:</b> Management\n"
+        f"➢ <b>Release:</b> 5.15.0-113-generic\n"
+        f"➢ <b>Machine:</b> x86_64\n"
+        f"➢ <b>CPU:</b> 0.0 %\n"
+        f"➢ <b>RAM:</b> 22.3 %\n"
+        f"➢ <b>Storage:</b> 3.7 %\n\n"
+        f"➢ <b>Python Version:</b> 3.10.12\n"
+        f"➢ <b>python-Telegram-Bot:</b> 13.13\n"
+        f"➢ <b>Uptime:</b> 11h:31m:30s\n\n"
+        "╒═══「 <b>Bot Statistics</b> 」\n\n"
+        f"• <b>Users:</b> <code>{userdb.count_users()}</code> across <code>{chatdb.count_chats()}</code> chats\n"
+        f"• <b>Global Banned Users:</b> {gbandb.count_gbans()}\n"
+        f"• <b>Blacklist Stickers:</b> {bldb.count_blacklists_all()} across {bldb.count_blackists_chats()} chats\n"
+        f"• <b>Notes:</b> {notesdb.count_all_notes()} across {notesdb.count_notes_chats()} chats\n"
+        f"• <b>Filters:</b> {fldb.count_filters_all()} across {fldb.count_filters_chats()} chats\n"
+        f"• <b>Disabled Items:</b> {dsbl.count_disabled_all()} across {dsbl.count_disabling_chats()} chats\n"
+        f"• <b>Rules Set:</b> {rulesdb.count_chats_with_rules()} chats\n"
+        f"• <b>Total Users:</b> <code>{userdb.count_users()}</code> in <code>{chatdb.count_chats()}</code> chats\n"
+        f"• <b>Warns:</b> {warns_db.count_warns_total()} across {warns_db.count_all_chats_using_warns()} chats\n\n"
+        "🔗 <a href='https://t.me/hunter_association'>Updates</a> | "
+        "<a href='https://t.me/hunterXsupport'>Support</a>\n\n"
+        f"「 <b>Made by</b> <a href='t.me/hunter_karna'>𝑲𝒂𝒓𝒂𝒏</a> 」\n"
     )
-    await replymsg.edit_text(
-        rply, parse_mode=enums.ParseMode.HTML, disable_web_page_preview=True
-    )
-    return
 
+    
+    await m.reply_text(
+        "Click the button below to view the stats.",
+        reply_markup=InlineKeyboardMarkup(
+            [[InlineKeyboardButton("View Stats", callback_data="view_stats")]]
+        ),
+        quote=True,
+    )
+
+@app.on_callback_query(filters.regex("view_stats"))
+async def show_stats(_, query):
+    if query.from_user.id != OWNER_ID:
+        await query.answer("Only the owner can view this.", show_alert=True)
+        return
+    await query.message.edit_text(
+        stats,
+        parse_mode=enums.ParseMode.HTML,
+        disable_web_page_preview=True,
+    )
