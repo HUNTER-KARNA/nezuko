@@ -1,6 +1,6 @@
 import time
 import requests
-from DAXXMUSIC import app
+from Curse.bot_class import app
 from pyrogram.enums import ChatAction, ParseMode
 from pyrogram import filters
 
