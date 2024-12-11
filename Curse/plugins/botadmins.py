@@ -8,52 +8,57 @@ from Curse.utils.parser import mention_html
 from Curse.utils.custom_filters import command
 from Curse.supports import get_support_staff
 
-SUPPORT_STAFF = get_support_staff()
+HASHIRA = get_support_staff()
 
-@app.on_message(filters.command("botadmins"))
-async def botstaff(c: app, m: Message):
-    if m.from_user.id not in SUPPORT_STAFF:
+@app.on_message(filters.command("slayers"))
+async def demon_ranks(c: app, m: Message):
+    if m.from_user.id not in HASHIRA:
         return
     try:
-        owner = await c.get_users(OWNER_ID)
-        reply = f"<b>✪ 𝗖𝗥𝗘𝗔𝗧𝗢𝗥 :</b> {(await mention_html(owner.first_name, OWNER_ID))} (<code>{OWNER_ID}</code>)\n"
+        master = await c.get_users(OWNER_ID)
+        response = f"<b>✪ 𝗠𝗔𝗦𝗧𝗘𝗥 𝗛𝗔𝗦𝗛𝗜𝗥𝗔 :</b> {(await mention_html(master.first_name, OWNER_ID))} (<code>{OWNER_ID}</code>)\n"
     except RPCError:
         pass
-    true_dev = list(set(DEV_USERS) - {OWNER_ID})
-    reply += "\n<b>➪ 𝗦𝗣𝗘𝗖𝗜𝗔𝗟 𝗚𝗥𝗔𝗗𝗘 𝗨𝗦𝗘𝗥𝗦 :</b>\n"
-    if not true_dev:
-        reply += "No Dev Users\n"
+
+    upper_moons = list(set(DEV_USERS) - {OWNER_ID})
+    response += "\n<b>➪ 𝗨𝗣𝗣𝗘𝗥 𝗠𝗢𝗢𝗡𝗦 :</b>\n"
+    if not upper_moons:
+        response += "None\n"
     else:
-        for each_user in true_dev:
-            user_id = int(each_user)
+        for member in upper_moons:
+            user_id = int(member)
             try:
                 user = await c.get_users(user_id)
-                reply += f"• {(await mention_html(user.first_name, user_id))} (<code>{user_id}</code>)\n"
+                response += f"• {(await mention_html(user.first_name, user_id))} (<code>{user_id}</code>)\n"
             except RPCError:
                 pass
-    true_sudo = list(set(SUDO_USERS))
-    reply += "\n<b>➪ 𝗔 𝗚𝗥𝗔𝗗𝗘 𝗨𝗦𝗘𝗥𝗦 :</b>\n"
-    if true_sudo == []:
-        reply += "No Sudo Users\n"
+
+    hashiras = list(set(SUDO_USERS))
+    response += "\n<b>➪ 𝗛𝗔𝗦𝗛𝗜𝗥𝗔 𝗥𝗔𝗡𝗞𝗦 :</b>\n"
+    if not hashiras:
+        response += "None\n"
     else:
-        for each_user in true_sudo:
-            user_id = int(each_user)
+        for member in hashiras:
+            user_id = int(member)
             try:
                 user = await c.get_users(user_id)
-                reply += f"• {(await mention_html(user.first_name, user_id))} (<code>{user_id}</code>)\n"
+                response += f"• {(await mention_html(user.first_name, user_id))} (<code>{user_id}</code>)\n"
             except RPCError:
                 pass
-    reply += "\n<b>➪ 𝗡𝗢𝗥𝗠𝗔𝗟 𝗚𝗥𝗔𝗗𝗘 𝗨𝗦𝗘𝗥𝗦 :</b>\n"
-    if WHITELIST_USERS == []:
-        reply += "No additional whitelisted users\n"
+
+    demon_slayers = WHITELIST_USERS
+    response += "\n<b>➪ 𝗗𝗘𝗠𝗢𝗡 𝗦𝗟𝗔𝗬𝗘𝗥𝗦 :</b>\n"
+    if not demon_slayers:
+        response += "None\n"
     else:
-        for each_user in WHITELIST_USERS:
-            user_id = int(each_user)
+        for member in demon_slayers:
+            user_id = int(member)
             try:
                 user = await c.get_users(user_id)
-                reply += f"• {(await mention_html(user.first_name, user_id))} (<code>{user_id}</code>)\n"
+                response += f"• {(await mention_html(user.first_name, user_id))} (<code>{user_id}</code>)\n"
             except RPCError:
                 pass
-    await m.reply_text(reply)
-    LOGGER.info(f"{m.from_user.id} fetched botstaff in {m.chat.id}")
+
+    await m.reply_text(response)
+    LOGGER.info(f"{m.from_user.id} viewed demon_ranks in {m.chat.id}")
     return
