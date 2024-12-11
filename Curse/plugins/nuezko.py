@@ -37,7 +37,7 @@ async def nezuko_response(bot, message):
                     await message.reply_text(
                         styled_answer,
                         parse_mode=ParseMode.MARKDOWN,
-                        reply_to_message_id=message.id  # Reply to the original message
+                        reply_to_message_id=message.id  
                     )
                 else:
                     await message.reply_text("Hmm... Mujhe samajh nahi aaya, kya tum phir se try karoge? 😅")
