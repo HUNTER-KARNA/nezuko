@@ -51,7 +51,7 @@ async def _github(_, message):
         await message.reply_text(f"ERROR!! Contact @{SUPPORT_GROUP}")
         pass
 
-__PLUGIN__ = "𝗚𝗜𝗧𝗛𝗨𝗕"
+__PLUGIN__ = "ɢɪᴛʜᴜʙ"
 __HELP__ = """
 github search
 ➥ `/git` or `/github` <username>*:* Get info about any github user by searching his name.
