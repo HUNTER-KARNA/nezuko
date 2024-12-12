@@ -89,9 +89,12 @@ async def nibba_nibbi(_: Client, message):
                 c1_name = (await _.get_users(c1_id)).first_name
                 c2_name = (await _.get_users(c2_id)).first_name
                 print(c1_id, c2_id, c1_name, c2_name)
-                couple_selection_message = f"""💌 ᴄᴏᴜᴘʟᴇs ᴏғ ᴛʜᴇ ᴅᴀʏ :
+                couple_selection_message = f""💌 ᴄᴏᴜᴘʟᴇs ᴏғ ᴛʜᴇ ᴅᴀʏ:
+ɪɴᴛʀᴏᴅᴜᴄɪɴɢ ᴛᴏᴅᴀʏ's ʟᴏᴠᴇ sᴛᴏʀʏ
 [{c1_name}](tg://openmessage?user_id={c1_id}) + [{c2_name}](tg://openmessage?user_id={c2_id}) = 💞
-ɴᴇᴡ ᴄᴏᴜᴘʟᴇ ᴏғ ᴛʜᴇ ᴅᴀʏ ᴄᴀɴ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12AM {tomorrow}"""
+
+🌙 ɴᴇᴡ ᴄᴏᴜᴘʟᴇs ᴏғ ᴛʜᴇ ᴅᴀʏ ᴡɪʟʟ ʙᴇ ᴄʜᴏsᴇɴ ᴀᴛ 12ᴀᴍ {tomorrow}.
+"""
                 await _.send_photo(
                     message.chat.id,
                     photo=COUPLES_PIC,
@@ -101,7 +104,8 @@ async def nibba_nibbi(_: Client, message):
         except Exception as e:
             print(e)
             await message.reply_text(e)
-__PLUGIN__ = "𝗖𝗢𝗨𝗣𝗟𝗘"
+            
+__PLUGIN__ = "ᴄᴏᴜᴘʟᴇ"
 
 __HELP__ = """
 💘 Choose couples in your chat.
