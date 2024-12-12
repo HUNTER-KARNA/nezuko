@@ -208,6 +208,20 @@ async def load_cmds(all_plugins):
         + "\n"
     )
 
+from pymongo import MongoClient
+
+client = MongoClient(
+    "mongodb+srv://hunterkaran:hY2eMHfPzQ5thH8x@cluster0.14roz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    tls=True,  # SSL/TLS के लिए
+    tlsAllowInvalidCertificates=True,  # केवल टेस्टिंग के लिए, प्रोडक्शन में इसे हटाएँ
+    socketTimeoutMS=60000,
+    connectTimeoutMS=60000
+)
+
+# Replace <your_database_name> with your actual database name
+db = client.get_database("hunterkaran")
+
+print("Connection Successful!")
 
 pbot = Client(
     "idkwhattowrite",
