@@ -108,7 +108,7 @@ async def nibba_nibbi(_: Client, message):
 __PLUGIN__ = "ᴄᴏᴜᴘʟᴇ"
 
 __HELP__ = """
-💘 Choose couples in your chat.
+💘 Cʜᴏᴏsᴇ ᴄᴏᴜᴘʟᴇs ɪɴ ʏᴏᴜʀ ᴄʜᴀᴛ.
 
-➥ /couple, /couples, /shipping : Choose 2 users and send their names as couples in your chat.
+➥ /couple, /couples, /shipping : Cʜᴏᴏsᴇ 2 ᴜsᴇʀs ᴀɴᴅ sᴇɴᴅ ᴛʜᴇɪʀ ɴᴀᴍᴇs ᴀs ᴄᴏᴜᴘʟᴇs ɪɴ ʏᴏᴜʀ ᴄʜᴀᴛ.
 """
