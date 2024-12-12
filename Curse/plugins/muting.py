@@ -672,7 +672,7 @@ async def unmutebutton(c: app, q: CallbackQuery):
     return
 
 
-__PLUGIN__ = "𝗠𝗨𝗧𝗘"
+__PLUGIN__ = "ᴍᴜᴛᴇ"
 
 __alt_name__ = [
     "mute",
@@ -681,7 +681,7 @@ __alt_name__ = [
 ]
 
 __HELP__ = """
-**🔕 Muting**
+**🔕 ᴍᴜᴛɪɴɢ**
 
 **Admin only:**
 ➥ /mute: Mute the user replied to or mentioned.
