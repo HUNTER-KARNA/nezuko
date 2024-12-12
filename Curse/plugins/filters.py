@@ -297,10 +297,10 @@ async def filters_watcher(c: app, m: Message):
     return
 
 
-__PLUGIN__ = "𝗙𝗜𝗟𝗧𝗘𝗥𝗦"
+__PLUGIN__ = "ғɪʟᴛᴇʀs"
 
 __HELP__ = """
-**💠 Filters**
+**💠 ғɪʟᴛᴇʀs**
 
 ➥ /filters: List all active filters saved in the chat.
 
