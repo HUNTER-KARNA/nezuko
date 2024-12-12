@@ -51,7 +51,6 @@ Yᴏᴜ ᴄᴀɴ ᴅᴏɴᴀᴛᴇ ʙʏ ᴄᴏɴᴛᴀᴄᴛɪɴɢ ᴍʏ ᴏᴡ�
     await m.reply_photo(photo=str(choice(StartPic)), caption=cpt)
     return
 
-
 @app.on_callback_query(filters.regex("^close_admin$"))
 async def close_admin_callback(_, q: CallbackQuery):
     user_id = q.from_user.id
@@ -117,14 +116,16 @@ async def start(c: app, m: Message):
                 
         try:
             cpt = f"""
-────「  ᴋᴏᴍɪ  」────
-❂ ʜᴇʟʟᴏ [{m.from_user.first_name}](http://t.me/{m.from_user.username})...,
-×⋆✦⋆──────────────⋆✦⋆×
-ɪ ᴀᴍ ᴋᴏᴍɪ ᴀ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ 
-ᴀɴᴅ ᴍᴜsɪᴄ ʙᴏᴛ ᴡʜɪᴄʜ ᴄᴀɴ ʜᴇʟᴘ
-ʏᴏᴜ ᴛᴏ ᴍᴀɴᴀɢᴇ ᴀɴᴅ ꜱᴇᴄᴜʀᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ.
-×⋆✦⋆──────────────⋆✦⋆×
-ᴄʟɪᴄᴋ ᴏɴ ᴄᴏᴍᴍᴀɴᴅs ᴛᴏ ʟᴇᴀʀɴ ᴍᴏʀᴇ!"""
+Hᴇʟʟᴏ [{m.from_user.first_name}](http://t.me/{m.from_user.username}), Mʏsᴇʟғ ɴᴇᴢᴜᴋᴏ ᴋᴀᴍᴀᴅᴏ 🫧✨ 🌸 
+
+•𝐌𝐲 𝐈𝐧𝐟𝐨  ➲  ʜᴇʏ ' ᴅᴇᴀʀ ɪᴍ ɴᴇᴢᴜᴋᴏ Kᴀᴍᴀᴅᴏ, ᴀɴ ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇᴅ ʙᴀsᴇᴅ ᴀᴅᴠᴀɴᴄᴇ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ.🫧
+
+•𝐌𝐲 𝐉𝐨𝐛  ➲ I ᴀᴍ ᴛʜᴇ ᴘᴏᴡᴇʀғᴜʟʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ ᴀɪ ᴀʀᴛɪғɪᴄɪᴀʟ ɪɴᴛᴇʟʟɪɢᴇɴᴄᴇ . Mʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ғᴜɴᴄᴛɪᴏɴs ᴀʀᴇ ᴘᴇʀғᴇᴄᴛ ғᴏʀ ᴋᴇᴇᴘɪɴɢ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏʀɢᴀɴɪᴢᴇᴅ, ᴇɴɢᴀɢᴇᴅ, ᴀɴᴅ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ sᴘᴀᴍ-ғʀᴇᴇ! Wɪᴛʜ ʟᴏᴛs ᴏғ ғᴇᴀᴛᴜʀᴇs ✨
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖🫧✨🌸💗
+
+• Cʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅ!💗
+ """
 
             await m.reply_photo(
                 photo=str(choice(StartPic)),
@@ -159,14 +160,16 @@ async def start(c: app, m: Message):
 async def start_back(_, q: CallbackQuery):
     try:
         cpt = f"""
-────「  ᴋᴏᴍɪ  」────
-❂ ʜᴇʟʟo [{q.from_user.first_name}](http://t.me/{q.from_user.username})...,
-×⋆✦⋆──────────────⋆✦⋆×
-ɪ ᴀᴍ ᴋᴏᴍɪ ᴀ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ 
-ᴀɴᴅ ᴍᴜsɪᴄ ʙᴏᴛ ᴡʜɪᴄʜ ᴄᴀɴ ʜᴇʟᴘ
-ʏᴏᴜ ᴛᴏ ᴍᴀɴᴀɢᴇ ᴀɴᴅ ꜱᴇᴄᴜʀᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ.
-×⋆✦⋆──────────────⋆✦⋆×
-ᴄʟɪᴄᴋ ᴏɴ ᴄᴏᴍᴍᴀɴᴅs ᴛᴏ ʟᴇᴀʀɴ ᴍᴏʀᴇ!"""
+Hᴇʟʟᴏ [{m.from_user.first_name}](http://t.me/{m.from_user.username}), Mʏsᴇʟғ ɴᴇᴢᴜᴋᴏ ᴋᴀᴍᴀᴅᴏ 🫧✨ 🌸 
+
+•𝐌𝐲 𝐈𝐧𝐟𝐨  ➲  ʜᴇʏ ' ᴅᴇᴀʀ ɪᴍ ɴᴇᴢᴜᴋᴏ Kᴀᴍᴀᴅᴏ, ᴀɴ ᴀɴɪᴍᴇ ᴛʜᴇᴍᴇᴅ ʙᴀsᴇᴅ ᴀᴅᴠᴀɴᴄᴇ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ.🫧
+
+•𝐌𝐲 𝐉𝐨𝐛  ➲ I ᴀᴍ ᴛʜᴇ ᴘᴏᴡᴇʀғᴜʟʟ ɢʀᴏᴜᴘ ᴍᴀɴᴀɢᴇᴍᴇɴᴛ ʙᴏᴛ ᴡɪᴛʜ ᴀɪ ᴀʀᴛɪғɪᴄɪᴀʟ ɪɴᴛᴇʟʟɪɢᴇɴᴄᴇ . Mʏ ᴍᴏᴅᴜʟᴇs ᴀɴᴅ ғᴜɴᴄᴛɪᴏɴs ᴀʀᴇ ᴘᴇʀғᴇᴄᴛ ғᴏʀ ᴋᴇᴇᴘɪɴɢ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴏʀɢᴀɴɪᴢᴇᴅ, ᴇɴɢᴀɢᴇᴅ, ᴀɴᴅ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ sᴘᴀᴍ-ғʀᴇᴇ! Wɪᴛʜ ʟᴏᴛs ᴏғ ғᴇᴀᴛᴜʀᴇs ✨
+
+➖➖➖➖➖➖➖➖➖➖➖➖➖➖🫧✨🌸💗
+
+• Cʟɪᴄᴋ ᴏɴ ᴛʜᴇ ʙᴜᴛᴛᴏɴ ʙᴇʟᴏᴡ ғᴏʀ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ ᴀɴᴅ ᴄᴏᴍᴍᴀɴᴅ!💗
+ """
 
         await q.edit_message_caption(
             caption=cpt,
@@ -184,11 +187,11 @@ async def commands_menu(_, q: CallbackQuery):
     # keyboard = ikb(ou, True)
     # try:
         cpt = f"""
-ʜᴇʟʟᴏ **[{q.from_user.first_name}](http://t.me/{q.from_user.username})**! I am ᴋᴏᴍɪ✨.
-I'ᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ(s)!
-Cᴏᴍᴍᴀɴᴅs ᴀᴠᴀɪʟᴀʙʟᴇ:
-× /start: Sᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ
-× /help: Gɪᴠᴇ's ʏᴏᴜ ᴛʜɪs ᴍᴇssᴀɢᴇ.
+ 🌸𝗡𝗲𝘇𝘂𝗸𝗼 🌸 
+ 
+☉ 𝗗𝗶𝘀𝗰𝗼𝘃𝗲𝗿 𝗮𝗹𝗹 𝘁𝗵𝗲 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝘆𝗼𝘂 𝗰𝗮𝗻 𝘂𝘀𝗲 𝗲𝗳𝗳𝗼𝗿𝘁𝗹𝗲𝘀𝘀𝗹𝘆.                 
+
+ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ᴄᴀɴ ʙᴇ ᴜsᴇᴅ ᴡɪᴛʜ : /
 
 Yᴏᴜ ᴄᴀɴ ᴜsᴇ`$` ᴀɴᴅ `!` ɪɴ ᴘʟᴀᴄᴇᴄ ᴏғ / ᴀs ʏᴏᴜʀ ᴘʀᴇғɪx ʜᴀɴᴅʟᴇʀ
 """
@@ -257,11 +260,11 @@ async def help_menu(_, m: Message):
 
         if m.chat.type == ChatType.PRIVATE:
             msg = f"""
-Aʜᴏʏ **[{m.from_user.first_name}](http://t.me/{m.from_user.username})**!I am Kᴏᴍɪ✨.
-I'ᴍ ʜᴇʀᴇ ᴛᴏ ʜᴇʟᴘ ʏᴏᴜ ᴍᴀɴᴀɢᴇ ʏᴏᴜʀ ɢʀᴏᴜᴘ(s)!
-Cᴏᴍᴍᴀɴᴅs ᴀᴠᴀɪʟᴀʙʟᴇ:
-× /start: Sᴛᴀʀᴛ ᴛʜᴇ ʙᴏᴛ
-× /help: Gɪᴠᴇ's ʏᴏᴜ ᴛʜɪs ᴍᴇssᴀɢᴇ."""
+🌸𝗡𝗲𝘇𝘂𝗸𝗼 🌸 
+ 
+☉ 𝗗𝗶𝘀𝗰𝗼𝘃𝗲𝗿 𝗮𝗹𝗹 𝘁𝗵𝗲 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝘆𝗼𝘂 𝗰𝗮𝗻 𝘂𝘀𝗲 𝗲𝗳𝗳𝗼𝗿𝘁𝗹𝗲𝘀𝘀𝗹𝘆.                 
+
+ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ᴄᴀɴ ʙᴇ ᴜsᴇᴅ ᴡɪᴛʜ : /"""
         else:
             keyboard = InlineKeyboardMarkup(
               [
