@@ -72,7 +72,7 @@ async def _id(client, message):
 
 __PLUGIN__ = "ᴄᴏsᴘʟᴀʏ"
 __HELP__ = """
-**👘 Cosplay** :
+**👘 ᴄᴏsᴘʟᴀʏ** :
 
 ➥ /cosplay - ᴛᴏ ɢᴇᴛ ᴄᴜᴛᴇ ᴀɴᴅ ʜᴏᴛ ᴄᴏsᴘʟᴀʏ ᴄᴏsᴛᴜᴍᴇ ɪᴍᴀɢᴇs
 """
