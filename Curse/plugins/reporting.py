@@ -184,12 +184,12 @@ async def report_buttons(c: app, q: CallbackQuery):
     return
 
 
-__PLUGIN__ = "𝗥𝗘𝗣𝗢𝗥𝗧"
+__PLUGIN__ = "ʀᴇᴘᴏʀᴛ"
 
 __alt_name__ = ["reports", "report"]
 
 __HELP__ = """
-**🚸 Report**
+**🚸 ʀᴇᴘᴏʀᴛ**
 
 ➥ /report `<reason>`: reply to a message to report it to admins.
 × @admin: reply to a message to report it to admins.
