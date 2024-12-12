@@ -114,12 +114,12 @@ async def del_msg(c: app, m: Message):
     return
 
 
-__PLUGIN__ = "𝗣𝗨𝗥𝗚𝗘"
+__PLUGIN__ = "ᴘᴜʀɢᴇ"
 
 __alt_name__ = ["purge", "del", "spurge"]
 
 __HELP__ = """
-**❗️Purge**
+**❗️ᴘᴜʀɢᴇ**
 
 ➥ /purge: Deletes messages upto replied message.
 ➥ /spurge: Deletes messages upto replied message without a success message.
