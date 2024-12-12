@@ -100,7 +100,7 @@ async def set_mataa(self: Client, ctx: Message, strings):
     else:
         await ctx.reply(strings("wrong_param"))
 
-__PLUGIN__ = "𝗜𝗠𝗣𝗢𝗦𝗧𝗘𝗥"
+__PLUGIN__ = "ɪᴍᴘᴏsᴛᴇʀ"
 __HELP__ = """
 *• /imposter on:* Use this command to track name and username changes in the group. If a user changes their name and username, the bot will send a message showing any related changes.
 """
