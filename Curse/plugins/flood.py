@@ -492,7 +492,7 @@ async def flood_watcher(c: app, m: Message):
         return
 
 
-__PLUGIN__ = "𝗙𝗟𝗢𝗢𝗗"
+__PLUGIN__ = "ғʟᴏᴏᴅ"
 __alt_name__ = [
     "anit-flood",
     "flood",
@@ -500,7 +500,7 @@ __alt_name__ = [
     "anti-spam",
 ]
 __HELP__ = """
-**⭕️ Anti Flood**
+**⭕️ ᴀɴᴛɪ ғʟᴏᴏᴅ**
 
 **User Commands:**
 • /flood: to check weather the group is protected from spam or not.
