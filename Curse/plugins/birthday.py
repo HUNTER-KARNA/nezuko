@@ -350,7 +350,7 @@ print(x.year - timm.year)
 """
 
 
-__PLUGIN__ = "𝗕𝗜𝗥𝗧𝗛𝗗𝗔𝗬"
+__PLUGIN__ = "ʙɪʀᴛʜᴅᴀʏ"
 
 __HELP__ = """
 
