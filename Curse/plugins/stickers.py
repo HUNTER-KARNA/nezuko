@@ -610,11 +610,11 @@ async def give_st_info(c: app, m: Message):
     return
 
 
-__PLUGIN__ = "𝗦𝗧𝗜𝗖𝗞𝗘𝗥"
+__PLUGIN__ = "sᴛɪᴄᴋᴇʀ"
 __alt_name__ = ["sticker", "kang"]
 
 __HELP__ = """
-**👨‍🏫 User Commands:**
+**👨‍🏫 Usᴇʀ Cᴏᴍᴍᴀɴᴅs:**
 
 ➥ /kang (/steal) < emoji >: Reply to a sticker or any supported media.
 ➥ /pkang: Reply to a image type sticker to get full pack.
