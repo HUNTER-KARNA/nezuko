@@ -514,7 +514,7 @@ async def afk_watcher_func(self: Client, ctx: Message, strings):
     except:
         pass
 
-__PLUGIN__ = "𝗔𝗙𝗞"
+__PLUGIN__ = "ᴀғᴋ"
 __HELP__ = """
 **Afk :**
 ➥ /afk [Reason > Optional] - Tell others that you are AFK (Away From Keyboard)
