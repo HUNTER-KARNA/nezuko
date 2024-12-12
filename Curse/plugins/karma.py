@@ -153,9 +153,9 @@ async def karma_toggle_xd(_, message):
     else:
         await message.reply_text(usage)
 
-__PLUGIN__ = "𝗞𝗔𝗥𝗠𝗔"
+__PLUGIN__ = "ᴋᴀʀᴍᴀ"
 __HELP__ = """
-Karma :
+ᴋᴀʀᴍᴀ :
 
 *Upvote* - Use upvote keywords like "+", "+1", "thanks", etc. to upvote a message.
 *Downvote* - Use downvote keywords like "-", "-1", etc. to downvote a message.
