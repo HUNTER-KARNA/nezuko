@@ -548,12 +548,12 @@ async def prevent_approved(m: Message):
     return
 
 
-__PLUGIN__ = "𝗟𝗢𝗖𝗞𝗦"
+__PLUGIN__ = "ʟᴏᴄᴋs"
 
 __alt_name__ = ["grouplock", "lock", "grouplocks"]
 
 __HELP__ = """
-**🔐 Locks**
+**🔐 ʟᴏᴄᴋs**
 
 Use this to lock group permissions.
 Allows you to lock and unlock permission types in the chat.
