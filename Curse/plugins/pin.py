@@ -235,12 +235,12 @@ async def perma_pin(_, m: Message):
     return
 
 
-__PLUGIN__ = "𝗣𝗜𝗡"
+__PLUGIN__ = "ᴘɪɴ"
 
 __alt_name__ = ["pin", "unpin"]
 
 __HELP__ = """
-**📌 Pin**
+**📌 ᴘɪɴ**
 
 Here you find find all help related to groups pins and how to manage them via me.
 
