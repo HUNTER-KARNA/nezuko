@@ -308,10 +308,10 @@ async def lego(client, message):
         await message.reply(f"Error. Report to @hunterXsupport: {e}")
 
 
-__PLUGIN__ = "𝗟𝗢𝗚𝗢"
+__PLUGIN__ = "ʟᴏɢᴏ"
 
 __HELP__ = """
-**🎨 Logo Maker**
+**🎨 ʟᴏɢᴏ ᴍᴀᴋᴇʀ**
 
 ➥ /logo <with text> : To draw a logo.
 """
