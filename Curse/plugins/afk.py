@@ -516,7 +516,7 @@ async def afk_watcher_func(self: Client, ctx: Message, strings):
 
 __PLUGIN__ = "ᴀғᴋ"
 __HELP__ = """
-**Afk :**
+**ᴀғᴋ :**
 ➥ /afk [Reason > Optional] - Tell others that you are AFK (Away From Keyboard)
 ➥ /afk [reply to media] - AFK with media.
 ➥ /afkdel - Enable auto delete AFK message in group (Only for group admin). Default is **Enable**
