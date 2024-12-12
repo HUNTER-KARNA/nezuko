@@ -174,7 +174,7 @@ async def nsfw_enable_disable(_, message):
 __PLUGIN__ = "ᴀɴᴛɪ-ɴsғᴡ"
 
 __HELP__ = """
-**🔞 Helps in detecting NSFW material and removing it**.
+**🔞 Hᴇʟᴘs ɪɴ ᴅᴇᴛᴇᴄᴛɪɴɢ NSFW ᴍᴀᴛᴇʀɪᴀʟ ᴀɴᴅ ʀᴇᴍᴏᴠɪɴɢ ɪᴛ**.
 
 **Usage:**
 
