@@ -119,13 +119,13 @@ async def normal_welcome_callback(_, query: CallbackQuery, todo="commands"):
     )
 
 
-__PLUGIN__ = "𝗡𝗘𝗞𝗢𝗦"
+__PLUGIN__ = "ɴᴇᴋᴏs"
 __buttons__ = [
     [("More", "more_nekos")],
 ]
 
 __HELP__ = """
-**✨ Sends fun Gifs**
+**✨ Sᴇɴᴅs ғᴜɴ Gɪғs**
 
 ➥ /nekomode on : Enables fun neko mode.
 ➥ /nekomode off : Disables fun neko mode
