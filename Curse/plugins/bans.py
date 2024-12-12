@@ -1024,7 +1024,7 @@ __alt_name__ = [
 ]
 
 __HELP__ = """
-**⚠️ Bans**
+**⚠️ ʙᴀɴs**
 
 **Admin only:**
 ➥ /kick: Kick the user replied or tagged.
