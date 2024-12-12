@@ -152,12 +152,12 @@ async def clearrules_callback(_, q: CallbackQuery):
     return
 
 
-__PLUGIN__ = "𝗥𝗨𝗟𝗘𝗦"
+__PLUGIN__ = "ʀᴜʟᴇs"
 
 __alt_name__ = ["rule"]
 
 __HELP__ = """
-**📕 Rules**
+**📕 ʀᴜʟᴇs**
 
 **Set rules for you chat so that members know what to do and what not to do in your group!**
 
