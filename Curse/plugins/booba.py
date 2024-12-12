@@ -38,7 +38,7 @@ waifu_images = [
     "https://te.legra.ph/file/3de9c7d255674ad2e06b3.mp4",
 ]
 
-@app.on_message(filters.command("booba"))
+@app.on_message(filters.command("boobs"))
 async def es_img(_, message):
     image = random.choice(waifu_images)
     sent_message = await message.reply_video(video=image, caption=f"ʙʏ [ɴᴇᴢᴜᴋᴏ ᴄʜᴀɴ](https://t.me/Nezuko_RoxBot)")
