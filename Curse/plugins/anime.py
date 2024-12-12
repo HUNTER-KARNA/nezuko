@@ -5114,7 +5114,7 @@ QUOTES_IMG = [
 
 # <================================================= HELP ======================================================>
 __HELP__ = """
-⛩ *Anime:*
+⛩ *ᴀɴɪᴍᴇ:*
 
 ➠ *Curse provides you the best anime-based commands including anime news and much more!*
 
