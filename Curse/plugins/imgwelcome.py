@@ -179,14 +179,14 @@ async def normal_welcome_callback(_, query: CallbackQuery, todo="commands"):
     )
 
 
-__PLUGIN__ = "𝗪𝗘𝗟𝗖𝗢𝗠𝗘"
+__PLUGIN__ = "ᴡᴇʟᴄᴏᴍᴇ"
 __alt_name__ = ["welcome", "dwelcome", "goodbye", "cleanservice"]
 __buttons__ = [
     [("Normal Welcome", "normal_welcome")],
 ]
 
 __HELP__ = """
-**🎊 Greetings**
+**🎊 Gʀᴇᴇᴛɪɴɢs**
 
 **💫 Default Welcome**
 ➥ /dwelcome on: turns on default new welcome
