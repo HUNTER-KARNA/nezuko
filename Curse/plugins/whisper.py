@@ -119,11 +119,11 @@ async def showWhisper(_, callback_query):
         await callback_query.answer("Not your Whisper!", show_alert=True)
 
 
-__PLUGIN__ = "𝗪𝗛𝗜𝗦𝗣𝗘𝗥"
+__PLUGIN__ = "ᴡʜɪsᴘᴇʀ"
 
 __HELP__ = """
 
-**Whisper Inline Function For Secret Chats.**
+**Wʜɪsᴘᴇʀ Iɴʟɪɴᴇ Fᴜɴᴄᴛɪᴏɴ Fᴏʀ Sᴇᴄʀᴇᴛ Cʜᴀᴛs.**
 
 **Commands**
  `botname < your message > @username OR UserID`
