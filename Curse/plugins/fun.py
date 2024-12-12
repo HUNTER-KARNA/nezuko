@@ -115,7 +115,7 @@ async def fun_memes_callback(_, query: CallbackQuery, todo="commands"):
     )
 
 
-__PLUGIN__ = "𝗙𝗨𝗡"
+__PLUGIN__ = "ғᴜɴ"
 __buttons__ = [
     [
         ("Fun Games", "fun_games"),
@@ -139,7 +139,7 @@ _DISABLE_CMDS_ = [
 ]
 
 __HELP__ = """
-**🥳 Fun**
+**🥳 ғᴜɴ**
 
 ➥ /runs: reply a random string from an array of replies.
 ➥ /insult: to insult a user, or get insulted if not a reply
