@@ -67,10 +67,10 @@ async def cancelcmd(_, message):
         await message.reply_text("**No Proccess Ongoing!**")  
         return       
 
-__PLUGIN__ = "𝗧𝗔𝗚-𝗔𝗟𝗟"
+__PLUGIN__ = "ᴛᴀɢ-ᴀʟʟ"
 
 __HELP__ = """
-Tag All:
+ᴛᴀɢ ᴀʟʟ:
 
 ➢ /tagall /all @all - To tag all members of GROUP
 ➢ /cancel - To Turn Off Tagal..
