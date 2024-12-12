@@ -416,14 +416,14 @@ async def clearallnotes_callback(_, q: CallbackQuery):
     return
 
 
-__PLUGIN__ = "𝗡𝗢𝗧𝗘𝗦"
+__PLUGIN__ = "ɴᴏᴛᴇs"
 
 _DISABLE_CMDS_ = ["notes"]
 
 __alt_name__ = ["groupnotes", "snips", "notes"]
 
 __HELP__ = """
-**🗒 Notes**
+**🗒 ɴᴏᴛᴇs**
 
 **Save a note, get that, even you can delete that note.
 This note only avaiable for your whole group!
