@@ -559,7 +559,7 @@ async def setgpic(c: app, m: Message):
     remove(photo)
 
 
-__PLUGIN__ = "𝗔𝗗𝗠𝗜𝗡"
+__PLUGIN__ = "ᴀᴅᴍɪɴ"
 __alt_name__ = [
     "admins",
     "promote",
