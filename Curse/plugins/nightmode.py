@@ -1,6 +1,6 @@
-__PLUGIN__ = "𝗡𝗜𝗚𝗛𝗧𝗠𝗢𝗗𝗘"
+__PLUGIN__ = "ɴɪɢʜᴛ ᴍᴏᴅᴇ"
 __HELP__ = """
-**Night mode** :
+**ɴɪɢʜᴛ ᴍᴏᴅᴇ** :
 
 ➥ /nightmode - enable night mode to stop unwanted activites at night
 """
