@@ -24,13 +24,13 @@ Suku = [
     [
         InlineKeyboardButton(
             text=" Aᴅᴅ Mᴇ Iɴ Yᴏᴜʀ Gʀᴏᴜᴘ 💫 ",
-            url="https://t.me/Komi_RoxBot?startgroup=new",
+            url="https://t.me/Nezuko_RoxBot?startgroup=new",
         ),
     ],
 ]
 
 
-@app.on_message(filters.command(["alive", "zinda ho", "mere puttar jinda ho"], COMMAND_HANDLER), group=4678)
+@app.on_message(filters.command(["alive", "zinda ho"], COMMAND_HANDLER), group=4678)
 async def restart(client, m: Message):
     await m.delete()
     await m.reply_photo(
