@@ -16,7 +16,7 @@ commands = [
     "anal", "ass", "violence", "cum", "classic", "creampie", "xxmanga", "femdom", "hentai",
     "masturbation", "public", "ero", "orgy", "yuri","glasses", "cockold", "blowjob",
     "footjob", "handjob", "boobs", "thighs", "pussy", "uniform", "gangbang",
-    "hass"
+    "hass", "missionary", "doggy", "air", "spooning", "oral", "lotus", "standing"
 ]
 
 @app.on_message(filters.command("upload") & filters.reply)
