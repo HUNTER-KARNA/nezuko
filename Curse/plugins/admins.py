@@ -40,7 +40,7 @@ async def adminlist_show(_, m: Message):
     global ADMIN_CACHE
     if m.chat.type not in [ChatType.SUPERGROUP, ChatType.GROUP]:
         return await m.reply_text(
-            text="This command is made to be used in groups only!",
+            text="ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪs ʀᴇsᴛʀɪᴄᴛᴇᴅ ᴛᴏ ɢʀᴏᴜᴘ ᴜsᴀɢᴇ ᴏɴʟʏ. ᴘʟᴇᴀsᴇ ᴛʀʏ ɪᴛ ɪɴ ᴀ ɢʀᴏᴜᴘ!",
         )
     try:
         try:
@@ -84,7 +84,7 @@ async def adminlist_show(_, m: Message):
         else:
             ef = str(ef) + f"{admin_list}\n"
             await m.reply_text(
-                text=f"Some error occured, report it @hunterXsupport \n <b>Error:</b> <code>{ef}</code>"
+                text=f"ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ, ᴘʟᴇᴀsᴇ ʀᴇᴘᴏʀᴛ ɪᴛ ᴛᴏ ᴛʜᴇ sᴜᴘᴘᴏʀᴛ ᴛᴇᴀᴍ @hunterXsupport \n <b>Error:</b> <code>{ef}</code>"
             )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -94,7 +94,7 @@ async def adminlist_show(_, m: Message):
 @app.on_message(filters.command(["zombies", "kick the fools"], C_HANDLER) & admin_filter)
 async def zombie_clean(c: app, m: Message):
     zombie = 0
-    wait = await m.reply_text("Searching ... and banning ...")
+    wait = await m.reply_text("sᴇᴀʀᴄʜɪɴɢ ... ᴀɴᴅ ʙᴀɴɴɪɴɢ ...")
     async for member in c.get_chat_members(m.chat.id):
         if member.user.is_deleted:
             zombie += 1
@@ -105,9 +105,9 @@ async def zombie_clean(c: app, m: Message):
             except FloodWait as e:
                 await sleep(e.x)
     if zombie == 0:
-        return await wait.edit_text("Group is clean!")
+        return await wait.edit_text("ᴀʟʟ ᴄʟᴇᴀʀ, ɢʀᴏᴜᴘ ɪs ɴᴏᴡ ᴄʟᴇᴀɴ!")
     return await wait.edit_text(
-        text=f"<b>{zombie}</b> Zombies found and has been banned!",
+        text=f"<b>{zombie}</b> ᴢᴏᴍʙɪᴇs ᴡᴇʀᴇ ᴅᴇᴛᴇᴄᴛᴇᴅ ᴀɴᴅ ʙᴀɴɴᴇᴅ!",
     )
 
 
@@ -116,7 +116,7 @@ async def reload_admins(_, m: Message):
     global TEMP_ADMIN_CACHE_BLOCK
     if m.chat.type not in [ChatType.SUPERGROUP, ChatType.GROUP]:
         return await m.reply_text(
-            "This command is made to be used in groups only!",
+            "ʜɪs ᴄᴏᴍᴍᴀɴᴅ ɪs ʀᴇsᴛʀɪᴄᴛᴇᴅ ᴛᴏ ɢʀᴏᴜᴘ ᴜsᴀɢᴇ ᴏɴʟʏ. ᴘʟᴇᴀsᴇ ᴛʀʏ ɪᴛ ɪɴ ᴀ ɢʀᴏᴜᴘ!",
         )
     if (
         (m.chat.id in set(TEMP_ADMIN_CACHE_BLOCK.keys()))
@@ -132,7 +132,7 @@ async def reload_admins(_, m: Message):
         LOGGER.info(f"Admincache cmd use in {m.chat.id} by {m.from_user.id}")
     except RPCError as ef:
         await m.reply_text(
-            text=f"Some error occured, report it to @hunterXsupport \n <b>Error:</b> <code>{ef}</code>"
+            text=f"sᴏᴍᴇ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ, ᴘʟᴇᴀsᴇ ʀᴇᴘᴏʀᴛ ɪᴛ @hunterXsupport \n <b>Error:</b> <code>{ef}</code>"
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -155,7 +155,7 @@ async def tag_admins(_, m: Message):
     await m.reply_text(
         (
             f"{(await mention_html(m.from_user.first_name, m.from_user.id))}"
-            f" reported the message to admins!{mention_str}"
+            f" ʀᴇᴘᴏʀᴛᴇᴅ ᴛʜᴇ ᴍᴇssᴀɢᴇ ᴛᴏ ᴀᴅᴍɪɴs!{mention_str}"
         ),
     )
 
@@ -165,7 +165,7 @@ async def fullpromote_usr(c: app, m: Message):
     global ADMIN_CACHE
     if len(m.text.split()) == 1 and not m.reply_to_message:
         await m.reply_text(
-            text="I can't promote nothing! Give me an username or user id or atleast reply to that user"
+            text="ɪ ᴄᴀɴ'ᴛ ᴘʀᴏᴍᴏᴛᴇ ᴀɴʏᴛʜɪɴɢ! ᴘʀᴏᴠɪᴅᴇ ᴀɴ ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ᴜsᴇʀ ɪᴅ, ᴏʀ ᴀᴛ ʟᴇᴀsᴛ ʀᴇᴘʟʏ ᴛᴏ ᴛʜᴀᴛ ᴜsᴇʀ."
         )
         return
     try:
@@ -174,15 +174,15 @@ async def fullpromote_usr(c: app, m: Message):
         return
     bot = await c.get_chat_member(m.chat.id, Config.BOT_ID)
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, how can I even promote myself?")
+        await m.reply_text("ʜᴇʜᴇ, ʜᴏᴡ ᴄᴀɴ ɪ ᴇᴠᴇɴ ᴘʀᴏᴍᴏᴛᴇ ᴍʏsᴇʟғ?")
         return
     if not bot.privileges.can_promote_members:
         return await m.reply_text(
-            "I don't have enough permissions!",
+            "ᴛʜɪs ᴄᴀɴ'ᴛ ʙᴇ ᴅᴏɴᴇ ᴡɪᴛʜᴏᴜᴛ ᴘᴇʀᴍɪssɪᴏɴ!",
         )  # This should be here
     user = await c.get_chat_member(m.chat.id, m.from_user.id)
     if m.from_user.id != OWNER_ID and user.status != CMS.OWNER:
-        return await m.reply_text("This command can only be used by chat owner.")
+        return await m.reply_text("ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴄᴀɴ ᴏɴʟʏ ʙᴇ ᴜsᴇᴅ ʙʏ ᴄʜᴀᴛ ᴏᴡɴᴇʀ..")
     # If user is alreay admin
     try:
         admin_list = {i[0] for i in ADMIN_CACHE[m.chat.id]}
@@ -192,7 +192,7 @@ async def fullpromote_usr(c: app, m: Message):
         }
     if user_id in admin_list:
         await m.reply_text(
-            "This user is already an admin, how am I supposed to re-promote them?",
+            "ᴛʜɪs ᴜsᴇʀ ɪs ᴀʟʀᴇᴀᴅʏ ᴀɴ ᴀᴅᴍɪɴ, ʜᴏᴡ ᴛʜᴇ ʜᴇʟʟ ᴀᴍ ɪ sᴜᴘᴘᴏsᴇᴅ ᴛᴏ ʀᴇ-ᴘʀᴏᴍᴏᴛᴇ ᴛʜᴇᴍ?",
         )
         return
     try:
@@ -218,13 +218,13 @@ async def fullpromote_usr(c: app, m: Message):
         )
         await m.reply_text(
             (
-                "{promoter} promoted {promoted} in chat <b>{chat_title}</b> with full rights!"
+                "{promoter} ʜᴀs ɢɪᴠᴇɴ ᴀᴛᴛʀɪʙᴜᴛᴇᴅ ʀɪɢʜᴛs ᴛᴏ {promoted} ɪɴ ᴄʜᴀᴛ <ʙ>{chat_title}</ʙ>!"
             ).format(
                 promoter=(await mention_html(m.from_user.first_name, m.from_user.id)),
                 promoted=(await mention_html(user_first_name, user_id)),
                 chat_title=f"{escape(m.chat.title)} title set to {title}"
                 if title
-                else f"{escape(m.chat.title)} title set to Default",
+                else f"{escape(m.chat.title)} ᴛʜᴇ ᴄʜᴀᴛ ᴛɪᴛʟᴇ ɪs ɴᴏᴡ ᴄʜᴀɴɢᴇᴅ ᴛᴏ ᴅᴇꜰᴀᴜʟᴛ",
             ),
         )
         # If user is approved, disapprove them as they willbe promoted and get
@@ -240,16 +240,16 @@ async def fullpromote_usr(c: app, m: Message):
         except KeyError:
             await admin_cache_reload(m, "promote_key_error")
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights......")
+        await m.reply_text(text="ᴄᴀɴ'ᴛ ᴅᴏ ᴛʜɪs, ɪ'ᴍ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ᴏʀ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ʀɪɢʜᴛs......")
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to promote this user.")
+        await m.reply_text(text="ɪ'ᴍ ᴜɴᴀʙʟᴇ ᴛᴏ ᴘʀᴏᴍᴏᴛᴇ ᴛʜɪs ᴜsᴇʀ, ᴅᴜᴇ ᴛᴏ ɪɴsᴜꜰғɪᴄɪᴇɴᴛ ʀɪɢʜᴛs.")
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="ɪ ᴄᴀɴ'ᴛ ᴀᴄᴛ ᴏɴ ᴛʜɪs ᴜsᴇʀ, ᴍᴀʏʙᴇ ɪ'ᴍ ɴᴏᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ ᴛᴏᴏᴋ ᴄᴏɴᴛʀᴏʟ ᴏᴠᴇʀ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs."
         )
     except RPCError as e:
         await m.reply_text(
-            text=f"Some error occured, report it to @Lux_Bot_support \n <b>Error:</b> <code>{e}</code>"
+            text=f"sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ, ʀᴇᴘᴏʀᴛ ɪᴛ ᴛᴏ @hunterXsupport \n <b>Error:</b> <code>{e}</code>"
         )
         LOGGER.error(e)
         LOGGER.error(format_exc())
@@ -261,7 +261,7 @@ async def promote_usr(c: app, m: Message):
     global ADMIN_CACHE
     if len(m.text.split()) == 1 and not m.reply_to_message:
         await m.reply_text(
-            text="I can't promote nothing!......reply to user to promote him/her...."
+            text="ɪ ᴄᴀɴ'ᴛ ᴘʀᴏᴍᴏᴛᴇ ᴀɴʏᴏɴᴇ! ᴘʟᴇᴀsᴇ ʀᴇᴘʟʏ ᴛᴏ ᴛʜᴇ ᴜsᴇʀ ᴛᴏ ᴇɴᴀʙʟᴇ ᴘʀᴏᴍᴏᴛɪᴏɴ"
         )
         return
     try:
@@ -270,11 +270,11 @@ async def promote_usr(c: app, m: Message):
         return
     bot = await c.get_chat_member(m.chat.id, Config.BOT_ID)
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, how can I even promote myself?")
+        await m.reply_text("ʜᴜʜ, ʜᴏᴡ ᴄᴀɴ ɪ ᴇᴠᴇɴ ɢᴇᴛ ᴍʏsᴇʟғ ᴘʀᴏᴍᴏᴛᴇᴅ?")
         return
     if not bot.privileges.can_promote_members:
         return await m.reply_text(
-            "I don't have enough permissions",
+            "ɪ'ᴍ ᴍɪssɪɴɢ ᴛʜᴇ ᴇssᴇɴᴛɪᴀʟ ᴘᴇʀᴍɪssɪᴏɴs.",
         )  # This should be here
     # If user is alreay admin
     try:
@@ -285,7 +285,7 @@ async def promote_usr(c: app, m: Message):
         }
     if user_id in admin_list:
         await m.reply_text(
-            "This user is already an admin, how am I supposed to re-promote them?",
+            "ᴛʜɪs ᴜsᴇʀ ɪs ᴀʟʀᴇᴀᴅʏ ᴀɴ ᴀᴅᴍɪɴ, ʜᴏᴡ ᴛʜᴇ ʜᴇʟʟ ᴀᴍ ɪ sᴜᴘᴘᴏsᴇᴅ ᴛᴏ ʀᴇ-ᴘʀᴏᴍᴏᴛᴇ ᴛʜᴇᴍ?",
         )
         return
     try:
@@ -341,16 +341,16 @@ async def promote_usr(c: app, m: Message):
         except KeyError:
             await admin_cache_reload(m, "promote_key_error")
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="ᴄᴀɴ'ᴛ ᴅᴏ ᴛʜɪs, ɪ'ᴍ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ ᴏʀ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ʀɪɢʜᴛs.")
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to promote this user.")
+        await m.reply_text(text="ɪ'ᴍ ᴜɴᴀʙʟᴇ ᴛᴏ ᴘʀᴏᴍᴏᴛᴇ ᴛʜɪs ᴜsᴇʀ, ᴅᴜᴇ ᴛᴏ ɪɴsᴜꜰғɪᴄɪᴇɴᴛ ʀɪɢʜᴛs.")
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="ɪ ᴄᴀɴ'ᴛ ᴀᴄᴛ ᴏɴ ᴛʜɪs ᴜsᴇʀ, ᴍᴀʏʙᴇ ɪ'ᴍ ɴᴏᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ ᴛᴏᴏᴋ ᴄᴏɴᴛʀᴏʟ ᴏᴠᴇʀ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs."
         )
     except RPCError as e:
         await m.reply_text(
-            text=f"Some error occured, report it to @Lux_Bot_support \n <b>Error:</b> <code>{e}</code>"
+            text=f"ᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ, ᴘʟᴇᴀsᴇ ʀᴇᴘᴏʀᴛ ɪᴛ ᴛᴏ ᴛʜᴇ sᴜᴘᴘᴏʀᴛ ᴛᴇᴀᴍ @hunterXsupport \n <b>Error:</b> <code>{e}</code>"
         )
         LOGGER.error(e)
         LOGGER.error(format_exc())
@@ -361,14 +361,14 @@ async def promote_usr(c: app, m: Message):
 async def demote_usr(c: app, m: Message):
     global ADMIN_CACHE
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text("I can't demote nothing.")
+        await m.reply_text("ɪ'ᴍ ᴜɴᴀʙʟᴇ ᴛᴏ ᴅᴇᴍᴏᴛᴇ ᴀɴʏᴏɴᴇ")
         return
     try:
         user_id, user_first_name, _ = await extract_user(c, m)
     except Exception:
         return
     if user_id == Config.BOT_ID:
-        await m.reply_text("Get an admin to demote me!")
+        await m.reply_text("ɢᴇᴛ ᴀɴ ᴀᴅᴍɪɴ ᴛᴏ ᴅᴇᴍᴏᴛᴇ ᴍᴇ ɪғ ʏᴏᴜ'ʀᴇ ʙʀᴀᴠᴇ ᴇɴᴏᴜɢʜ!")
         return
     # If user not already admin
     try:
@@ -379,7 +379,7 @@ async def demote_usr(c: app, m: Message):
         }
     if user_id not in admin_list:
         await m.reply_text(
-            "This user is not an admin, how am I supposed to re-demote them?",
+            "ᴛʜɪs ᴜsᴇʀ ɪsɴ'ᴛ ᴀɴ ᴀᴅᴍɪɴ, ᴡʜᴏ ᴅᴏ ɪ ᴇᴠᴇɴ ᴛʜɪs ᴛᴏ?",
         )
         return
     try:
@@ -397,7 +397,7 @@ async def demote_usr(c: app, m: Message):
         except (KeyError, StopIteration):
             await admin_cache_reload(m, "demote_key_stopiter_error")
         await m.reply_text(
-            ("{demoter} demoted {demoted} in <b>{chat_title}</b>!").format(
+            ("{demoter} ᴅᴇᴍᴏᴛᴇᴅ {demoted} ɪɴ <b>{chat_title}</b>, ᴏʜ ᴡᴇʀᴇ ᴊᴜsᴛ ᴛᴏᴏ ᴄᴏᴏʟ ᴛᴏ ʙᴇ ᴀɴ ᴀᴅᴍɪɴ!").format(
                 demoter=(
                     await mention_html(
                         m.from_user.first_name,
