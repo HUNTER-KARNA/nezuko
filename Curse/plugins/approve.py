@@ -26,44 +26,44 @@ async def approve_user(c: app, m: Message):
 
     if not user_id:
         await m.reply_text(
-            "I don't know who you're talking about, you're going to need to specify a user!",
+            "ɪ ʜᴀᴠᴇ ɴᴏ ᴄʟᴜᴇ ᴡʜᴏ ʏᴏᴜ'ʀᴇ ʀᴇғᴇʀʀɪɴɢ ᴛᴏ—ᴘʟᴇᴀsᴇ sᴘᴇᴄɪғʏ ᴀ ᴜsᴇʀ!",
         )
         return
     try:
         member = await m.chat.get_member(user_id)
     except UserNotParticipant:
-        await m.reply_text("This user is not in this chat!")
+        await m.reply_text("ᴛʜɪs ᴜsᴇʀ ɪsɴ'ᴛ ɪɴ ᴛʜɪs ᴄʜᴀᴛ!")
         return
 
     except RPCError as ef:
         await m.reply_text(
-            f"<b>Error</b>: <code>{ef}</code>\nReport it to @{SUPPORT_GROUP}",
+            f"b>ᴇʀʀᴏʀ</b>: <code>{ef}</code>\nʀᴇᴘᴏʀᴛ ɪᴛ ɪᴍᴍᴇᴅɪᴀᴛᴇʟʏ ᴛᴏ @{SUPPORT_GROUP}!",
         )
         return
     if member.status in (CMS.ADMINISTRATOR, CMS.OWNER):
         await m.reply_text(
-            "User is already admin - blacklists and locks already don't apply to them.",
+            "ᴜsᴇʀ ɪs ᴀʟʀᴇᴀᴅʏ ᴀɴ ᴀᴅᴍɪɴ—ʙʟᴏᴄᴋs ᴀɴᴅ ʀᴇsᴛʀɪᴄᴛɪᴏɴs ᴅᴏɴ'ᴛ ᴡᴏʀᴋ ᴏɴ ᴛʜᴇᴍ.",
         )
         return
     already_approved = db.check_approve(user_id)
     if already_approved:
         await m.reply_text(
-            f"{(await mention_html(user_first_name, user_id))} is already approved in {chat_title}",
+            f"{(await mention_html(user_first_name, user_id))} ɪs ᴀʟʀᴇᴀᴅʏ ᴏɴ ᴛʜᴇ ᴀᴘᴘʀᴏᴠᴇᴅ ʟɪsᴛ ғᴏʀ {chat_title}.",
         )
         return
     db.add_approve(user_id, user_first_name)
-    LOGGER.info(f"{user_id} approved by {m.from_user.id} in {m.chat.id}")
+    LOGGER.info(f"{user_id} ʀᴇᴄᴇɪᴠᴇᴅ ᴀᴘᴘʀᴏᴠᴀʟ ʙʏ {m.from_user.id} ɪɴ {m.chat.id}.")
 
     # Allow all permissions
     try:
         await m.chat.unban_member(user_id=user_id)
     except RPCError as g:
-        await m.reply_text(f"Error: {g}")
+        await m.reply_text(f"ᴇʀʀᴏʀ: {g}")
         return
     await m.reply_text(
         (
-            f"{(await mention_html(user_first_name, user_id))} has been approved in {chat_title}!\n"
-            "They will now be ignored by blacklists, locks and antiflood!"
+            f"{(await mention_html(user_first_name, user_id))} ʜᴀs ʙᴇᴇɴ ᴀᴘᴘʀᴏᴠᴇᴅ ɪɴ {chat_title}!\n"
+            "ᴛʜᴇʏ ᴡɪʟʟ ɴᴏᴡ ʙᴇ ᴇxᴇᴍᴘᴛ ᴅʀᴏᴍ ʙʟᴀᴄᴋʟɪsᴛs, ʟᴏᴄᴋs ᴀɴᴅ ᴀɴᴛɪғʟᴏᴏᴅ!"
         ),
     )
     return
@@ -81,7 +81,7 @@ async def disapprove_user(c: app, m: Message):
     already_approved = db.check_approve(user_id)
     if not user_id:
         await m.reply_text(
-            "I don't know who you're talking about, you're going to need to specify a user!",
+            "ɪ ᴅᴏɴ'ᴛ ᴋɴᴏᴡ ᴡʜᴏ ʏᴏᴜ'ʀᴇ ʀᴇfᴇʀʀɪɴɢ ᴛᴏ, ᴘʟᴇᴀsᴇ sᴘᴇᴄɪғʏ ᴀ ᴜsᴇʀ!",
         )
         return
     try:
@@ -89,22 +89,22 @@ async def disapprove_user(c: app, m: Message):
     except UserNotParticipant:
         if already_approved:  # If user is approved and not in chat, unapprove them.
             db.remove_approve(user_id)
-            LOGGER.info(f"{user_id} disapproved in {m.chat.id} as UserNotParticipant")
-        await m.reply_text("This user is not in this chat, unapproved them.")
+            LOGGER.info(f"{user_id} ᴡᴀs ᴅɪsᴀᴘᴘʀᴏᴠᴇᴅ ɪɴ {m.chat.id} ᴀs ᴀ ɴᴏɴ-ᴘᴀʀᴛɪᴄɪᴘᴀɴᴛ.")
+        await m.reply_text("ᴛʜɪs ᴜsᴇʀ ɪs ɴᴏᴛ ᴀ ᴘᴀʀᴛ ᴏғ ᴛʜɪs ᴄʜᴀᴛ, ᴜɴᴀᴘᴘʀᴏᴠᴇ ᴛʜᴇᴍ.")
         return
     except RPCError as ef:
         await m.reply_text(
-            f"<b>Error</b>: <code>{ef}</code>\nReport it to @{SUPPORT_GROUP}",
+            f"b>ᴇʀʀᴏʀ</b>: <code>{ef}</code>\nᴘʟᴇᴀsᴇ ʀᴇᴘᴏʀᴛ ɪᴛ ᴛᴏ @{SUPPORT_GROUP}",
         )
         return
 
     if member.status in (CMS.OWNER, CMS.ADMINISTRATOR):
-        await m.reply_text("This user is an admin, they can't be disapproved.")
+        await m.reply_text("ᴛʜɪs ᴜsᴇʀ ɪs ᴀɴ ᴀᴅᴍɪɴ, ᴛʜᴇʏ ᴄᴀɴ'ᴛ ʙᴇ ᴜnᴀᴘᴘʀᴏᴠᴇᴅ.")
         return
 
     if not already_approved:
         await m.reply_text(
-            f"{(await mention_html(user_first_name, user_id))} isn't approved yet!",
+            f"{(await mention_html(user_first_name, user_id))} ɪs ɴᴏᴛ ᴀᴘᴘʀᴏᴠᴇᴅ ʏᴇᴛ!",
         )
         return
 
@@ -118,7 +118,7 @@ async def disapprove_user(c: app, m: Message):
     )
 
     await m.reply_text(
-        f"{(await mention_html(user_first_name, user_id))} is no longer approved in {chat_title}.",
+        f"{(await mention_html(user_first_name, user_id))} ɪs ɴᴏ ʟᴏɴɢᴇʀ ᴀᴘᴘʀᴏᴠᴇᴅ ɪɴ {chat_title}!",
     )
     return
 
@@ -129,11 +129,11 @@ async def check_approved(_, m: Message):
 
     chat = m.chat
     chat_title = chat.title
-    msg = "The following users are approved:\n"
+    msg = "ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ᴜsᴇʀs ʜᴀᴠᴇ ʙᴇᴇɴ ᴀᴘᴘʀᴏᴠᴇᴅ:\n"
     approved_people = db.list_approved()
 
     if not approved_people:
-        await m.reply_text(f"No users are approved in {chat_title}.")
+        await m.reply_text(f"ɴᴏ ᴜsᴇʀs ᴀʀᴇ ᴀᴘᴘʀᴏᴠᴇᴅ ɪɴ {chat_title} ᴀᴛ ᴛʜɪs ᴍᴏᴍᴇɴᴛ")
         return
 
     for user_id, user_name in approved_people:
@@ -146,7 +146,7 @@ async def check_approved(_, m: Message):
             pass
         msg += f"- `{user_id}`: {user_name}\n"
     await m.reply_text(msg)
-    LOGGER.info(f"{m.from_user.id} checking approved users in {m.chat.id}")
+    LOGGER.info(f"{m.from_user.id} ɪs ᴠᴇʀɪғʏɪɴɢ ᴀᴘᴘʀᴏᴠᴇᴅ ᴜsᴇʀs ɪɴ {m.chat.id}")
     return
 
 
@@ -159,20 +159,20 @@ async def check_approval(c: app, m: Message):
     except Exception:
         return
     check_approve = db.check_approve(user_id)
-    LOGGER.info(f"{m.from_user.id} checking approval of {user_id} in {m.chat.id}")
+    LOGGER.info(f"{m.from_user.id} ɪs ᴠᴇʀɪғʏɪɴɢ ᴛʜᴇ ᴀᴘᴘʀᴏᴠᴀʟ ᴏғ {user_id} ɪɴ {m.chat.id}.")
 
     if not user_id:
         await m.reply_text(
-            "I don't know who you're talking about, you're going to need to specify a user!",
+            "Iɪ ᴅᴏɴ'ᴛ ᴋɴᴏᴡ ᴡʜᴏ ʏᴏᴜ'ʀᴇ ᴛᴀʟᴋɪɴɢ ᴀʙᴏᴜᴛ, ᴘʟᴇᴀsᴇ sᴘᴇᴄɪғʏ ᴀ ᴜsᴇʀ!",
         )
         return
     if check_approve:
         await m.reply_text(
-            f"{(await mention_html(user_first_name, user_id))} is an approved user. Locks, antiflood, and blacklists won't apply to them.",
+            f"{(await mention_html(user_first_name, user_id))} ɪs ᴀɴ ᴀᴘᴘʀᴏᴠᴇᴅ ᴜsᴇʀ. ᴛʜᴇʏ ᴡɪʟʟ ʙᴇ ᴇxᴇᴍᴘᴛ ɴᴏᴡ ʙʏ ʟᴏᴄᴋs, ᴀɴᴛɪғʟᴏᴏᴅ, ᴀɴᴅ ʙʟᴀᴄᴋʟɪsᴛs.",
         )
     else:
         await m.reply_text(
-            f"{(await mention_html(user_first_name, user_id))} is not an approved user. They are affected by normal commands.",
+            f"{(await mention_html(user_first_name, user_id))} ɪs ɴᴏᴛ ᴀɴ ᴀᴘᴘʀᴏᴠᴇᴅ ᴜsᴇʀ. ᴛʜᴇʏ ᴡɪʟʟ ʙᴇ ᴀғғᴇᴄᴛᴇᴅ ʙʏ ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs.",
         )
     return
 
@@ -183,11 +183,11 @@ async def unapproveall_users(_, m: Message):
 
     all_approved = db.list_approved()
     if not all_approved:
-        await m.reply_text("No one is approved in this chat.")
+        await m.reply_text("ᴛʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴀᴘᴘʀᴏᴠᴇᴅ ᴜsᴇʀs ɪɴ ᴛʜɪs ᴄʜᴀᴛ.")
         return
 
     await m.reply_text(
-        "Are you sure you want to remove everyone who is approved in this chat?",
+        "ᴄᴏɴғɪʀᴍ? ʏᴏᴜ'ʀᴇ ᴀʙᴏᴜᴛ ᴛᴏ ʀᴇᴍᴏᴠᴇ ᴀʟʟ ᴛʜᴇ ᴀᴘᴘʀᴏᴠᴇᴅ ᴜsᴇʀs ɪɴ ᴛʜɪs ᴄʜᴀᴛ... ᴀᴄᴛɪᴏɴ ɪs ɪʀʀᴇᴠᴇʀsɪʙʟᴇ.",
         reply_markup=ikb(
             [[("⚠️ Confirm", "unapprove_all"), ("❌ Cancel", "close_admin")]],
         ),
@@ -203,13 +203,13 @@ async def unapproveall_callback(_, q: CallbackQuery):
     user_status = (await q.message.chat.get_member(user_id)).status
     if user_status not in {CMS.OWNER, CMS.ADMINISTRATOR}:
         await q.answer(
-            "You're not even an admin, don't try this explosive shit!",
+            "ʏᴏᴜ'ʀᴇ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ, ᴅᴏɴ'ᴛ ᴇᴠᴇɴ ᴛʀʏ ᴡɪᴛʜ ᴛʜɪs ᴇxᴘʟᴏsɪᴠᴇ ᴡᴀsᴛᴇ ᴏғ ᴛɪᴍᴇ",
             show_alert=True,
         )
         return
     if user_status != "creator":
         await q.answer(
-            "You're just an admin, not owner\nStay in your limits!",
+            "ʏᴏᴜ'ʀᴇ ᴊᴜsᴛ ᴀɴ ᴀᴅᴍɪɴ, ɴᴏᴛ ᴏᴡɴᴇʀ\nsᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟɪᴍɪᴛs ᴘᴇᴇᴋᴏᴜᴛ!",
             show_alert=True,
         )
         return
@@ -220,8 +220,8 @@ async def unapproveall_callback(_, q: CallbackQuery):
             permissions=q.message.chat.permissions,
         )
     await q.message.delete()
-    LOGGER.info(f"{user_id} disapproved all users in {q.message.chat.id}")
-    await q.answer("Disapproved all users!", show_alert=True)
+    LOGGER.info(f"{user_id} ᴅɪsᴀᴘᴘʀᴏᴠᴇᴅ ᴀʟʟ ᴇᴠᴇɴ ᴛʜᴇ ɪɴɴᴏᴄᴇɴᴛs ɪɴ {q.message.chat.id}!")
+    await q.answer("ʙᴇᴀᴡᴀʀᴇ, ᴀʟʟ ᴜsᴇʀs ᴡᴇʀᴇ ᴅɪsᴀᴘᴘʀᴏᴠᴇᴅ!", show_alert=True)
     return
 
 
