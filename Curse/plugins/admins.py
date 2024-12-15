@@ -123,7 +123,7 @@ async def reload_admins(_, m: Message):
         and (m.from_user.id not in SUPPORT_STAFF)
         and TEMP_ADMIN_CACHE_BLOCK[m.chat.id] == "manualblock"
     ):
-        await m.reply_text("Can only reload admin cache once per 10 mins!")
+        await m.reply_text("ᴄᴀɴ'ᴛ ʀᴇʟᴏᴀᴅ ᴀᴅᴍɪɴ ᴄᴀᴄʜᴇ ᴍᴏʀᴇ ᴛʜᴀɴ ᴏɴᴄᴇ ᴘᴇʀ 10 ᴍɪɴᴜᴛᴇs!")
         return
     try:
         await admin_cache_reload(m, "admincache")
@@ -317,15 +317,15 @@ async def promote_usr(c: app, m: Message):
                 LOGGER.error(e)
                 LOGGER.error(format_exc())
         LOGGER.info(
-            f"{m.from_user.id} promoted {user_id} in {m.chat.id} with title '{title}'",
+            f"{m.from_user.id} ᴇʟᴇᴠᴀᴛᴇᴅ {user_id} ɪɴ {m.chat.id} ᴡɪᴛʜ ᴛɪᴛʟᴇ '{title}'",
         )
         await m.reply_text(
-            ("{promoter} promoted {promoted} in chat <b>{chat_title}</b>!").format(
+            ("{promoter} ᴇʟᴇᴠᴀᴛᴇᴅ {promoted} ᴛᴏ ᴀᴅᴍɪɴ ɪɴ ᴄʜᴀᴛ <b>{chat_title}</b>!").format(
                 promoter=(await mention_html(m.from_user.first_name, m.from_user.id)),
                 promoted=(await mention_html(user_first_name, user_id)),
                 chat_title=f"{escape(m.chat.title)} title set to {title}"
                 if title
-                else f"{escape(m.chat.title)} title set to default",
+                else f"{escape(m.chat.title)} ᴄʜᴀᴛ ᴛɪᴛʟᴇ ᴄʜᴀɴɢᴇᴅ ᴛᴏ ᴅᴇfᴀᴜʟᴛ",
             ),
         )
         # If user is approved, disapprove them as they willbe promoted and get
@@ -410,17 +410,17 @@ async def demote_usr(c: app, m: Message):
         )
     except ChatAdminRequired:
         await m.reply_text(
-            "I am not an admin or maybe someone else promoted that user!."
+            "ɪ'ᴍ ɴᴏᴛ ᴛʜᴇ ʙᴏss ʜᴇʀᴇ, ᴏʀ ᴍᴀʏʙᴇ sᴏᴍᴇᴏɴᴇ ᴇʟsᴇ ɢᴏᴛ ᴀʜᴇᴀᴅ ᴀɴᴅ ᴘʀᴏᴍᴏᴛᴇᴅ ᴛʜɪs ᴜsᴇʀ!."
         )
     except RightForbidden:
-        await m.reply_text("I can't demote users here.")
+        await m.reply_text("ᴛʜɪs ɪsɴ'ᴛ ᴍʏ ᴛᴇʀʀɪᴛᴏʀʏ—ɪ ᴄᴀɴ'ᴛ ᴅᴇᴍᴏᴛᴇ ᴜsᴇʀs ʜᴇʀᴇ!")
     except UserAdminInvalid:
         await m.reply_text(
-            "Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            "ᴄᴀɴ'ᴛ ᴛᴏᴜᴄʜ ᴛʜɪs ᴜsᴇʀ—ᴘʀᴏʙᴀʙʟʏ ʙᴇᴄᴀᴜsᴇ ɪ ᴅɪᴅɴ'ᴛ ᴍᴇss ᴡɪᴛʜ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs ɪɴ ᴛʜᴇ ғɪʀsᴛ ᴘʟᴀᴄᴇ!"
         )
     except RPCError as ef:
         await m.reply_text(
-            f"Some error occured, report it to @Lux_Bot_support \n <b>Error:</b> <code>{ef}</code>"
+            f"ᴏᴏᴘs! ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ. ꜱᴇɴᴅ ᴀ ʙᴜɢ ʀᴇᴘᴏʀᴛ ᴛᴏ ᴛʜᴇ ʜᴜᴍᴀɴꜱ ɪɴ ᴄʜᴀʀɢᴇ! @hunterXsupport \n <b>Error:</b> <code>{ef}</code>"
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -433,24 +433,24 @@ async def get_invitelink(c: app, m: Message):
     if m.from_user.id not in DEV_LEVEL:
         user = await m.chat.get_member(m.from_user.id)
         if not user.privileges.can_invite_users and user.status != CMS.OWNER:
-            await m.reply_text(text="You don't have rights to invite users....")
+            await m.reply_text(text="ɴᴏᴘᴇ, ʏᴏᴜ ᴄᴀɴ'ᴛ ɪɴᴠɪᴛᴇ ᴀɴʏᴏɴᴇ—ɴᴏ ᴘᴏᴡᴇʀs ʜᴇʀᴇ!")
             return False
     try:
         link = await c.export_chat_invite_link(m.chat.id)
         await m.reply_text(
-            text=f"Invite Link for Chat <b>{m.chat.id}</b>: {link}",
+            text=f"ʜᴇʀᴇ'ꜱ ᴛʜᴇ ᴍᴀɢɪᴄ ɪɴᴠɪᴛᴇ ʟɪɴᴋ ꜰᴏʀ ᴛʜᴇ ᴄʜᴀᴛ! <b>{m.chat.id}</b>: {link}",
             disable_web_page_preview=True,
         )
-        LOGGER.info(f"{m.from_user.id} exported invite link in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} ɪɴᴠɪᴛᴇ ʟɪɴᴋ ᴇxᴘᴏʀᴛᴇᴅ ɪɴᴛᴏ ᴛʜᴇ ᴠᴏɪᴅ! {m.chat.id}")
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="ɴᴏᴘᴇ, ɴᴏ ᴘᴏᴡᴇʀꜱ ᴏᴠᴇʀ ʜᴇʀᴇ—ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ!")
     except ChatAdminInviteRequired:
-        await m.reply_text(text="I don't have permission for invite link!")
+        await m.reply_text(text="ᴄᴀɴ'ᴛ ɢᴇɴ ᴀɴ ɪɴᴠɪᴛᴇ ʟɪɴᴋ—ɴᴏ ᴘᴇʀᴍɪꜱꜱɪᴏɴ ꜰᴏʀ ᴛʜᴀᴛ!")
     except RightForbidden:
-        await m.reply_text(text="You don't have permissions to invite users.")
+        await m.reply_text(text="ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴘᴇʀᴍɪssɪᴏɴ ᴛᴏ ɪɴᴠɪᴛᴇ ᴜsᴇʀs—ɴᴏ ᴘᴏᴡᴇʀs ʜᴇʀᴇ!")
     except RPCError as ef:
         await m.reply_text(
-            text=f"Some error occured, report it to @Lux_Bot_support \n <b>Error:</b> <code>{ef}</code>"
+            text=f"ᴏᴏᴘs! ꜱᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ. ʀᴇᴘᴏʀᴛ ɪᴛ ᴛᴏ ᴍʏ ᴅᴇᴠs! @hunterXsupport \n <b>Error:</b> <code>{ef}</code>"
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -462,18 +462,18 @@ async def setgtitle(_, m: Message):
     user = await m.chat.get_member(m.from_user.id)
     if not user.privileges.can_change_info and user.status != CMS.OWNER:
         await m.reply_text(
-            "You don't have enough permission to use this command!",
+            "ᴏᴏᴘs! ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ᴘᴇʀᴍɪssɪᴏɴs ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ!",
         )
         return False
     if len(m.command) < 1:
-        return await m.reply_text("Please read /help for using it!")
+        return await m.reply_text("ᴘʟᴇᴀsᴇ ʀᴇᴀᴅ /help ᴛᴏ ᴜsᴇ ɪᴛ!")
     gtit = m.text.split(None, 1)[1]
     try:
         await m.chat.set_title(gtit)
     except Exception as e:
         return await m.reply_text(f"Error: {e}")
     return await m.reply_text(
-        f"Successfully Changed Group Title From {m.chat.title} To {gtit}",
+        f"ᴛʜᴇ ɢʀᴏᴜᴘ ᴛɪᴛʟᴇ ᴡᴀs sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ꜰʀᴏᴍ {m.chat.title} To {gtit}",
     )
 
 
@@ -482,18 +482,18 @@ async def setgdes(_, m: Message):
     user = await m.chat.get_member(m.from_user.id)
     if not user.privileges.can_change_info and user.status != CMS.OWNER:
         await m.reply_text(
-            "You don't have enough permission to use this command!",
+            "ᴏᴏᴘs! ʏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴇɴᴏᴜɢʜ ᴘᴇʀᴍɪssɪᴏɴs ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ!",
         )
         return False
     if len(m.command) < 1:
-        return await m.reply_text("Please read /help for using it!")
+        return await m.reply_text("ᴘʟᴇᴀsᴇ ʀᴇᴀᴅ /help ᴛᴏ ᴜsᴇ ɪᴛ!")
     desp = m.text.split(None, 1)[1]
     try:
         await m.chat.set_description(desp)
     except Exception as e:
         return await m.reply_text(f"Error: {e}")
     return await m.reply_text(
-        f"Successfully Changed Group description From {m.chat.description} To {desp}",
+        f"ɢʀᴏᴜᴘ ᴅᴇsᴄʀɪᴘᴛɪᴏɴ sᴜᴄᴄᴇssғᴜʟʟʏ ᴄʜᴀɴɢᴇᴅ ꜰʀᴏᴍ {m.chat.description} To {desp}",
     )
 
 
@@ -502,11 +502,11 @@ async def set_user_title(c: app, m: Message):
     user = await m.chat.get_member(m.from_user.id)
     if not user.privileges.can_promote_members and user.status != CMS.OWNER:
         await m.reply_text(
-            "You don't have enough permission to use this command!",
+            "ɏᴏᴜ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴇɴᴏᴜɢʜ ᴘᴇʀᴍɪssɪᴏɴs ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ!",
         )
         return False
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        return await m.reply_text("To whom??")
+        return await m.reply_text("ᴛᴏ ᴡʜᴏ ᴇxᴀᴄᴛʟʏ?")
     if m.reply_to_message:
         if len(m.text.split()) >= 2:
             reason = m.text.split(None, 1)[1]
@@ -518,11 +518,11 @@ async def set_user_title(c: app, m: Message):
     except Exception:
         return
     if not user_id:
-        return await m.reply_text("Cannot find user!")
+        return await m.reply_text("ᴄᴀɴ'ᴛ ғɪɴᴅ ᴛʜᴀᴛ ᴜsᴇʀ!")
     if user_id == Config.BOT_ID:
-        return await m.reply_text("Huh, why ?")
+        return await m.reply_text("ʜᴜʜ, ᴡʜʏ?")
     if not reason:
-        return await m.reply_text("Read /help please!")
+        return await m.reply_text("ᴘʟᴇᴀsᴇ ʀᴇᴀᴅ /help!")
     from_user = await c.get_users(user_id)
     title = reason
     try:
@@ -530,7 +530,7 @@ async def set_user_title(c: app, m: Message):
     except Exception as e:
         return await m.reply_text(f"Error: {e}")
     return await m.reply_text(
-        f"Successfully Changed {from_user.mention}'s Admin Title To {title}",
+        f"sᴜᴄᴄᴇssғᴜʟʟʏ ᴜᴘᴅᴀᴛᴇᴅ {from_user.mention}'s ᴀᴅᴍɪɴ ᴛɪᴛʟᴇ ᴛᴏ {title}",
     )
 
 
@@ -539,13 +539,13 @@ async def setgpic(c: app, m: Message):
     user = await m.chat.get_member(m.from_user.id)
     if not user.privileges.can_change_info and user.status != CMS.OWNER:
         await m.reply_text(
-            "You don't have enough permission to use this command!",
+            "ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴇɴᴏᴜɢʜ ᴘᴇʀᴍɪssɪᴏɴs ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ!",
         )
         return False
     if not m.reply_to_message:
-        return await m.reply_text("Reply to a photo to set it as chat photo")
+        return await m.reply_text("ʀᴇᴘʟʏ ᴡɪᴛʜ ᴀ ᴘʜᴏᴛᴏ ᴛᴏ sᴇᴛ ɪᴛ ᴀs ᴄʜᴀᴛ ᴘʜᴏᴛᴏ!")
     if not m.reply_to_message.photo and not m.reply_to_message.document:
-        return await m.reply_text("Reply to a photo to set it as chat photo")
+        return await m.reply_text("ʀᴇᴘʟʏ ᴡɪᴛʜ ᴀ ᴘʜᴏᴛᴏ ᴛᴏ sᴇᴛ ɪᴛ ᴀs ᴄʜᴀᴛ ᴘʜᴏᴛᴏ!")
     photo = await m.reply_to_message.download()
     is_vid = False
     if m.reply_to_message.video:
@@ -555,7 +555,7 @@ async def setgpic(c: app, m: Message):
     except Exception as e:
         remove(photo)
         return await m.reply_text(f"Error: {e}")
-    await m.reply_text("Successfully Changed Group Photo!")
+    await m.reply_text("sᴜᴄᴄᴇssғᴜʟʟʏ ᴜᴘᴅᴀᴛᴇᴅ ɢʀᴏᴜᴘ ᴘʜᴏᴛᴏ!")
     remove(photo)
 
 
