@@ -35,7 +35,7 @@ C_HANDLER = ["/", "komi ", "Komi ", "."]
 @app.on_message(filters.command(["tban"], C_HANDLER) & restrict_filter)
 async def tban_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't ban nothing!")
+        await m.reply_text(text="ɢɪᴠᴇ ᴍᴇ ᴀ ᴘʀᴏᴘᴇʀ ᴛᴀʀɢᴇᴛ! ɪ ᴄᴀɴ’ᴛ ᴊᴜsᴛ ʙᴀɴ ᴛʜɪɴ ᴀɪʀ, ʏᴏᴜ ᴋɴᴏᴡ!")
         await m.stop_propagation()
 
     try:
@@ -44,18 +44,18 @@ async def tban_usr(c: app, m: Message):
         return
 
     if not user_id:
-        await m.reply_text("Cannot find user to ban")
+        await m.reply_text("ᴜsᴇʀ ɴᴏᴛ ꜰᴏᴜɴᴅ! ᴅɪᴅ ᴛʜᴇʏ ᴠᴀɴɪꜱʜ ᴏʀ ɴᴇᴠᴇʀ ᴇxɪsᴛ ᴀᴛ ᴀʟʟ?")
         return
     if user_id == Config.BOT_ID:
-        await m.reply_text("WTF??  Why would I ban myself?")
+        await m.reply_text("ᴡᴛꜰ?? ᴡʜʏ ᴡᴏᴜʟᴅ ɪ ʙᴀɴ ᴍʏꜱᴇʟꜰ? ᴅᴏᴇꜱ ᴛʜᴀᴛ ᴇᴠᴇɴ ᴍᴀᴋᴇ ꜱᴇɴꜱᴇ?")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(
-            text="This user is in my support staff, cannot restrict them."
+            text="ᴛʜɪꜱ ᴜꜱᴇʀ ɪꜱ ᴏɴ ᴍʏ ᴇʟɪᴛᴇ ᴛᴇᴀᴍ. ɪ ᴄᴀɴ'ᴛ ᴛᴏᴜᴄʜ ᴛʜᴇᴍ!"
         )
         LOGGER.info(
-            f"{m.from_user.id} trying to ban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id} ɪs ᴛʏɪɴɢ ᴛᴏ ʙᴀɴ {user_id} (SUPPORT_STAFF) ɪɴ {m.chat.id}. ᴅᴏɴ'ᴛ ᴇᴠᴇɴ ᴛʏᴏᴜ!",
         )
         await m.stop_propagation()
 
@@ -66,11 +66,11 @@ async def tban_usr(c: app, m: Message):
     elif not m.reply_to_message and len(m.text.split()) >= 3:
         reason = m.text.split(None, 2)[2]
     else:
-        await m.reply_text("Read /help !!")
+        await m.reply_text("ʀᴇᴀᴅ /ʜᴇʟᴘ!!")
         return
 
     if not reason:
-        await m.reply_text("You haven't specified a time to ban this user for!")
+        await m.reply_text("ᴛʜᴇʏ'ʀᴇ ᴛʀʏɪɴɢ ᴛᴏ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ, ʙᴜᴛ ᴛʜᴇ ᴛɪᴍᴇ ɪs ᴍɪssɪɴɢ!")
         return
 
     split_reason = reason.split(None, 1)
@@ -88,25 +88,25 @@ async def tban_usr(c: app, m: Message):
         admins_group = await admin_cache_reload(m, "ban")
 
     if user_id in admins_group:
-        await m.reply_text(text="This user is an admin, I cannot ban them!")
+        await m.reply_text(text="ᴛʜɪs ᴜsᴇʀ ɪs ᴀɴ ᴀᴅᴍɪɴ, ɪ ᴄᴀɴ'ᴛ ʙᴀɴ ᴛʜᴇᴍ! ɴɪᴄᴇ ᴛʀʏ ᴛʜᴏᴜɢʜ!ᴍ")
         await m.stop_propagation()
 
     try:
         admin = await mention_html(m.from_user.first_name, m.from_user.id)
         banned = await mention_html(user_first_name, user_id)
         chat_title = m.chat.title
-        LOGGER.info(f"{m.from_user.id} tbanned {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} ᴛʙᴀɴɴᴇᴅ {user_id} ɪɴ {m.chat.id}")
         await m.chat.ban_member(user_id, until_date=bantime)
-        t_t = (f"{admin} banned {banned} in <b>{chat_title}</b>!",)
+        t_t = (f"{admin} ʙᴀɴɴᴇᴅ {banned} ɪɴ ᴄʜᴀᴛ <b>{chat_title}</b>!",)
         txt = t_t
         if type(t_t) is tuple:
             txt = t_t[
                 0
             ]  # Done this bcuz idk why t_t is tuple type data. SO now if it is tuple this will get text from it
         if reason:
-            txt += f"\n<b>Reason</b>: {reason}"
+            txt += f"ᴇʟɪɢɪʙʟᴇ ʀᴇᴀsᴏɴ: {reason}"
         else:
-            txt += "\n<b>Reason</b>: Not Specified"
+            txt += "\n<b>ʀᴇᴀsᴏɴ</b>: ɴᴏᴛ sᴘᴇᴄɪғɪᴇᴅ"
         if time_val:
             txt += f"\n<b>Banned for</b>:{time_val}"
         keyboard = InlineKeyboardMarkup(
