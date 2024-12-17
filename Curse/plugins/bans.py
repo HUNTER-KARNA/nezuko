@@ -314,17 +314,17 @@ async def dtban_usr(c: app, m: Message):
         admin = await mention_html(m.from_user.first_name, m.from_user.id)
         banned = await mention_html(user_first_name, user_id)
         chat_title = m.chat.title
-        LOGGER.info(f"{m.from_user.id} dtbanned {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} ʜᴀs ᴅᴛʙᴀɴɴᴇᴅ {user_id} ɪɴ {m.chat.id}")
         await m.chat.ban_member(user_id, until_date=bantime)
         await m.reply_to_message.delete()
-        txt = f"{admin} banned {banned} in <b>{chat_title}</b>!"
+        txt = f"{admin} Jᴜsᴛ ʙᴀɴɴᴇᴅ {banned} ɪɴ <b>{chat_title}</b>!"
         if reason:
-            txt += f"\n<b>Reason</b>: {reason}"
+            txt += f"\n<b>ʙᴀɴ ʀᴇᴀsᴏɴ</b>: {reason}"
         else:
-            txt += "\n<b>Reason</b>: Not Specified"
+            txt += "\n<b>ʀᴇᴀsᴏɴn</b>: ɴᴏᴛ ᴡᴏʀᴛʜ ᴍᴇɴᴛɪᴏɴɪɴɢ."
 
         if bantime:
-            txt += f"\n<b>Banned for</b>: {time_val}"
+            txt += f"\n<b>ʙᴀɴɴᴇᴅ ғᴏʀ</b>: {time_val} ᴄʀᴏss ᴍᴇ ᴀɢᴀɪɴ, ᴀɴᴅ ɪᴛ’ʟʟ ʙᴇ ᴘᴇʀᴍᴀɴᴇɴᴛ."
         keyboard = InlineKeyboardMarkup(
             [
                 [
@@ -352,22 +352,22 @@ async def dtban_usr(c: app, m: Message):
             await c.send_message(MESSAGE_DUMP, f"#REMOVE from BAN_GFIS\n{anim}")
         # await c.send_message(m.chat.id, txt, reply_markup=keyboard)
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="ɪ’ᴍ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ, ᴅᴏɴ’ᴛ ᴘᴜsʜ ʏᴏᴜʀ ʟᴜᴄᴋ.")
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "ᴛʜɪs ᴜsᴇʀ’s ᴀ ᴍʏsᴛᴇʀʏ ᴛᴏ ᴍᴇ... sᴇɴᴅ ᴍᴇ ᴀ ᴍᴇssᴀɢᴇ ғʀᴏᴍ ᴛʜᴇᴍ sᴏ ɪ ᴄᴀɴ ғɪɢᴜʀᴇ ɪᴛ ᴏᴜᴛ.",
         )
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="ᴄᴀɴ'ᴛ ᴀᴄᴛ ᴏɴ ᴛʜɪs ᴜsᴇʀ, ɢᴜᴇss ɪ ᴡᴀsɴ’ᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ ᴅᴇᴄɪᴅᴇᴅ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs."
         )
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to ban this user.")
+        await m.reply_text(text="ɪ ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴛʜᴇ ʀɪɢʜᴛs ᴛᴏ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ, ᴅᴇᴀʟ ᴡɪᴛʜ ɪᴛ..")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
-
-      <b>Error:</b> <code>{ef}</code>"""
+            text=f"""sᴏᴍᴇ ᴇʀʀᴏʀ ʜᴀᴘᴘᴇɴᴇᴅ, ʀᴇᴘᴏʀᴛ ɪᴛ ᴜsɪɴɢ /ʙᴜɢ ᴀɴᴅ ᴅᴏɴ’ᴛ ᴡᴀsᴛᴇ ᴍʏ ᴛɪᴍᴇ.
+            
+     <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>. ғɪx ɪᴛ, ᴏʀ ᴅᴏɴ’ᴛ ʙᴏᴛʜᴇʀ ᴍᴇ."""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -377,7 +377,7 @@ async def dtban_usr(c: app, m: Message):
 @app.on_message(filters.command(["kick"], C_HANDLER) & restrict_filter)
 async def kick_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't kick nothing!")
+        await m.reply_text(text="ɪ ᴄᴀɴ'ᴛ ᴋɪᴄᴋ ᴀɴʏᴏɴᴇ, sᴏ sᴛᴏᴘ ᴡᴀsᴛɪɴɢ ᴍʏ ᴛɪᴍᴇ.")
         return
 
     reason = None
@@ -396,19 +396,19 @@ async def kick_usr(c: app, m: Message):
         return
 
     if not user_id:
-        await m.reply_text("Cannot find user to kick")
+        await m.reply_text("ᴄᴀɴ'ᴛ ғɪɴᴅ ᴀɴʏᴏɴᴇ ᴛᴏ ᴋɪᴄᴋ, sᴏ sᴛᴏᴘ ʙᴏᴛʜᴇʀɪɴɢ ᴍᴇ.")
         return
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I kick myself?")
+        await m.reply_text("ᴋɪᴄᴋ ᴍʏsᴇʟғ? ɴᴀʜ, ɴᴏᴛ ᴇᴠᴇɴ ᴡᴏʀᴛʜ ᴍʏ ᴛɪᴍᴇ!")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(
-            text="This user is in my support staff, cannot restrict them."
+            text="ᴛʜɪs ᴜsᴇʀ’s ɪɴ ᴛʜᴇ ʜᴜɴᴛᴇʀ ᴀssᴏᴄɪᴀᴛɪᴏɴ, ᴀɴᴅ ɴᴏᴛ ᴇᴠᴇɴ ɪ, ᴡɪᴛʜ ᴀʟʟ ᴍʏ ᴘᴏᴡᴇʀ, ᴄᴀɴ ᴛᴏᴜᴄʜ ᴛʜᴇᴍ. ᴀᴄᴄᴇᴘᴛ ɪᴛ."
         )
         LOGGER.info(
-            f"{m.from_user.id} trying to kick {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id} ᴛʀʏɪɴɢ ᴛᴏ ᴋɪᴄᴋ {user_id} (SUPPORT_STAFF) in {m.chat.id}? ɴᴏᴛ ᴏɴ ᴍʏ ᴡᴀᴛᴄʜ.",
         )
         await m.stop_propagation()
 
@@ -418,14 +418,14 @@ async def kick_usr(c: app, m: Message):
         admins_group = await admin_cache_reload(m, "kick")
 
     if user_id in admins_group:
-        await m.reply_text(text="This user is an admin, I cannot kick them!")
+        await m.reply_text(text="ᴛʜɪs ᴜsᴇʀ’s ᴀɴ ᴀᴅᴍɪɴ, sᴏ ɴᴏ ᴋɪᴄᴋɪɴɢ ᴛʜᴇᴍ. ᴀᴄᴄᴇᴘᴛ ʏᴏᴜʀ ғᴀᴛᴇ!")
         await m.stop_propagation()
 
     try:
         admin = await mention_html(m.from_user.first_name, m.from_user.id)
         kicked = await mention_html(user_first_name, user_id)
         chat_title = m.chat.title
-        LOGGER.info(f"{m.from_user.id} kicked {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} ᴋɪᴄᴋᴇᴅ {user_id} in {m.chat.id}. ɴᴏ ᴍᴇʀᴄʏ, Jᴜsᴛ ʙᴜsɪɴᴇss.")
         await m.chat.ban_member(user_id)
         txt = f"{admin} kicked {kicked} in <b>{chat_title}</b>!"
         if reason:
