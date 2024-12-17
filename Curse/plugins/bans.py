@@ -239,12 +239,12 @@ async def stban_usr(c: app, m: Message):
             text="ɪ ᴄᴀɴ'ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ ᴀʙᴏᴜᴛ ᴛʜɪs ᴜsᴇʀ, ʟᴏᴏᴋs ʟɪᴋᴇ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs ᴡᴇʀᴇɴ’ᴛ ᴄʜᴀɴɢᴇᴅ ʙʏ ᴍᴇ."
         )
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to ban this user.")
+        await m.reply_text(text="I’ᴍ ɴᴏᴛ ʜɪɢʜ ᴇɴᴏᴜɢʜ ᴏɴ ᴛʜᴇ ғᴏᴏᴅ ᴄʜᴀɪɴ ᴛᴏ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ.")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
+            text=f"""sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ. ʀᴇᴘᴏʀᴛ ɪᴛ ᴜsɪɴɢ /ʙᴜɢ ɪғ ʏᴏᴜ ᴅᴀʀᴇ.
 
-      <b>Error:</b> <code>{ef}</code>"""
+      <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>"""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -254,12 +254,12 @@ async def stban_usr(c: app, m: Message):
 @app.on_message(filters.command(["dtban"], C_HANDLER) & restrict_filter)
 async def dtban_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't ban nothing!")
+        await m.reply_text(text="ɪ ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ᴘᴏᴡᴇʀ ᴛᴏ ʙᴀɴ ᴀ sɪɴɢʟᴇ ᴛʜɪɴɢ!")
         await m.stop_propagation()
 
     if not m.reply_to_message:
         await m.reply_text(
-            "Reply to a message with this command to temp ban and delete the message.",
+            "ʀᴇᴘʟʏ ᴡɪᴛʜ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴛᴏ ɢɪᴠᴇ ᴀ ᴛᴇᴍᴘᴏʀᴀʀʏ ʙᴀɴ ᴀɴᴅ ᴡɪᴘᴇ ᴏᴜᴛ ᴛʜᴇ ᴍᴇssᴀɢᴇ."
         )
         await m.stop_propagation()
 
@@ -267,16 +267,16 @@ async def dtban_usr(c: app, m: Message):
     user_first_name = m.reply_to_message.from_user.first_name
 
     if not user_id:
-        await m.reply_text("Cannot find user to ban")
+        await m.reply_text("ᴜsᴇʀ ᴛᴏ ʙᴀɴ ɴᴏᴛ ғᴏᴜɴᴅ, sᴏᴍᴇᴛʜɪɴɢ’s ɴᴏᴛ ʀɪɢʜᴛ ʜᴇʀᴇ!")
         return
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("ᴡʜʏ ᴏɴ ᴇᴀʀᴛʜ ᴡᴏᴜʟᴅ ɪ ʙᴀɴ ᴍʏsᴇʟғ?")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
-        await m.reply_text(text="I am not going to ban one of my support staff")
+        await m.reply_text(text="ᴀɪɴ'ᴛ ɴᴏ ᴡᴀʏ ɪ'ᴍ ʙᴀɴɴɪɴɢ ᴀɴʏᴏɴᴇ ғʀᴏᴍ ᴛʜᴇ ʜᴜɴᴛᴇʀ ᴀssᴏᴄɪᴀᴛɪᴏɴ.")
         LOGGER.info(
-            f"{m.from_user.id} trying to ban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id} ᴛʀʏɪɴɢ ᴛᴏ ʙᴀɴ {user_id} (SUPPORT_STAFF) ɪɴ {m.chat.id} – ɴᴏᴛ ɢᴏɴɴᴀ ʜᴀᴘᴘᴇɴ.",
         )
         await m.stop_propagation()
 
@@ -285,11 +285,11 @@ async def dtban_usr(c: app, m: Message):
     elif not m.reply_to_message and len(m.text.split()) >= 3:
         reason = m.text.split(None, 2)[2]
     else:
-        await m.reply_text("Read /help !!")
+        await m.reply_text("ʀᴇᴀᴅ /help , ɪғ ʏᴏᴜ ᴅᴀʀᴇ!")
         return
 
     if not reason:
-        await m.reply_text("You haven't specified a time to ban this user for!")
+        await m.reply_text("ʏᴏᴜ ᴅɪᴅɴ’ᴛ ᴍᴇɴᴛɪᴏɴ ʜᴏᴡ ʟᴏɴɢ ᴛᴏ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ ғᴏʀ!")
         return
 
     split_reason = reason.split(None, 1)
@@ -307,7 +307,7 @@ async def dtban_usr(c: app, m: Message):
         admins_group = await admin_cache_reload(m, "ban")
 
     if user_id in admins_group:
-        await m.reply_text(text="This user is an admin, I cannot ban them!")
+        await m.reply_text(text="ᴄᴀɴ'ᴛ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ, ᴛʜᴇʏ'ʀᴇ ᴀɴ ᴀᴅᴍɪɴ!")
         await m.stop_propagation()
 
     try:
