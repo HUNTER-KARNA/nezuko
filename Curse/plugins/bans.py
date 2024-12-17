@@ -425,13 +425,13 @@ async def kick_usr(c: app, m: Message):
         admin = await mention_html(m.from_user.first_name, m.from_user.id)
         kicked = await mention_html(user_first_name, user_id)
         chat_title = m.chat.title
-        LOGGER.info(f"{m.from_user.id} ᴋɪᴄᴋᴇᴅ {user_id} in {m.chat.id}. ɴᴏ ᴍᴇʀᴄʏ, Jᴜsᴛ ʙᴜsɪɴᴇss.")
+        LOGGER.info(f"{m.from_user.id} ᴋɪᴄᴋᴇᴅ {user_id} in {m.chat.id} ɴᴏ ᴍᴇʀᴄʏ, Jᴜsᴛ ʙᴜsɪɴᴇss.")
         await m.chat.ban_member(user_id)
-        txt = f"{admin} kicked {kicked} in <b>{chat_title}</b>!"
+        txt = f"{admin} ᴋɪᴄᴋᴇᴅ {kicked} ɪɴ <b>{chat_title}</b>. ᴅᴏɴ'ᴛ ᴍᴇss ᴀʀᴏᴜɴᴅ, ᴄᴏɴsᴇǫᴜᴇɴᴄᴇs ᴀʀᴇ ʀᴇᴀʟ!"
         if reason:
-            txt += f"\n<b>Reason</b>: {reason}"
+            txt += f"\n<b>ʀᴇᴀsᴏɴ:</b> {reason}. ɴᴏ ᴀᴘᴏʟᴏɢɪᴇs, Jᴜsᴛ ғᴀᴄᴛs."
         else:
-            txt += "\n<b>Reason</b>: Not Specified"
+            txt += "\n<b>ʀᴇᴀsᴏɴ:</b> Nᴏᴛ Sᴘᴇᴄɪғɪᴇᴅ ᴅᴇᴀʟ ᴡɪᴛʜ ɪᴛ."
         # await m.reply_text(txt, reply_to_message_id=r_id)
         kickk = choice(KICK_GIFS)
         try:
@@ -447,25 +447,25 @@ async def kick_usr(c: app, m: Message):
                 text=txt,
                 parse_mode=enums.ParseMode.HTML,
             )
-            await c.send_message(MESSAGE_DUMP, f"#REMOVE from KICK_GFIS\n{kickk}")
+            await c.send_message(MESSAGE_DUMP, f"#REMOVE ғʀᴏᴍ KICK_GFIS\n{kickk}. ɴᴏ ɢᴏɪɴɢ ʙᴀᴄᴋ ɴᴏᴡ.")
         await m.chat.unban_member(user_id)
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="ɪ’ᴍ ɴᴏᴛ ᴀɴ ᴀᴅᴍɪɴ, sᴏ ᴅᴏɴ’ᴛ ᴇxᴘᴇᴄᴛ ᴍᴇ ᴛᴏ ғɪx ɪᴛ ɴᴏᴛ ᴍʏ ᴘʀᴏʙʟᴇᴍ.")
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "ɴᴇᴠᴇʀ sᴇᴇɴ ᴛʜɪs ᴜsᴇʀ ʙᴇғᴏʀᴇ…\nsᴇɴᴅ ᴍᴇ ᴏɴᴇ ᴏғ ᴛʜᴇɪʀ ᴍᴇssᴀɢᴇs sᴏ ɪ ᴄᴀɴ ғɪɢᴜʀᴇ ᴏᴜᴛ ᴡʜᴏ ᴛʜᴇʏ ᴀʀᴇ.",
         )
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="ᴄᴀɴ’ᴛ ᴀᴄᴛ ᴏɴ ᴛʜɪs ᴜsᴇʀ, ʟᴏᴏᴋs ʟɪᴋᴇ ɪ ᴡᴀsɴ’ᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ ᴍᴇssᴇᴅ ᴡɪᴛʜ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs. ɴᴏᴛ ᴍʏ ᴘʀᴏʙʟᴇᴍ."
         )
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to ban this user.")
+        await m.reply_text(text="ɪ ʟᴀᴄᴋ ᴛʜᴇ ᴘᴏᴡᴇʀ ᴛᴏ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ. ᴛʀʏ ʏᴏᴜʀ ʟᴜᴄᴋ sᴏᴍᴇᴡʜᴇʀᴇ ᴇʟsᴇ")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
+            text=f"""sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ. ʀᴇᴘᴏʀᴛ ɪᴛ ᴡɪᴛʜ /ʙᴜɢ
 
-      <b>Error:</b> <code>{ef}</code>"""
+      <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>"""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -476,7 +476,7 @@ async def kick_usr(c: app, m: Message):
 @app.on_message(filters.command(["skick"], C_HANDLER) & restrict_filter)
 async def skick_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't kick nothing!")
+        await m.reply_text(text="ᴋɪᴄᴋɪɴɢ? ɴᴏᴛ ʜᴀᴘᴘᴇɴɪɴɢ. ɢᴏ ғɪɴᴅ sᴏᴍᴇᴏɴᴇ ᴇʟsᴇ.")
         return
 
     try:
@@ -485,19 +485,19 @@ async def skick_usr(c: app, m: Message):
         return
 
     if not user_id:
-        await m.reply_text("Cannot find user to kick")
+        await m.reply_text("ᴄᴀɴ’ᴛ ғɪɴᴅ ᴛʜᴇ ᴜsᴇʀ ᴛᴏ ᴋɪᴄᴋ. ʟᴏᴏᴋs ʟɪᴋᴇ ɪᴛ’s ɴᴏᴛ ᴍᴇᴀɴᴛ ᴛᴏ ʙᴇ.")
         return
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I kick myself?")
+        await m.reply_text("ᴡʜʏ ᴡᴏᴜʟᴅ ɪ ᴋɪᴄᴋ ᴍʏsᴇʟғ? ᴛʜᴀᴛ's Jᴜsᴛ sᴛᴜᴘɪᴅ.")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(
-            text="This user is in my support staff, cannot restrict them."
+            text="ᴛʜɪs ᴘᴇʀsᴏɴ’s ғʀᴏᴍ ᴛʜᴇ Hᴜɴᴛᴇʀ Assᴏᴄɪᴀᴛɪᴏɴ, ᴀɴᴅ ɪ ᴄᴀɴ’ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ ᴀɢᴀɪɴsᴛ ᴛʜᴇᴍ. ʏᴏᴜ ɢᴇᴛ ɪᴛ, ʀɪɢʜᴛ?"
         )
         LOGGER.info(
-            f"{m.from_user.id} trying to skick {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id} ᴀᴛᴛᴇᴍᴘᴛɪɴɢ ᴛᴏ sᴋɪᴄᴋ {user_id} (SUPPORT_STAFF) in {m.chat.id}. ɴᴏᴛ ɢᴏɴɴᴀ ʜᴀᴘᴘᴇɴ.",
         )
         await m.stop_propagation()
 
@@ -507,33 +507,33 @@ async def skick_usr(c: app, m: Message):
         admins_group = await admin_cache_reload(m, "kick")
 
     if user_id in admins_group:
-        await m.reply_text(text="This user is an admin, I cannot kick them!")
+        await m.reply_text(text="ᴛʜɪs ᴏɴᴇ’s ᴀɴ ᴀᴅᴍɪɴ. ᴋɪᴄᴋɪɴɢ ᴛʜᴇᴍ? ʏᴇᴀʜ, ɴᴏᴛ ʜᴀᴘᴘᴇɴɪɴɢ. ᴅᴇᴀʟ ᴡɪᴛʜ ɪᴛ.")
         await m.stop_propagation()
 
     try:
-        LOGGER.info(f"{m.from_user.id} skicked {user_id} in {m.chat.id}")
+        LOGGER.info(f"m.from_user.id} sᴋɪᴄᴋᴇᴅ {user_id} in {m.chat.id}. ɴᴏ ᴍᴇʀᴄʏ.")
         await m.chat.ban_member(user_id)
         await m.delete()
         if m.reply_to_message:
             await m.reply_to_message.delete()
         await m.chat.unban_member(user_id)
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="ɪ’ᴍ ɴᴏᴛ ᴛʜᴇ ᴀᴅᴍɪɴ, ᴀɴᴅ ɪ ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴛʜᴇ ᴘᴏᴡᴇʀ. ғɪɢᴜʀᴇ ɪᴛ ᴏᴜ")
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "ʜᴀᴠᴇɴ’ᴛ ᴄᴏᴍᴇ ᴀᴄʀᴏss ᴛʜɪs ᴜsᴇʀ ʏᴇᴛ…\nsᴇɴᴅ ᴍᴇ ᴏɴᴇ ᴏғ ᴛʜᴇɪʀ ᴍᴇssᴀɢᴇs sᴏ ɪ ᴄᴀɴ ғɪɢᴜʀᴇ ᴛʜᴇᴍ ᴏᴜᴛ.",
         )
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="ᴄᴀɴ'ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ ᴀʙᴏᴜᴛ ᴛʜɪs ᴜsᴇʀ, ᴍᴀʏʙᴇ ɪ ᴡᴀsɴ’ᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ ᴍᴇssᴇᴅ ᴡɪᴛʜ ᴛʜᴇɪʀ sᴇᴛᴛɪɴɢs."
         )
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to kick this user.")
+        await m.reply_text(text="ᴋɪᴄᴋɪɴɢ ᴛʜɪs ᴜsᴇʀ? ʏᴇᴀʜ, ᴛʜᴀᴛ’s ʙᴇʏᴏɴᴅ ᴍʏ ᴄᴏɴᴛʀᴏʟ.")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
-
-      <b>Error:</b> <code>{ef}</code>"""
+            text=f"""sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ. ʀᴇᴘᴏʀᴛ ɪᴛ ᴡɪᴛʜ /ʙᴜɢ ᴀɴᴅ ᴍᴏᴠᴇ ᴏɴ.
+            
+      <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>"""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -544,10 +544,10 @@ async def skick_usr(c: app, m: Message):
 @app.on_message(filters.command(["dkick"], C_HANDLER) & restrict_filter)
 async def dkick_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't ban nothing!")
+        await m.reply_text(text="ʙᴀɴɴɪɴɢ? ɴᴏᴛ ʜᴀᴘᴘᴇɴɪɴɢ, ɪ ᴄᴀɴ’ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ.")
         return
     if not m.reply_to_message:
-        return await m.reply_text("Reply to a message to delete it and kick the user!")
+        return await m.reply_text("ʀᴇᴘʟʏ ᴛᴏ ᴛʜᴇ ᴍᴇssᴀɢᴇ ᴛᴏ ᴅᴇʟᴇᴛᴇ ɪᴛ, ᴀɴᴅ ᴋɪᴄᴋ ᴛʜᴇ ᴜsᴇʀ ᴏᴜᴛ. ɴᴏ ᴍᴇʀᴄʏ.")
 
     reason = None
 
@@ -555,19 +555,19 @@ async def dkick_usr(c: app, m: Message):
     user_first_name = m.reply_to_message.from_user.first_name
 
     if not user_id:
-        await m.reply_text("Cannot find user to kick")
+        await m.reply_text("ᴄᴀɴ’ᴛ ғɪɴᴅ ᴛʜᴇ ᴜsᴇʀ ᴛᴏ ᴋɪᴄᴋ. ɢᴜᴇss ᴛʜᴇʏ’ʀᴇ ᴛᴏᴏ sᴍᴀʀᴛ ғᴏʀ ᴛʜᴀᴛ.")
         return
 
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I kick myself?")
+        await m.reply_text("ᴡʜʏ ᴡᴏᴜʟᴅ ɪ ᴋɪᴄᴋ ᴍʏsᴇʟғ? ᴛʜᴀᴛ’s Jᴜsᴛ ғᴏᴏʟɪsʜ.?")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(
-            text="This user is in my support staff, cannot restrict them."
+            text="ᴛʜɪs ᴜsᴇʀ’s ғʀᴏᴍ ᴛʜᴇ Hᴜɴᴛᴇʀ Assᴏᴄɪᴀᴛɪᴏɴ. ʀᴇsᴛʀɪᴄᴛɪɴɢ ᴛʜᴇᴍ? ʏᴇᴀʜ, ɴᴏᴛ ʜᴀᴘᴘᴇɴɪɴɢ."
         )
         LOGGER.info(
-            f"{m.from_user.id} trying to dkick {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id} ᴀᴛᴛᴇᴍᴘᴛɪɴɢ ᴛᴏ ᴅᴋɪᴄᴋ {user_id} (SUPPORT_STAFF) in {m.chat.id}. ɴᴏᴛ ɢᴏɴɴᴀ ʜᴀᴘᴘᴇɴ.",
         )
         await m.stop_propagation()
 
@@ -577,7 +577,7 @@ async def dkick_usr(c: app, m: Message):
         admins_group = await admin_cache_reload(m, "kick")
 
     if user_id in admins_group:
-        await m.reply_text(text="This user is an admin, I cannot kick them!")
+        await m.reply_text(text="ᴛʜɪs ᴜsᴇʀ’s ᴀɴ ᴀᴅᴍɪɴ. ᴋɪᴄᴋɪɴɢ ᴛʜᴇᴍ? ɴᴏᴘᴇ, ɴᴏᴛ ʜᴀᴘᴘᴇɴɪɴɢ.")
         await m.stop_propagation()
 
     try:
