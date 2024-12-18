@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as  BSP
-from Nezuko import app
+from Curse import app
 from pyrogram import filters
 url = "https://all-hashtag.com/library/contents/ajax_generator.php"
 
