@@ -1,5 +1,5 @@
 from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
-from telegram import Update, Filters
+from telegram.ext import Filters
 from PIL import Image
 from rembg import remove
 
