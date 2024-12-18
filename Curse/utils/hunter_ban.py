@@ -1,5 +1,5 @@
 from pyrogram import filters
-from Nezuko.utils.admin_check import admin_check
+from Curse.utils.admin_check import admin_check
 
 
 USE_AS_BOT = True
