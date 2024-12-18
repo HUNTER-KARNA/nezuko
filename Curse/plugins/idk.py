@@ -2,6 +2,8 @@ from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContex
 from telegram.ext import Filters
 from PIL import Image
 from rembg import remove
+from telegram import Update
+from telegram.ext import ContextTypes
 
 
 async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
