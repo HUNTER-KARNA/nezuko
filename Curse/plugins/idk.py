@@ -5,6 +5,7 @@ from rembg import remove
 from telegram import Update
 from telegram.ext import CallbackContext
 
+async def remove_background(update: Update, context: CallbackContext):
 
 async def help_command(update: Update, context: CallbackContext):
     await update.message.reply_text(
