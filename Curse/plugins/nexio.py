@@ -1,6 +1,6 @@
 import requests
 import random
-from Curse import app, userbot
+from Curse import app
 from Curse.misc import SUDOERS
 from pyrogram import * 
 from pyrogram.types import *
