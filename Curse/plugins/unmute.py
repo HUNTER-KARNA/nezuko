@@ -1,7 +1,7 @@
 from Curse import app
 from pyrogram import filters,enums
 from pyrogram.types import ChatPermissions 
-from Nezuko.utils.hunter_ban import admin_filter
+from Curse.utils.hunter_ban import admin_filter
 
 @app.on_message(filters.command("unmuteall") & admin_filter)
 async def unmute_all(_,msg):
