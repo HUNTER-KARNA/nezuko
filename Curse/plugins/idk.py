@@ -1,5 +1,5 @@
-from telegram import Update
-from telegram.ext import Application, CommandHandler, MessageHandler, ContextTypes, filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
+from telegram import Update, Filters
 from PIL import Image
 from rembg import remove
 
