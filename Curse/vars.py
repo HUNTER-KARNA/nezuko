@@ -6,6 +6,7 @@ from prettyconf.loaders import EnvFile, Environment
 env_file = f"{getcwd()}/.env"
 config = Configuration(loaders=[Environment(), EnvFile(filename=env_file)])
 
+SUPPORT_CHAT = "https://t.me/hunter_association"
 
 class Config:
     """Config class for variables."""
