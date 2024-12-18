@@ -208,18 +208,6 @@ async def load_cmds(all_plugins):
         + "\n"
     )
 
-from pymongo import MongoClient
-
-client = MongoClient(
-    "mongodb+srv://vinamratiwari579:m6YDRYH8HbwuEqxt@cluster0.x7ac1wt.mongodb.net/?retryWrites=true&w=majority",
-    tls=True,
-    tlsAllowInvalidCertificates=True,
-    socketTimeoutMS=60000,
-    connectTimeoutMS=60000
-)
-
-db = client.get_database("Curse")
-print("Connection Successful!")
 
 
 pbot = Client(
