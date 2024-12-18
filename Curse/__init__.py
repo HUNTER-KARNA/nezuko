@@ -208,6 +208,7 @@ async def load_cmds(all_plugins):
         + "\n"
     )
 
+app = "nezuko ji"
 
 
 pbot = Client(
