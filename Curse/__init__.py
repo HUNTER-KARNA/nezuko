@@ -208,8 +208,9 @@ async def load_cmds(all_plugins):
         + "\n"
     )
 
-app = "nezuko ji"
+from pyrogram import Client
 
+app = Client("Curse") 
 
 pbot = Client(
     "idkwhattowrite",
