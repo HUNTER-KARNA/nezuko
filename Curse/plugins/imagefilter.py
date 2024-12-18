@@ -1,6 +1,7 @@
 from telegram import Update, InputMediaPhoto
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
 from PIL import Image, ImageFilter
+from telegram.ext import filters
 
 def start(update: Update, context: CallbackContext):
     update.message.reply_text(
