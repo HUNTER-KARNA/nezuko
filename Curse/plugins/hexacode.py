@@ -1,7 +1,6 @@
 from pyrogram import Client, filters
 from Curse import app
-import vars
-#from vars import BOT_USERNAME
+#from config import BOT_USERNAME
 
 
 def hex_to_text(hex_string):
