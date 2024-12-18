@@ -511,7 +511,7 @@ async def skick_usr(c: app, m: Message):
         await m.stop_propagation()
 
     try:
-        LOGGER.info(f"m.from_user.id} sᴋɪᴄᴋᴇᴅ {user_id} in {m.chat.id}. ɴᴏ ᴍᴇʀᴄʏ.")
+        LOGGER.info(f"LOGGER.info({m.from_user.id} sᴋɪᴄᴋᴇᴅ {user_id} in {m.chat.id}. ɴᴏ ᴍᴇʀᴄʏ.")
         await m.chat.ban_member(user_id)
         await m.delete()
         if m.reply_to_message:
