@@ -1,7 +1,7 @@
 import os
 from pyrogram import Client, filters
 from pyrogram.types import Message
-from moviepy.editor import VideoFileClip, TextClip, CompositeVideoClip, vfx, ImageClip
+from moviepy import VideoFileClip, TextClip, CompositeVideoClip, vfx, ImageClip
 from Curse.bot_class import app
 
 TEMP_DIR = "temp_videos"
