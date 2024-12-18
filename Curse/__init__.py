@@ -211,7 +211,7 @@ async def load_cmds(all_plugins):
 from pymongo import MongoClient
 
 client = MongoClient(
-    "mongodb+srv://pankajkumar016491:3FoOyzkBFYNx7DJB@jagajasus.ndoot.mongodb.net/Curse?retryWrites=true&w=majority&appName=Jagajasus",
+    "mongodb+srv://vinamratiwari579:m6YDRYH8HbwuEqxt@cluster0.x7ac1wt.mongodb.net/?retryWrites=true&w=majority",
     tls=True,
     tlsAllowInvalidCertificates=True,
     socketTimeoutMS=60000,
