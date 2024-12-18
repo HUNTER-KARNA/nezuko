@@ -850,7 +850,7 @@ async def dban_usr(c: app, m: Message):
         await m.reply_text(text="Nᴏᴛ ᴀɴ ᴀᴅᴍɪɴ? Nᴏ ʀɪɢʜᴛs? Wᴇʟʟ, ᴛʜᴀᴛ's ʏᴏᴜʀ ᴘʀᴏʙʟᴇᴍ, ɴᴏᴛ ᴍɪɴᴇ.")
     except PeerIdInvalid:
         await m.reply_text(
-            "Hᴀᴠᴇɴ'ᴛ sᴇᴇɴ ᴛʜɪs ᴜsᴇʀ? Sᴇɴᴅ ᴍᴇ ᴏɴᴇ ᴏғ ᴛʜᴇɪʀ ᴍᴇssᴀɢᴇs, ᴏʀ I ᴄᴀɴ'ᴛ ʀᴇᴄᴏɢɴɪᴢᴇ ᴛʜᴇᴍ ᴇɪᴛʜᴇʀ!
+            "Hᴀᴠᴇɴ'ᴛ sᴇᴇɴ ᴛʜɪs ᴜsᴇʀ? Sᴇɴᴅ ᴍᴇ ᴏɴᴇ ᴏғ ᴛʜᴇɪʀ ᴍᴇssᴀɢᴇs, ᴏʀ I ᴄᴀɴ'ᴛ ʀᴇᴄᴏɢɴɪᴢᴇ ᴛʜᴇᴍ ᴇɪᴛʜᴇʀ!"
         )
     except UserAdminInvalid:
         await m.reply_text(
