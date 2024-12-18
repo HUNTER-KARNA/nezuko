@@ -2,7 +2,7 @@ import random
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from Curse import app
-from Curse import SUPPORT_CHAT
+from Curse import vars.SUPPORT_CHAT
 
 BUTTON = InlineKeyboardMarkup([[InlineKeyboardButton("ꜱᴜᴘᴘᴏʀᴛ", url=SUPPORT_CHAT)]])
 
