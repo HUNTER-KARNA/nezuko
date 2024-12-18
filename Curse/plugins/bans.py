@@ -581,17 +581,17 @@ async def dkick_usr(c: app, m: Message):
         await m.stop_propagation()
 
     try:
-        LOGGER.info(f"{m.from_user.id} dkicked {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} ᴅᴋɪᴄᴋᴇᴅ {user_id} ɪɴ {m.chat.id}. ɴᴏ sᴇᴄᴏɴᴅ ᴄʜᴀɴᴄᴇs.")
         await m.reply_to_message.delete()
         await m.chat.ban_member(user_id)
         admin = await mention_html(m.from_user.first_name, m.from_user.id)
         kicked = await mention_html(user_first_name, user_id)
         chat_title = m.chat.title
-        txt = f"{admin} kicked {kicked} in <b>{chat_title}</b>!"
+        txt = f"{admin} ᴋɪᴄᴋᴇᴅ {kicked} ɪɴ <b>{chat_title}</b>! ɴᴏ ʀᴇɢʀᴇᴛs."
         if reason:
-            txt += f"\n<b>Reason</b>: {reason}"
+            txt += f"\n<b>Rᴇᴀsᴏɴ</b>: {reason}. ᴅᴏɴ’ᴛ ᴍᴇss ᴡɪᴛʜ ᴍᴇ."
         else:
-            txt += "\n<b>Reason</b>: Not Specified"
+            txt += "\n<b>Rᴇᴀsᴏɴ</b>: ɴᴏᴛ ᴡᴏʀᴛʜ ᴍᴇɴᴛɪᴏɴɪɴɢ."
         kickk = choice(KICK_GIFS)
         try:
             await m.reply_animation(
@@ -604,25 +604,25 @@ async def dkick_usr(c: app, m: Message):
                 txt,
                 parse_mode=enums.ParseMode.HTML,
             )
-            await c.send_message(MESSAGE_DUMP, f"#REMOVE from KICK_GFIS\n{kickk}")
+            await c.send_message(MESSAGE_DUMP, f"#REMOVE from KICK_GFIS\n{kickk}. ʏᴏᴜ’ʀᴇ ᴏᴜᴛᴛᴀ ʜᴇʀᴇ.")
         await m.chat.unban_member(user_id)
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="ɪ ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴀᴅᴍɪɴ ʀɪɢʜᴛs, sᴏ ʏᴇᴀʜ, ɪ ᴄᴀɴ’ᴛ ᴅᴏ ɪᴛ.")
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "ɴᴇᴠᴇʀ sᴇᴇɴ ᴛʜɪs ᴜsᴇʀ ʙᴇғᴏʀᴇ...!\nᴄᴀʀᴇ ᴛᴏ ғᴏʀᴡᴀʀᴅ ᴀ ᴍᴇssᴀɢᴇ sᴏ ɪ ᴄᴀɴ ʀᴇᴄᴏɢɴɪᴢᴇ ᴛʜᴇᴍ?",
         )
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="ᴄᴀɴ'ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ ᴡɪᴛʜ ᴛʜɪs ᴜsᴇʀ. ᴍᴀʏʙᴇ ɪ ᴡᴀsɴ'ᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ ᴍᴇssᴇᴅ ᴡɪᴛʜ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs."
         )
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to kick this user.")
+        await m.reply_text(text="ɪ ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴛʜᴇ ʀɪɢʜᴛs ᴛᴏ ᴋɪᴄᴋ ᴛʜɪs ᴜsᴇʀ. ᴛᴏᴜɢʜ ʟᴜᴄᴋ")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
+            text=f"""sᴏᴍᴇ ᴇʀʀᴏʀ ᴘᴏᴘᴘᴇᴅ ᴜᴘ. ʀᴇᴘᴏʀᴛ ɪᴛ ᴡɪᴛʜ /ʙᴜɢ, ᴏʀ ᴅᴇᴀʟ ᴡɪᴛʜ ɪᴛ.
 
-      <b>Error:</b> <code>{ef}</code>"""
+      <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>"""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -633,7 +633,7 @@ async def dkick_usr(c: app, m: Message):
 @app.on_message(filters.command(["unban"], C_HANDLER) & restrict_filter)
 async def unban_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't unban nothing!")
+        await m.reply_text(text="ɪ ᴄᴀɴ’ᴛ ᴜɴʙᴀɴ ᴀɴʏᴏɴᴇ! ɢᴇᴛ ᴏᴠᴇʀ ɪᴛ.")
         await m.stop_propagation()
 
     if m.reply_to_message and not m.reply_to_message.from_user:
@@ -661,7 +661,7 @@ async def unban_usr(c: app, m: Message):
             enums.ChatMemberStatus.RESTRICTED,
         ]:
             await m.reply_text(
-                "User is not banned in this chat\nOr using this command as reply to his message"
+                "ᴛʜɪs ᴜsᴇʀ ᴀɪɴ’ᴛ ʙᴀɴɴᴇᴅ ʜᴇʀᴇ.\nᴛʀʏ ᴜsɪɴɢ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴀs ᴀ ʀᴇᴘʟʏ ᴛᴏ ᴛʜᴇɪʀ ᴍᴇssᴀɢᴇ."
             )
             return
     except Exception as e:
@@ -672,21 +672,21 @@ async def unban_usr(c: app, m: Message):
         admin = m.from_user.mention
         unbanned = await mention_html(user_first_name, user_id)
         chat_title = (m.chat.title,)
-        txt = f"{admin} unbanned {unbanned} in chat <b>{chat_title}</b>!"
+        txt = f"{admin} ᴜɴʙᴀɴɴᴇᴅ {unbanned} ɪɴ ᴄʜᴀᴛ <b>{chat_title}</b>! ɴᴏ ᴛᴜʀɴɪɴɢ ʙᴀᴄᴋ ɴᴏᴡ."
         if reason:
-            txt += f"\n<b>Reason</b>: {reason}"
+            txt += f"\n<b>Rᴇᴀsᴏɴ</b>: {reason}"
         else:
-            txt += "\n<b>Reason</b>: Not Specified"
+            txt += "\n<b>Rᴇᴀsᴏɴ</b>: ɴᴏᴛ ᴡᴏʀᴛʜ ᴇxᴘʟᴀɪɴɪɴɢ."
         await m.reply_text(txt)
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="ɴᴏ ᴀᴅᴍɪɴ ʀɪɢʜᴛs ʜᴇʀᴇ, sᴏ ᴄᴀɴ’ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ. ᴛᴏᴜɢʜ ʟᴜᴄᴋ.")
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to unban this user.")
+        await m.reply_text(text="ᴄᴀɴ’ᴛ ᴜɴʙᴀɴ ᴛʜɪs ᴜsᴇʀ, ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴛʜᴇ ᴘᴏᴡᴇʀ. ᴅᴇᴀʟ ᴡɪᴛʜ ɪᴛ.")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
+            text=f"""sᴏᴍᴇ ᴇʀʀᴏʀ ʜᴀᴘᴘᴇɴᴇᴅ. ʀᴇᴘᴏʀᴛ ɪᴛ ᴡɪᴛʜ /ʙᴜɢ ᴏʀ ғᴏʀɢᴇᴛ ᴀʙᴏᴜᴛ ɪᴛ.
 
-      <b>Error:</b> <code>{ef}</code>"""
+      <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>"""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -697,7 +697,7 @@ async def unban_usr(c: app, m: Message):
 @app.on_message(filters.command(["sban"], C_HANDLER) & restrict_filter)
 async def sban_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't ban nothing!")
+        await m.reply_text(text="ɪ ᴄᴀɴ’ᴛ ʙᴀɴ ᴀ ᴛʜɪɴɢ! ᴡʜᴀᴛ ɴᴏᴡ?")
         await m.stop_propagation()
 
     if m.reply_to_message and not m.reply_to_message.from_user:
@@ -709,21 +709,21 @@ async def sban_usr(c: app, m: Message):
             return
 
     if not user_id:
-        await m.reply_text("Cannot find user to ban")
+        await m.reply_text("ᴄᴀɴ’ᴛ ғɪɴᴅ ᴀɴʏᴏɴᴇ ᴛᴏ ʙᴀɴ. ᴛᴏᴜɢʜ ʟᴜᴄᴋ.")
         return
     if user_id == m.chat.id:
-        await m.reply_text("That's an admin!")
+        await m.reply_text("ᴛʜᴀᴛ’s ᴀɴ ᴀᴅᴍɪɴ, ᴄᴀɴ’ᴛ ᴛᴏᴜᴄʜ ᴛʜᴇᴍ. ᴅᴇᴀʟ ᴡɪᴛʜ ɪᴛ.")
         await m.stop_propagation()
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("ʙᴀɴ ᴍʏsᴇʟғ? ʏᴇᴀʜ, ʀɪɢʜᴛ. ɪ'ᴍ ɴᴏᴛ ᴛʜᴀᴛ ᴅᴜᴍʙ.")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(
-            text="This user is in my support staff, cannot restrict them."
+            text="ᴛʜɪs ᴏɴᴇ’s ғʀᴏᴍ ᴛʜᴇ Hᴜɴᴛᴇʀ Assᴏᴄɪᴀᴛɪᴏɴ. ᴅᴏɴ'ᴛ ᴇᴠᴇɴ ᴛʜɪɴᴋ ᴀʙᴏᴜᴛ ᴍᴇssɪɴɢ ᴡɪᴛʜ ᴛʜᴇᴍ."
         )
         LOGGER.info(
-            f"{m.from_user.id} trying to sban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id} ᴛʀʏɪɴɢ ᴛᴏ sʙᴀɴ {user_id} (SUPPORT_STAFF) in {m.chat.id}. ɢᴏᴏᴅ ʟᴜᴄᴋ ᴡɪᴛʜ ᴛʜᴀᴛ.",
         )
         await m.stop_propagation()
 
@@ -733,32 +733,32 @@ async def sban_usr(c: app, m: Message):
         admins_group = await admin_cache_reload(m, "ban")
 
     if user_id in admins_group:
-        await m.reply_text(text="This user is an admin, I cannot ban them!")
+        await m.reply_text(text="ᴛʜɪs ɪs ᴀɴ ᴀᴅᴍɪɴ, sᴏ ʙᴀɴɴɪɴɢ ᴛʜᴇᴍ? ɴᴀʜ, ɴᴏᴛ ɢᴏɴɴᴀ ʜᴀᴘᴘᴇɴ.")
         await m.stop_propagation()
 
     try:
-        LOGGER.info(f"{m.from_user.id} sbanned {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} sʙᴀɴɴᴇᴅ {user_id} ɪɴ {m.chat.id}. ᴡᴇʟʟ, ᴛʜᴀᴛ’s ᴅᴏɴᴇ.")
         await m.chat.ban_member(user_id)
         await m.delete()
         if m.reply_to_message:
             await m.reply_to_message.delete()
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="ɴᴏ ᴀᴅᴍɪɴ ᴘᴏᴡᴇʀ, ᴄᴀɴ’ᴛ ʜᴀɴᴅʟᴇ ᴛʜɪs ᴏɴᴇ.")
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "ʜᴀᴠᴇɴ’ᴛ ᴄʀᴏssᴇᴅ ᴘᴀᴛʜs ᴡɪᴛʜ ᴛʜɪs ᴏɴᴇ ʏᴇᴛ...\nᴄᴀʀᴇ ᴛᴏ sᴇɴᴅ ᴀ ᴍᴇssᴀɢᴇ sᴏ ɪ ᴄᴀɴ sᴘᴏᴛ 'ᴇᴍ?",
         )
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="ᴄᴀɴ’ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ ᴡɪᴛʜ ᴛʜɪs ᴏɴᴇ. ᴍᴀʏʙᴇ ɪ ᴡᴀsɴ’ᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ ᴛᴏᴜᴄʜᴇᴅ ᴛʜᴇɪʀ sᴇᴛᴛɪɴɢs."
         )
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to ban this user.")
+        await m.reply_text(text="ɪ ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴛʜᴇ ᴘᴏᴡᴇʀ ᴛᴏ ʙᴀɴ ᴛʜɪs ᴏɴᴇ. ɢᴜᴇss ɪ’ᴍ ɴᴏᴛ ɪɴ ᴄᴏɴᴛʀᴏʟ ʜᴇʀᴇ.")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
+            text=f"""ʀᴇᴘᴏʀᴛ ɪᴛ ᴜsɪɴɢ /ʙᴜɢ ɪғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ғɪx ᴛʜɪs!
 
-      <b>Error:</b> <code>{ef}</code>"""
+      <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>"""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -768,11 +768,11 @@ async def sban_usr(c: app, m: Message):
 @app.on_message(filters.command(["dban"], C_HANDLER) & restrict_filter)
 async def dban_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't ban nothing!")
+        await m.reply_text(text="Nothing to ban here, got it?")
         await m.stop_propagation()
 
     if not m.reply_to_message:
-        return await m.reply_text("Reply to a message to delete it and ban the user!")
+        return await m.reply_text("Rᴇsᴘᴏɴᴅ ᴛᴏ ᴛʜᴇ ᴍᴇssᴀɢᴇ, ᴀɴᴅ I’ʟʟ ᴛᴀᴋᴇ ᴄᴀʀᴇ ᴏғ ᴅᴇʟᴇᴛɪɴɢ ɪᴛ ᴀɴᴅ ʙᴀɴɴɪɴɢ ᴛʜᴇ ᴜsᴇʀ.")
 
     if m.reply_to_message and not m.reply_to_message.from_user:
         user_id, user_first_name = (
@@ -786,21 +786,21 @@ async def dban_usr(c: app, m: Message):
         )
 
     if not user_id:
-        await m.reply_text("Cannot find user to ban")
+        await m.reply_text("Cᴀɴ’ᴛ ʟᴏᴄᴀᴛᴇ ᴛʜᴇ ᴜsᴇʀ ᴛᴏ ʙᴀɴ.")
         return
     if user_id == m.chat.id:
-        await m.reply_text("That's an admin!")
+        await m.reply_text("Tʜɪs ɪs ᴀɴ ᴀᴅᴍɪɴ! Cᴀɴ'ᴛ ʙᴀɴ ᴛʜᴇᴍ.")
         await m.stop_propagation()
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("Wʜʏ ᴡᴏᴜʟᴅ I ʙᴀɴ ᴍʏsᴇʟғ? Tʜᴀᴛ’s Jᴜsᴛ ʀɪᴅɪᴄᴜʟᴏᴜs")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(
-            text="This user is in my support staff, cannot restrict them."
+            text="Tʜɪs ᴜsᴇʀ ɪs ᴘᴀʀᴛ ᴏғ ᴛʜᴇ Hᴜɴᴛᴇʀ Assᴏᴄɪᴀᴛɪᴏɴ—ɴᴏ ᴀᴄᴛɪᴏɴs ᴄᴀɴ ʙᴇ ᴛᴀᴋᴇɴ."
         )
         LOGGER.info(
-            f"{m.from_user.id} trying to dban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id} ᴛʀɪᴇᴅ ᴛᴏ ᴅʙᴀɴ {user_id} (SUPPORT_STAFF) ɪɴ {m.chat.id}.",
         )
         await m.stop_propagation()
 
@@ -810,7 +810,7 @@ async def dban_usr(c: app, m: Message):
         admins_group = await admin_cache_reload(m, "ban")
 
     if user_id in admins_group:
-        await m.reply_text(text="This user is an admin, I cannot ban them!")
+        await m.reply_text(text="Tʜɪs ᴜsᴇʀ ɪs ᴀɴ ᴀᴅᴍɪɴ, sᴏ ʙᴀɴɴɪɴɢ ᴛʜᴇᴍ ɪs ᴏᴜᴛ ᴏғ ᴛʜᴇ ǫᴜᴇsᴛɪᴏɴ. Tʀʏ ᴀɢᴀɪɴ, ʙᴜᴛ ᴡɪᴛʜ sᴏᴍᴇᴏɴᴇ ᴇʟsᴇ.")
         await m.stop_propagation()
 
     reason = None
@@ -818,14 +818,14 @@ async def dban_usr(c: app, m: Message):
         reason = m.text.split(None, 1)[1]
 
     try:
-        LOGGER.info(f"{m.from_user.id} dbanned {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} Jᴜsᴛ ᴅʙᴀɴɴᴇᴅ {user_id} ɪɴ {m.chat.id}!")
         await m.reply_to_message.delete()
         await m.chat.ban_member(user_id)
-        txt = f"{m.from_user.mention} banned {m.reply_to_message.from_user.mention} in <b>{m.chat.title}</b>!"
+        txt = f"{m.from_user.mention} Jᴜsᴛ ʙᴀɴɴᴇᴅ {m.reply_to_message.from_user.mention} ɪɴ <b>{m.chat.title}</b>! Nᴏ ᴍᴇʀᴄʏ!"
         if reason:
-            txt += f"\n<b>Reason</b>: {reason}"
+            txt += f"\n<b>Rᴇᴀsᴏɴ</b>: {reason}"
         else:
-            txt += "\n<b>Reason</b>: Not Specified"
+            txt += "\n<b>Rᴇᴀsᴏɴ</b>: Nᴏᴛ Sᴘᴇᴄɪғɪᴇᴅ... ʙᴜᴛ ɪᴛ's ᴏʙᴠɪᴏᴜs, ʀɪɢʜᴛ?"
         keyboard = InlineKeyboardMarkup(
             [
                 [
@@ -845,24 +845,24 @@ async def dban_usr(c: app, m: Message):
             await c.send_message(
                 m.chat.id, txt, enums.ParseMode.HTML, reply_markup=keyboard
             )
-            await c.send_messagea(MESSAGE_DUMP, f"#REMOVE from BAN_GIFS\n{animm}")
+            await c.send_messagea(MESSAGE_DUMP, f"#REMOVE ғʀᴏᴍ BAN_GIFS\n{animm} — Yᴏᴜ’ʀᴇ ɴᴏ ʟᴏɴɢᴇʀ ᴏɴ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ. Dᴏɴ’ᴛ ᴍᴀᴋᴇ ᴍᴇ ʀᴇɢʀᴇᴛ ɪᴛ.")
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="Nᴏᴛ ᴀɴ ᴀᴅᴍɪɴ? Nᴏ ʀɪɢʜᴛs? Wᴇʟʟ, ᴛʜᴀᴛ's ʏᴏᴜʀ ᴘʀᴏʙʟᴇᴍ, ɴᴏᴛ ᴍɪɴᴇ.")
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Hᴀᴠᴇɴ'ᴛ sᴇᴇɴ ᴛʜɪs ᴜsᴇʀ? Sᴇɴᴅ ᴍᴇ ᴏɴᴇ ᴏғ ᴛʜᴇɪʀ ᴍᴇssᴀɢᴇs, ᴏʀ I ᴄᴀɴ'ᴛ ʀᴇᴄᴏɢɴɪᴢᴇ ᴛʜᴇᴍ ᴇɪᴛʜᴇʀ!,
         )
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="ᴄᴀɴ'ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ ᴛᴏ ᴛʜɪs ᴜsᴇʀ ʀɪɢʜᴛ ɴᴏᴡ, ᴍᴀʏʙᴇ I ᴡᴀsɴ'ᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ sᴇᴛ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs."
         )
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to ban this user.")
+        await m.reply_text(text="I ᴄᴀɴ'ᴛ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ, I ʟᴀᴄᴋ ᴛʜᴇ ɴᴇᴄᴇssᴀʀʏ ʀɪɢʜᴛs.")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
-
-      <b>Error:</b> <code>{ef}</code>"""
+            text=f"""Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ ᴡʀᴏɴɢ, ᴘʟᴇᴀsᴇ ʀᴇᴘᴏʀᴛ ɪᴛ ᴜsɪɴɢ /ʙᴜɢ ғᴏʀ ғᴜʀᴛʜᴇʀ ᴀssɪsᴛᴀɴᴄᴇ.
+            
+      <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>"""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
@@ -872,7 +872,7 @@ async def dban_usr(c: app, m: Message):
 @app.on_message(filters.command(["ban"], C_HANDLER) & restrict_filter)
 async def ban_usr(c: app, m: Message):
     if len(m.text.split()) == 1 and not m.reply_to_message:
-        await m.reply_text(text="I can't ban nothing!")
+        await m.reply_text(text="I ᴄᴀɴ’ᴛ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ, ɴᴏᴛ ᴍʏ Jᴜʀɪsᴅɪᴄᴛɪᴏɴ!")
         await m.stop_propagation()
 
     if m.reply_to_message and not m.reply_to_message.from_user:
@@ -887,21 +887,21 @@ async def ban_usr(c: app, m: Message):
             return
 
     if not user_id:
-        await m.reply_text("Cannot find user to ban")
+        await m.reply_text("I ᴄᴀɴ'ᴛ ғɪɴᴅ ᴛʜᴇ ᴜsᴇʀ ᴛᴏ ʙᴀɴ! Wʜᴇʀᴇ ᴀʀᴇ ᴛʜᴇʏ ʜɪᴅɪɴɢ?")
         await m.stop_propagation()
     if user_id == m.chat.id:
-        await m.reply_text("That's an admin!")
+        await m.reply_text("Tʜɪs ᴀɴ ᴀᴅᴍɪɴ! Bᴀɴɴɪɴɢ ᴛʜᴇᴍ? Nᴏᴛ ʜᴀᴘᴘᴇɴɪɴɢ!")
         await m.stop_propagation()
     if user_id == Config.BOT_ID:
-        await m.reply_text("Huh, why would I ban myself?")
+        await m.reply_text("Bᴀɴ ᴍʏsᴇʟғ? Nᴀʜ, ᴛʜᴀᴛ’s ɴᴏᴛ ʜᴏᴡ ɪᴛ ᴡᴏʀᴋs. Lᴇᴛ’s ɴᴏᴛ ɢᴇᴛ ᴄʀᴀᴢʏ ʜᴇʀᴇ!")
         await m.stop_propagation()
 
     if user_id in SUPPORT_STAFF:
         await m.reply_text(
-            text="This user is in my support staff, cannot restrict them."
+            text="Tʜɪs ᴜsᴇʀ ʙᴇʟᴏɴɢs ᴛᴏ ᴛʜᴇ Hᴜɴᴛᴇʀ Assᴏᴄɪᴀᴛɪᴏɴ. I ᴄᴀɴ’ᴛ ᴅᴏ ᴀ ᴛʜɪɴɢ ᴛᴏ ᴛʜᴇᴍ, ɴᴏ ᴍᴀᴛᴛᴇʀ ʜᴏᴡ ʜᴀʀᴅ I ᴛʀʏ. Yᴏᴜ ᴜɴᴅᴇʀsᴛᴀɴᴅ, ʀɪɢʜᴛ?"
         )
         LOGGER.info(
-            f"{m.from_user.id} trying to ban {user_id} (SUPPORT_STAFF) in {m.chat.id}",
+            f"{m.from_user.id} ᴀᴛᴛᴇᴍᴘᴛɪɴɢ ᴛᴏ ʙᴀɴ {user_id} (SUPPORT_STAFF) ɪɴ {m.chat.id}. Nɪᴄᴇ ᴛʀʏ, ʙᴜᴛ ɴᴏᴛ ʜᴀᴘᴘᴇɴɪɴɢ.",
         )
         await m.stop_propagation()
 
@@ -911,7 +911,7 @@ async def ban_usr(c: app, m: Message):
         admins_group = await admin_cache_reload(m, "ban")
 
     if user_id in admins_group:
-        await m.reply_text(text="This user is an admin, I cannot ban them!")
+        await m.reply_text(text="Tʜɪs ᴜsᴇʀ ʜᴏʟᴅs ᴀᴅᴍɪɴ ᴘʀɪᴠɪʟᴇɢᴇs, sᴏ ʙᴀɴɴɪɴɢ ᴛʜᴇᴍ ɪs ᴏᴜᴛ ᴏғ ᴛʜᴇ ǫᴜᴇsᴛɪᴏɴ!")
         await m.stop_propagation()
 
     reason = None
@@ -925,14 +925,14 @@ async def ban_usr(c: app, m: Message):
             reason = m.text.split(None, 2)[2]
 
     try:
-        LOGGER.info(f"{m.from_user.id} banned {user_id} in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} ᴜɴʟᴇᴀsʜᴇᴅ ᴛʜᴇɪʀ ᴘᴏᴡᴇʀ ᴀɴᴅ ʙᴀɴɴᴇᴅ {user_id} ɪɴ {m.chat.id} ᴡɪᴛʜ ɴᴏ ᴍᴇʀᴄʏ!")
         await m.chat.ban_member(user_id)
         banned = await mention_html(user_first_name, user_id)
-        txt = f"{m.from_user.mention} banned {banned} in <b>{m.chat.title}</b>!"
+        txt = f"{m.from_user.mention} ʙʀᴏᴜɢʜᴛ ᴛʜᴇ ʜᴀᴍᴍᴇʀ ᴅᴏᴡɴ ᴀɴᴅ ʙᴀɴɴᴇᴅ {banned} ɪɴ <b>{m.chat.title}</b>!"
         if reason:
-            txt += f"\n<b>Reason</b>: {reason}"
+            txt += f"\n<b>ʀᴇᴀsᴏɴ</b>: {reason}"
         else:
-            txt += "\n<b>Reason</b>: Not Specified"
+            txt += "\n<b>ʀᴇᴀsᴏɴ</b>: Bᴇᴄᴀᴜsᴇ ᴛʜᴇʏ ᴄʀᴏssᴇᴅ ᴛʜᴇ ʟɪɴᴇ."
         keyboard = InlineKeyboardMarkup(
             [
                 [
@@ -959,24 +959,24 @@ async def ban_usr(c: app, m: Message):
                 reply_markup=keyboard,
                 parse_mode=enums.ParseMode.HTML,
             )
-            await c.send_message(MESSAGE_DUMP, f"#REMOVE from BAN_GFIS\n{anim}")
+            await c.send_message(MESSAGE_DUMP, f"#REMOVE ғʀᴏᴍ BAN_GFIS\n{anim}")
     except ChatAdminRequired:
-        await m.reply_text(text="I'm not admin or I don't have rights.")
+        await m.reply_text(text="Tᴄʜ, ʟᴏᴏᴋs ʟɪᴋᴇ I ᴅᴏɴ’ᴛ ʜᴀᴠᴇ ᴛʜᴇ ᴘᴏᴡᴇʀ ғᴏʀ ᴛʜɪs ᴏɴᴇ. Nᴏᴛ ᴍʏ ғᴀᴜʟᴛ.")
     except PeerIdInvalid:
         await m.reply_text(
-            "I have not seen this user yet...!\nMind forwarding one of their message so I can recognize them?",
+            "Hᴜʜ? I ʜᴀᴠᴇɴ'ᴛ sᴇᴇɴ ᴛʜɪs ᴘᴇʀsᴏɴ ʏᴇᴛ... Cᴀɴ ʏᴏᴜ sᴇɴᴅ ᴍᴇ sᴏᴍᴇᴛʜɪɴɢ ᴛʜᴇʏ'ᴠᴇ sᴀɪᴅ sᴏ I ᴄᴀɴ ᴛʀᴀᴄᴋ ᴛʜᴇᴍ ᴅᴏᴡɴ?",
         )
     except UserAdminInvalid:
         await m.reply_text(
-            text="Cannot act on this user, maybe I wasn't the one who changed their permissions."
+            text="I ᴄᴀɴ'ᴛ ᴅᴏ ᴀɴʏᴛʜɪɴɢ ᴡɪᴛʜ ᴛʜɪs ᴜsᴇʀ, ᴍᴀʏʙᴇ I ᴡᴀsɴ’ᴛ ᴛʜᴇ ᴏɴᴇ ᴡʜᴏ ᴍᴇssᴇᴅ ᴡɪᴛʜ ᴛʜᴇɪʀ ᴘᴇʀᴍɪssɪᴏɴs."
         )
     except RightForbidden:
-        await m.reply_text(text="I don't have enough rights to ban this user.")
+        await m.reply_text(text="I ᴅᴏɴ'ᴛ ʜᴀᴠᴇ ᴛʜᴇ ɴᴇᴄᴇssᴀʀʏ ᴘᴇʀᴍɪssɪᴏɴs ᴛᴏ ʙᴀɴ ᴛʜɪs ᴜsᴇʀ.")
     except RPCError as ef:
         await m.reply_text(
-            text=f"""Some error occured, report it using `/bug`
-
-      <b>Error:</b> <code>{ef}</code>"""
+            text=f"""Aɴ ᴇʀʀᴏʀ ʜᴀs ᴏᴄᴄᴜʀʀᴇᴅ. Pʟᴇᴀsᴇ ʀᴇᴘᴏʀᴛ ɪᴛ ᴜsɪɴɢ /ʙᴜɢ.
+            
+      <b>ᴇʀʀᴏʀ:</b> <code>{ef}</code>"""
         )
         LOGGER.error(ef)
         LOGGER.error(format_exc())
