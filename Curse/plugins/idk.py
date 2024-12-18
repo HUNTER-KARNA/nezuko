@@ -3,10 +3,10 @@ from telegram.ext import Filters
 from PIL import Image
 from rembg import remove
 from telegram import Update
-from telegram.ext import ContextTypes
+from telegram.ext import CallbackContext
 
 
-async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def help_command(update: Update, context: CallbackContext):
     await update.message.reply_text(
         "How to use:\n"
         "1. Upload an image.\n"
