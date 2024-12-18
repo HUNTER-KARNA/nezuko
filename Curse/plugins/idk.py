@@ -1,11 +1,13 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
-from telegram.ext import Filters
+from telegram import Update
+from telegram.ext import (
+    Application,
+    CommandHandler,
+    MessageHandler,
+    CallbackContext,
+    filters,
+)
 from PIL import Image
 from rembg import remove
-from telegram import Update
-from telegram.ext import CallbackContext
-
-async def remove_background(update: Update, context: CallbackContext):
 
 async def help_command(update: Update, context: CallbackContext):
     await update.message.reply_text(
@@ -15,7 +17,7 @@ async def help_command(update: Update, context: CallbackContext):
         "Note: The image should clearly show the subject for better results."
     )
 
-async def remove_background(update: Update, context: ContextTypes.DEFAULT_TYPE):
+async def remove_background(update: Update, context: CallbackContext):
     if not update.message.photo:
         await update.message.reply_text("Please upload an image to remove the background!")
         return
@@ -23,7 +25,6 @@ async def remove_background(update: Update, context: ContextTypes.DEFAULT_TYPE):
     file = await update.message.photo[-1].get_file()
     image_path = "input_image.png"
     file_path = "output_image.png"
-
     await file.download_to_drive(image_path)
 
     try:
@@ -37,11 +38,18 @@ async def remove_background(update: Update, context: ContextTypes.DEFAULT_TYPE):
     except Exception as e:
         await update.message.reply_text(f"Error: {e}")
 
+async def unknown_command(update: Update, context: CallbackContext):
+    await update.message.reply_text("Sorry, I didn't understand that command.")
 
+def main():
+    app = Application.builder().token("YOUR_BOT_TOKEN").build()
 
-    
-    app.add_handler(CommandHandler("rhelp", help_command))
+    app.add_handler(CommandHandler("help", help_command))
     app.add_handler(CommandHandler("remove", remove_background))
     app.add_handler(MessageHandler(filters.COMMAND, unknown_command))
 
+    app.run_polling()
+
+if __name__ == "__main__":
+    main()
     
