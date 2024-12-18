@@ -1,5 +1,5 @@
 from typing import Dict, List, Union
-from Curse.vars import SUPPORT_GROUP , MONGO_DB_URI
+from Curse.vars import SUPPORT_CHAT , MONGO_DB_URI
 from motor.motor_asyncio import AsyncIOMotorClient as MongoCli
 
 
