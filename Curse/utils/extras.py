@@ -596,23 +596,24 @@ NO       NO   NONONO            NONO
 ]
 
 StartPic = [
-    "https://telegra.ph/file/39c982b5f5ec840600b6c.jpg",
-    "https://telegra.ph/file/656c327572f1ef1d9f461.jpg",
-    "https://telegra.ph/file/cbe228e94bb55d2873f07.jpg",
-    "https://telegra.ph/file/faef496ba7135687ad540.jpg",
-    "https://telegra.ph/file/005c489b9915871d2cbe7.jpg",
-    "https://telegra.ph/file/30c8c02615bb0d32fabaa.jpg",
-    "https://telegra.ph/file/85d0cdd1b29d2dc532d63.jpg",
-    "https://telegra.ph/file/e1eb40db8a9755fce6f9e.jpg",
-    "https://telegra.ph/file/15dfcc3e8948b65db883c.jpg",
-    "https://telegra.ph/file/f1b0f71b41ec766f25c54.jpg",
-    "https://telegra.ph/file/733d0fc0685a9f10110a5.jpg",
-    "https://telegra.ph//file/09713c3e76d0a70230218.jpg",
-    "https://telegra.ph/file/22e763e456041e9660df4.jpg",
-    "https://telegra.ph/file/8951ce0dba36072c690d8.jpg",
-    "https://telegra.ph/file/1328af117e246cd951272.jpg",
-    "https://telegra.ph/file/155843e15b13268b79181.jpg",
-    "https://telegra.ph/file/25673897c21ace9685ea3.jpg",
+    "https://files.catbox.moe/2fekje.mp4",
+    "https://files.catbox.moe/v4brdf.mp4",
+    "https://files.catbox.moe/nfj9d0.mp4",
+    "https://files.catbox.moe/tj3i8b.mp4",
+    "https://files.catbox.moe/vkdgrc.mp4",
+    "https://files.catbox.moe/nz7x5c.mp4",
+    "https://files.catbox.moe/7eubm0.mp4
+    ",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
 ]
 
 
