@@ -15,15 +15,17 @@ from Curse.database.rules_db import Rules
 from Curse.database.users_db import Users
 from Curse.database.warns_db import Warns, WarnSettings
 
-OWNER_ID = 6965147961,7710262210
+OWNER_IDS = {6965147961, 7710262210}  
 C_HANDLER = ["/", "nezuko", "Nezuko", "."]
+
 
 @app.on_message(filters.command(["stats"], C_HANDLER), group=9696)
 async def get_stats(_, m: Message):
-    if m.from_user.id != OWNER_ID:
-        await m.reply_text("This command is only for the owner baka.", quote=True)
+    if m.from_user.id not in OWNER_IDS:
+        await m.reply_text("This command is only for the owner, baka.", quote=True)
         return
 
+    
     bldb = Blacklist
     gbandb = GBan()
     notesdb = Notes()
@@ -64,19 +66,18 @@ async def get_stats(_, m: Message):
     await m.reply_text(
         "Click the button below to view the stats.",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("View Stats", callback_data=f"view_stats_{OWNER_ID}")]]
+            [[InlineKeyboardButton("View Stats", callback_data=f"view_stats")]]
         ),
         quote=True,
     )
 
-@app.on_callback_query(filters.regex(r"view_stats_(\d+)"))
+
+@app.on_callback_query(filters.regex(r"view_stats"))
 async def show_stats(_, query):
-    user_id = int(query.data.split("_")[2])
-    if query.from_user.id != user_id:
+    if query.from_user.id not in OWNER_IDS:
         await query.answer("Only the owner can view this.", show_alert=True)
         return
 
-    
     stats = (
         f"System Statistics:\n\n"
         f"System Start Time: 2024-10-26 16:57:36\n"
@@ -99,5 +100,4 @@ async def show_stats(_, query):
         f"Warns: {warns_db.count_warns_total()} across {warns_db.count_all_chats_using_warns()} chats\n"
     )
 
-    
     await query.answer(stats, show_alert=True)
