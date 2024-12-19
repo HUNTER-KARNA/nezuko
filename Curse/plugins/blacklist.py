@@ -77,7 +77,7 @@ async def blacklistreason(_, m: Message):
     if len(m.text.split()) == 1:
         curr = db.get_reason()
         await m.reply_text(
-            f"Tʜᴇ ᴄᴜʀʀᴇɴᴛ ʀᴇᴀsᴏɴ ʙᴇʜɪɴᴅ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ ᴡᴀʀɴɪɴɢ ɪs:\n<code>{curr}</code>\nBᴇᴛᴛᴇʀ sᴛᴀʏ sʜᴀʀᴘ, ᴀʟʀɪɢʜᴛ?"",
+            f"Tʜᴇ ᴄᴜʀʀᴇɴᴛ ʀᴇᴀsᴏɴ ʙᴇʜɪɴᴅ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ ᴡᴀʀɴɪɴɢ ɪs:\n<code>{curr}</code>\nBᴇᴛᴛᴇʀ sᴛᴀʏ sʜᴀʀᴘ, ᴀʟʀɪɢʜᴛ?",
         )
     else:
         reason = m.text.split(None, 1)[1]
