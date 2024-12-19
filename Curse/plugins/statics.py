@@ -20,7 +20,6 @@ C_HANDLER = ["/", "nezuko", "Nezuko", "."]
 
 @app.on_message(filters.command(["stats"], C_HANDLER), group=9696)
 async def get_stats(_, m: Message):
-    
     if m.from_user.id != OWNER_ID:
         await m.reply_text("This command is only for the owner baka.", quote=True)
         return
@@ -41,49 +40,64 @@ async def get_stats(_, m: Message):
     warns_settings_db = WarnSettings
 
     stats = (
-        f"╒═══「 <b>System Statistics</b> 」\n\n"
-        f"➢ <b>System Start Time:</b> 2024-10-26 16:57:36\n"
-        f"➢ <b>System:</b> Linux\n"
-        f"➢ <b>Node Name:</b> Management\n"
-        f"➢ <b>Release:</b> 5.15.0-113-generic\n"
-        f"➢ <b>Machine:</b> x86_64\n"
-        f"➢ <b>CPU:</b> 0.0 %\n"
-        f"➢ <b>RAM:</b> 22.3 %\n"
-        f"➢ <b>Storage:</b> 3.7 %\n\n"
-        f"➢ <b>Python Version:</b> 3.10.12\n"
-        f"➢ <b>python-Telegram-Bot:</b> 13.13\n"
-        f"➢ <b>Uptime:</b> 11h:31m:30s\n\n"
-        "╒═══「 <b>Bot Statistics</b> 」\n\n"
-        f"• <b>Users:</b> <code>{userdb.count_users()}</code> across <code>{chatdb.count_chats()}</code> chats\n"
-        f"• <b>Global Banned Users:</b> {gbandb.count_gbans()}\n"
-        f"• <b>Blacklist Stickers:</b> {bldb.count_blacklists_all()} across {bldb.count_blackists_chats()} chats\n"
-        f"• <b>Notes:</b> {notesdb.count_all_notes()} across {notesdb.count_notes_chats()} chats\n"
-        f"• <b>Filters:</b> {fldb.count_filters_all()} across {fldb.count_filters_chats()} chats\n"
-        f"• <b>Disabled Items:</b> {dsbl.count_disabled_all()} across {dsbl.count_disabling_chats()} chats\n"
-        f"• <b>Rules Set:</b> {rulesdb.count_chats_with_rules()} chats\n"
-        f"• <b>Total Users:</b> <code>{userdb.count_users()}</code> in <code>{chatdb.count_chats()}</code> chats\n"
-        f"• <b>Warns:</b> {warns_db.count_warns_total()} across {warns_db.count_all_chats_using_warns()} chats\n\n"
-        "🔗 <a href='https://t.me/hunter_association'>Updates</a> | "
-        "<a href='https://t.me/hunterXsupport'>Support</a>\n\n"
-        f"「 <b>Made by</b> <a href='t.me/hunter_karna'>𝑲𝒂𝒓𝒂𝒏</a> 」\n"
+        f"System Statistics:\n\n"
+        f"System Start Time: 2024-10-26 16:57:36\n"
+        f"System: Linux\n"
+        f"Node Name: Management\n"
+        f"Release: 5.15.0-113-generic\n"
+        f"Machine: x86_64\n"
+        f"CPU: 0.0 %\n"
+        f"RAM: 22.3 %\n"
+        f"Storage: 3.7 %\n\n"
+        f"Bot Statistics:\n\n"
+        f"Users: {userdb.count_users()} across {chatdb.count_chats()} chats\n"
+        f"Global Banned Users: {gbandb.count_gbans()}\n"
+        f"Blacklist Stickers: {bldb.count_blacklists_all()} across {bldb.count_blackists_chats()} chats\n"
+        f"Notes: {notesdb.count_all_notes()} across {notesdb.count_notes_chats()} chats\n"
+        f"Filters: {fldb.count_filters_all()} across {fldb.count_filters_chats()} chats\n"
+        f"Disabled Items: {dsbl.count_disabled_all()} across {dsbl.count_disabling_chats()} chats\n"
+        f"Rules Set: {rulesdb.count_chats_with_rules()} chats\n"
+        f"Total Users: {userdb.count_users()} in {chatdb.count_chats()} chats\n"
+        f"Warns: {warns_db.count_warns_total()} across {warns_db.count_all_chats_using_warns()} chats\n"
     )
 
-    
     await m.reply_text(
         "Click the button below to view the stats.",
         reply_markup=InlineKeyboardMarkup(
-            [[InlineKeyboardButton("View Stats", callback_data="view_stats")]]
+            [[InlineKeyboardButton("View Stats", callback_data=f"view_stats_{OWNER_ID}")]]
         ),
         quote=True,
     )
 
-@app.on_callback_query(filters.regex("view_stats"))
+@app.on_callback_query(filters.regex(r"view_stats_(\d+)"))
 async def show_stats(_, query):
-    if query.from_user.id != OWNER_ID:
+    user_id = int(query.data.split("_")[2])
+    if query.from_user.id != user_id:
         await query.answer("Only the owner can view this.", show_alert=True)
         return
-    await query.message.edit_text(
-        stats,
-        parse_mode=enums.ParseMode.HTML,
-        disable_web_page_preview=True,
+
+    
+    stats = (
+        f"System Statistics:\n\n"
+        f"System Start Time: 2024-10-26 16:57:36\n"
+        f"System: Linux\n"
+        f"Node Name: Management\n"
+        f"Release: 5.15.0-113-generic\n"
+        f"Machine: x86_64\n"
+        f"CPU: 0.0 %\n"
+        f"RAM: 22.3 %\n"
+        f"Storage: 3.7 %\n\n"
+        f"Bot Statistics:\n\n"
+        f"Users: {userdb.count_users()} across {chatdb.count_chats()} chats\n"
+        f"Global Banned Users: {gbandb.count_gbans()}\n"
+        f"Blacklist Stickers: {bldb.count_blacklists_all()} across {bldb.count_blackists_chats()} chats\n"
+        f"Notes: {notesdb.count_all_notes()} across {notesdb.count_notes_chats()} chats\n"
+        f"Filters: {fldb.count_filters_all()} across {fldb.count_filters_chats()} chats\n"
+        f"Disabled Items: {dsbl.count_disabled_all()} across {dsbl.count_disabling_chats()} chats\n"
+        f"Rules Set: {rulesdb.count_chats_with_rules()} chats\n"
+        f"Total Users: {userdb.count_users()} in {chatdb.count_chats()} chats\n"
+        f"Warns: {warns_db.count_warns_total()} across {warns_db.count_all_chats_using_warns()} chats\n"
     )
+
+    
+    await query.answer(stats, show_alert=True)
