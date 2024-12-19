@@ -15,15 +15,15 @@ from Curse.utils.kbhelpers import ikb
 async def view_blacklist(_, m: Message):
     db = Blacklist(m.chat.id)
 
-    LOGGER.info(f"{m.from_user.id} checking blacklists in {m.chat.id}")
+    LOGGER.info(f"{m.from_user.id} ɪs ᴄʜᴇᴄᴋɪɴɢ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛs ɪɴ {m.chat.id} Bᴇᴛᴛᴇʀ ʜᴏᴘᴇ ʏᴏᴜʀ ɴᴀᴍᴇ ɪsɴ'ᴛ ᴏɴ ɪᴛ.")
 
     chat_title = m.chat.title
-    blacklists_chat = f"Current Blacklisted words in <b>{chat_title}</b>:\n\n"
+    blacklists_chat = f"Bʟᴀᴄᴋʟɪsᴛᴇᴅ ᴡᴏʀᴅs ɪɴ <b>{chat_title}</b>:\n\nTʜᴇsᴇ ᴡᴏʀᴅs ᴀʀᴇ ᴏғғ-ʟɪᴍɪᴛs—ᴡᴀᴛᴄʜ ᴏᴜᴛ!"
     all_blacklisted = db.get_blacklists()
 
     if not all_blacklisted:
         await m.reply_text(
-            text=f"There are no blacklisted messages in <b>{chat_title}</b>!"
+            text=f"Nᴏ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴡᴏʀᴅs ғᴏᴜɴᴅ ɪɴ <b>{chat_title}</b>! Aʟʟ ᴄʟᴇᴀʀ!"
         )
         return
 
@@ -40,7 +40,7 @@ async def add_blacklist(_, m: Message):
     db = Blacklist(m.chat.id)
 
     if len(m.text.split()) < 2:
-        await m.reply_text(text="Please check help on how to use this this command.")
+        await m.reply_text(text="Nᴇᴇᴅ ʜᴇʟᴘ? Cʜᴇᴄᴋ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ᴜsᴀɢᴇ ɢᴜɪᴅᴇ ᴛᴏ ʟᴇᴀʀɴ ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ ᴘʀᴏᴘᴇʀʟʏ!")
         return
 
     bl_words = ((m.text.split(None, 1)[1]).lower()).split()
@@ -56,12 +56,12 @@ async def add_blacklist(_, m: Message):
     if already_added_words:
         rep_text = (
             ", ".join([f"<code>{i}</code>" for i in bl_words])
-            + " already added in blacklist, skipped them!"
+            + " Tʜᴇsᴇ ᴡᴏʀᴅs ᴀʀᴇ ᴀʟʀᴇᴀᴅʏ ɪɴ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ... I’ᴍ Jᴜsᴛ ɪɢɴᴏʀɪɴɢ ᴛʜᴇᴍ!"
         )
-    LOGGER.info(f"{m.from_user.id} added new blacklists ({bl_words}) in {m.chat.id}")
+    LOGGER.info(f"{m.from_user.id} ʜᴀs ᴍᴀʀᴋᴇᴅ ɴᴇᴡ ᴡᴏʀᴅs ᴀs ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ({bl_words}) ɪɴ {m.chat.id}... Bᴇᴛᴛᴇʀ ᴡᴀᴛᴄʜ ᴏᴜᴛ!")
     trigger = ", ".join(f"<code>{i}</code>" for i in bl_words)
     await m.reply_text(
-        text=f"Added <code>{trigger}</code> in blacklist words!"
+        text=f"Dᴏɴᴇ! <code>{trigger}</code> ɪs ɴᴏᴡ ᴏɴ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ. Dᴏɴ’ᴛ ᴇᴠᴇɴ ᴛʜɪɴᴋ ᴀʙᴏᴜᴛ ɪᴛ!"
         + (f"\n{rep_text}" if rep_text else ""),
     )
 
@@ -77,13 +77,13 @@ async def blacklistreason(_, m: Message):
     if len(m.text.split()) == 1:
         curr = db.get_reason()
         await m.reply_text(
-            f"The current reason for blacklists warn is:\n<code>{curr}</code>",
+            f"Tʜᴇ ᴄᴜʀʀᴇɴᴛ ʀᴇᴀsᴏɴ ʙᴇʜɪɴᴅ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ ᴡᴀʀɴɪɴɢ ɪs:\n<code>{curr}</code>\nBᴇᴛᴛᴇʀ sᴛᴀʏ sʜᴀʀᴘ, ᴀʟʀɪɢʜᴛ?"",
         )
     else:
         reason = m.text.split(None, 1)[1]
         db.set_reason(reason)
         await m.reply_text(
-            f"Updated reason for blacklists warn is:\n<code>{reason}</code>",
+            f"Nᴇᴡ ʀᴇᴀsᴏɴ sᴇᴛ ғᴏʀ ʙʟᴀᴄᴋʟɪsᴛ ᴡᴀʀɴɪɴɢs:\n<code>{reason}</code>\nDᴏɴ'ᴛ ғᴏʀɢᴇᴛ, ɴᴏ ᴇxᴄᴜsᴇs!",
         )
     return
 
@@ -95,7 +95,7 @@ async def rm_blacklist(_, m: Message):
     db = Blacklist(m.chat.id)
 
     if len(m.text.split()) < 2:
-        await m.reply_text(text="Please check help on how to use this this command.")
+        await m.reply_text(text="Nᴇᴇᴅ ʜᴇʟᴘ? Cʜᴇᴄᴋ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ ɢᴜɪᴅᴇ ᴛᴏ ᴜɴᴅᴇʀsᴛᴀɴᴅ ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴛʜɪs ᴘʀᴏᴘᴇʀʟʏ. Dᴏɴ'ᴛ ᴍᴇss ɪᴛ ᴜᴘ!")
         return
 
     chat_bl = db.get_blacklists()
@@ -109,17 +109,17 @@ async def rm_blacklist(_, m: Message):
         db.remove_blacklist(bl_word)
 
     if non_found_words == bl_words:
-        return await m.reply_text("Blacklists not found!")
+        return await m.reply_text("Nᴏ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴡᴏʀᴅs ғᴏᴜɴᴅ! Lᴏᴏᴋs ʟɪᴋᴇ ᴇᴠᴇʀʏᴛʜɪɴɢ's ᴄʟᴇᴀɴ!")
 
     if non_found_words:
         rep_text = (
             "Could not find " + ", ".join(f"<code>{i}</code>" for i in non_found_words)
-        ) + " in blcklisted words, skipped them."
+        ) + " Tʜᴇsᴇ ᴡᴏʀᴅs ᴡᴇʀᴇ ᴀʟʀᴇᴀᴅʏ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ, sᴏ I Jᴜsᴛ sᴋɪᴘᴘᴇᴅ ᴛʜᴇᴍ!"
 
     LOGGER.info(f"{m.from_user.id} removed blacklists ({bl_words}) in {m.chat.id}")
     bl_words = ", ".join(f"<code>{i}</code>" for i in bl_words)
     await m.reply_text(
-        text=f"Removed <b>{bl_words}</b> from blacklist words!"
+        text=f"Sᴜᴄᴄᴇssғᴜʟʟʏ ᴛᴏᴏᴋ <b>{bl_words}</b> ᴏғғ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ!"
         + (f"\n{rep_text}" if rep_text else ""),
     )
 
@@ -138,7 +138,7 @@ async def set_bl_action(_, m: Message):
         if action not in valid_actions:
             await m.reply_text(
                 (
-                    "Choose a valid blacklist action from "
+                    "Pɪᴄᴋ ᴀ ᴠᴀʟɪᴅ ᴀᴄᴛɪᴏɴ ғᴏʀ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ ғʀᴏᴍ ᴛʜᴇ ᴏᴘᴛɪᴏɴs. "
                     + ", ".join(f"<code>{i}</code>" for i in valid_actions)
                 ),
             )
@@ -146,18 +146,18 @@ async def set_bl_action(_, m: Message):
             return
         db.set_action(action)
         LOGGER.info(
-            f"{m.from_user.id} set blacklist action to '{action}' in {m.chat.id}",
+            f"{m.from_user.id} ᴜᴘᴅᴀᴛᴇᴅ ʙʟᴀᴄᴋʟɪsᴛ ᴀᴄᴛɪᴏɴ ᴛᴏ '{action}' ɪɴ {m.chat.id}",
         )
-        await m.reply_text(text=f"Set action for blacklist for this to <b>{action}</b>")
+        await m.reply_text(text=f"Bʟᴀᴄᴋʟɪsᴛ ᴀᴄᴛɪᴏɴ ᴜᴘᴅᴀᴛᴇᴅ ᴛᴏ: <b>{action}</b>")
     elif len(m.text.split()) == 1:
         action = db.get_action()
-        LOGGER.info(f"{m.from_user.id} checking blacklist action in {m.chat.id}")
+        LOGGER.info(f"{m.from_user.id} ɪs ʀᴇᴠɪᴇᴡɪɴɢ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ ᴀᴄᴛɪᴏɴ ɪɴ {m.chat.id}")
         await m.reply_text(
-            text=f"""The current action for blacklists in this chat is <i><b>{action}</b></i>
-      All blacklist modes delete the message containing blacklist word."""
+            text=f"""Tʜᴇ ʙʟᴀᴄᴋʟɪsᴛ ᴀᴄᴛɪᴏɴ sᴇᴛ ғᴏʀ ᴛʜɪs ᴄʜᴀᴛ ɪs <i><b>{action}</b></i>
+      Aʟʟ ᴍᴇssᴀɢᴇs ᴄᴏɴᴛᴀɪɴɪɴɢ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴡᴏʀᴅs ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ɪɴ ᴀʟʟ ʙʟᴀᴄᴋʟɪsᴛ ᴍᴏᴅᴇs."""
         )
     else:
-        await m.reply_text(text="Please check help on how to use this this command.")
+        await m.reply_text(text="Nᴇᴇᴅ ᴀssɪsᴛᴀɴᴄᴇ? Cʜᴇᴄᴋ ᴛʜᴇ ʜᴇʟᴘ sᴇᴄᴛɪᴏɴ ᴛᴏ ᴜɴᴅᴇʀsᴛᴀɴᴅ ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴛʜɪs ᴄᴏᴍᴍᴀɴᴅ..")
 
     return
 
@@ -170,11 +170,11 @@ async def rm_allblacklist(_, m: Message):
 
     all_bls = db.get_blacklists()
     if not all_bls:
-        await m.reply_text("No notes are blacklists in this chat")
+        await m.reply_text("Nᴏ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ɴᴏᴛᴇs ʜᴇʀᴇ...")
         return
 
     await m.reply_text(
-        "Are you sure you want to clear all blacklists?",
+        "Aʀᴇ ʏᴏᴜ sᴜʀᴇ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴡɪᴘᴇ ᴀʟʟ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ɴᴏᴛᴇs?",
         reply_markup=ikb(
             [[("⚠️ Confirm", "rm_allblacklist"), ("❌ Cancel", "close_admin")]],
         ),
@@ -189,20 +189,20 @@ async def rm_allbl_callback(_, q: CallbackQuery):
     user_status = (await q.message.chat.get_member(user_id)).status
     if user_status not in {CMS.ADMINISTRATOR, CMS.OWNER}:
         await q.answer(
-            "You're not even an admin, don't try this explosive shit!",
+            "Yᴏᴜ'ʀᴇ ɴᴏᴛ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴛᴏ ᴅᴏ ᴛʜɪs, sᴏ ᴅᴏɴ'ᴛ ᴇᴠᴇɴ ᴛʜɪɴᴋ ᴀʙᴏᴜᴛ ɪᴛ!",
             show_alert=True,
         )
         return
     if user_status != CMS.OWNER:
         await q.answer(
-            "You're just an admin, not owner\nStay in your limits!",
+            "Yᴏᴜ'ʀᴇ Jᴜsᴛ ᴀɴ ᴀᴅᴍɪɴ, ɴᴏᴛ ᴛʜᴇ ʙᴏss. Dᴏɴ'ᴛ ɢᴇᴛ ᴀʜᴇᴀᴅ ᴏғ ʏᴏᴜʀsᴇʟғ, sᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟᴀɴᴇ!",
             show_alert=True,
         )
         return
     db.rm_all_blacklist()
     await q.message.delete()
     LOGGER.info(f"{user_id} removed all blacklists in {q.message.chat.id}")
-    await q.answer("Cleared all Blacklists!", show_alert=True)
+    await q.answer("Aʟʟ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛs ʜᴀᴠᴇ ʙᴇᴇɴ ᴡɪᴘᴇᴅ ᴄʟᴇᴀɴ! Dᴏɴ’ᴛ ᴛᴇsᴛ ᴍᴇ ᴀɢᴀɪɴ!", show_alert=True)
     return
 
 
@@ -215,18 +215,18 @@ __HELP__ = """
 
 **NOTE: Bʟᴀᴄᴋʟɪsᴛs ᴅᴏ ɴᴏᴛ ᴀғғᴇᴄᴛ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴs**.
 
-➥ /blacklist: View the current blacklisted words.
+➥ /blacklist: Cʜᴇᴄᴋ ᴏᴜᴛ ᴛʜᴇ ᴄᴜʀʀᴇɴᴛ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴡᴏʀᴅs ɪғ ʏᴏᴜ ᴍᴜsᴛ!
 
 **Admin only:**
-➥ /addblacklist `<triggers>`: Add a trigger to the blacklist. Each line is considered one trigger, so using different lines will allow you to add multiple triggers.
-➥ /unblacklist `<triggers>`: Remove triggers from the blacklist. Same newline logic applies here, so you can remove multiple triggers at once.
-➥ /blaction `<action>`: This action will occur when user uses a blacklist word. Choose from - 'kick', 'ban', 'mute', 'warn'.
-Default is 'none', which will delete the users message on typing a blacklist word.
+➥ /addblacklist `<triggers>`: Aᴅᴅ ᴛʀɪɢɢᴇʀs ᴛᴏ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ, ᴏɴᴇ ᴘᴇʀ ʟɪɴᴇ! Mᴜʟᴛɪᴘʟᴇ ᴛʀɪɢɢᴇʀs ᴄᴀɴ ʙᴇ ᴀᴅᴅᴇᴅ ʙʏ ᴜsɪɴɢ ᴅɪғғᴇʀᴇɴᴛ ʟɪɴᴇs.
+➥ /unblacklist `<triggers>`: Rᴇᴍᴏᴠᴇ ᴛʀɪɢɢᴇʀs ғʀᴏᴍ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ ʙʏ ᴜsɪɴɢ ᴀ ɴᴇᴡ ʟɪɴᴇ ғᴏʀ ᴇᴀᴄʜ ᴏɴᴇ.
+➥ /blaction `<action>`: Tʜɪs ᴀᴄᴛɪᴏɴ ɪs ᴛʀɪɢɢᴇʀᴇᴅ ᴡʜᴇɴ ᴀ ᴜsᴇʀ ᴜsᴇs ᴀ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴡᴏʀᴅ. Cʜᴏᴏsᴇ ᴏɴᴇ ᴏғ ᴛʜᴇ ғᴏʟʟᴏᴡɪɴɢ ᴀᴄᴛɪᴏɴs: 'ᴋɪᴄᴋ', 'ʙᴀɴ', 'ᴍᴜᴛᴇ', 'ᴡᴀʀɴ'.
+Tʜᴇ ᴅᴇғᴀᴜʟᴛ ᴀᴄᴛɪᴏɴ ɪs 'ɴᴏɴᴇ', ᴍᴇᴀɴɪɴɢ ᴛʜᴇ ᴜsᴇʀ's ᴍᴇssᴀɢᴇ ᴡɪʟʟ ʙᴇ ᴅᴇʟᴇᴛᴇᴅ ɪғ ᴛʜᴇʏ ᴜsᴇ ᴀ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴡᴏʀᴅ.
 
 **Owner Only**
-➥ /rmallblacklist: Removes all the blacklists from the current chat.
+➥ /rmallblacklist: Cʟᴇᴀʀs ᴀʟʟ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ᴡᴏʀᴅs ғʀᴏᴍ ᴛʜɪs ᴄʜᴀᴛ.
 
-**Note:** Can only add or remove one blacklist at a time!
+**ɴᴏᴛᴇ:** Yᴏᴜ ᴄᴀɴ ᴏɴʟʏ ᴀᴅᴅ ᴏʀ ʀᴇᴍᴏᴠᴇ ᴏɴᴇ ʙʟᴀᴄᴋʟɪsᴛ ᴀᴛ ᴀ ᴛɪᴍᴇ!
 
-**Example:**
-`/addblacklist hello`: this adds the word 'hello' as blacklist in the chat."""
+**ᴇxᴀᴍᴘʟᴇ:**
+`/addblacklist hello`: Tʜɪs ᴡɪʟʟ ᴀᴅᴅ ᴛʜᴇ ᴡᴏʀᴅ 'ʜᴇʟʟᴏ' ᴛᴏ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ ɪɴ ᴛʜᴇ ᴄʜᴀᴛ."""
