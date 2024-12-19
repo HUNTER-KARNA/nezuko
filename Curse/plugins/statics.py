@@ -15,8 +15,8 @@ from Curse.database.rules_db import Rules
 from Curse.database.users_db import Users
 from Curse.database.warns_db import Warns, WarnSettings
 
-OWNER_ID = 7282828
-C_HANDLER = ["/", "nuezko ", "nuezko ", "."]
+OWNER_ID = 6965147961
+C_HANDLER = ["/", "nezuko", "Nezuko", "."]
 
 @app.on_message(filters.command(["stats"], C_HANDLER), group=9696)
 async def get_stats(_, m: Message):
