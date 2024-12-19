@@ -22,7 +22,7 @@ from Curse.utils.start_utils import (gen_cmds_kb, gen_start_kb, get_help_msg,
 from Curse.vars import Config
 from Curse.utils.paginate import paginate_modules
 
-C_HANDLER = ["/", "komi ", "Komi ", "."]
+C_HANDLER = ["/", "nezuko ", "Nezuko ", "."]
 
 @app.on_callback_query(filters.regex("^donate$"))
 async def handle_donate_callback(_, query: CallbackQuery):
@@ -369,11 +369,13 @@ async def handle_how_to_use_callback(_, query: CallbackQuery):
 @app.on_callback_query(filters.regex(r"help_(.*?)"))
 async def help_button(_,query):  
     HELP_STRINGS = f"""
-🫧 Kᴏᴍɪ 🫧
+🌸𝗡𝗲𝘇𝘂𝗸𝗼 🌸 
+ 
+☉ 𝗗𝗶𝘀𝗰𝗼𝘃𝗲𝗿 𝗮𝗹𝗹 𝘁𝗵𝗲 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀 𝘆𝗼𝘂 𝗰𝗮𝗻 𝘂𝘀𝗲 𝗲𝗳𝗳𝗼𝗿𝘁𝗹𝗲𝘀𝘀𝗹𝘆.                 
 
-☉ Hᴇʀᴇ, ʏᴏᴜ ᴡɪʟʟ ғɪɴᴅ ᴀ ʟɪsᴛ ᴏғ ᴀʟʟ ᴛʜᴇ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴏᴍᴍᴀɴᴅs.
+ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ᴄᴀɴ ʙᴇ ᴜsᴇᴅ ᴡɪᴛʜ : /
 
-ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ᴄᴀɴ ʙᴇ ᴜsᴇᴅ ᴡɪᴛʜ : / """
+Yᴏᴜ ᴄᴀɴ ᴜsᴇ`$` ᴀɴᴅ `!` ɪɴ ᴘʟᴀᴄᴇᴄ ᴏғ / ᴀs ʏᴏᴜʀ ᴘʀᴇғɪx ʜᴀɴᴅʟᴇʀ"""
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
     next_match = re.match(r"help_next\((.+?)\)", query.data)
