@@ -2,7 +2,7 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from Curse.bot_class import app
 
-OWNER_ID = 
+OWNER_ID = 6965147961,7710262210
 
 
 
