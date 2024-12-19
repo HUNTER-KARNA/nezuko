@@ -603,7 +603,7 @@ StartPic = [
     "https://files.catbox.moe/vkdgrc.mp4",
     "https://files.catbox.moe/nz7x5c.mp4",
     "https://files.catbox.moe/7eubm0.mp4
-    ",
+    "",
     "",
     "",
     "",
