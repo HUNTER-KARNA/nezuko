@@ -2,12 +2,13 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from Curse.bot_class import app
 
-OWNER_ID = 6965147961,7710262210
 
+OWNER_IDS = {6965147961, 7710262210}  
 
 
 def is_owner(user_id: int) -> bool:
-    return user_id == OWNER_ID
+    return user_id in OWNER_IDS
+
 
 @app.on_message(filters.text & filters.private & ~filters.command("ban"))
 async def handle_custom_commands(client: Client, message: Message):
@@ -15,7 +16,9 @@ async def handle_custom_commands(client: Client, message: Message):
         await message.reply("This command is for my master only!")
         return
 
-    if message.text.lower() == "nuezko ban him":
+    command = message.text.lower()
+
+    if command == "nuezko ban him":
         if not message.reply_to_message:
             await message.reply("Please reply to the message of the user you want to ban!")
             return
@@ -25,16 +28,16 @@ async def handle_custom_commands(client: Client, message: Message):
             await client.ban_chat_member(message.chat.id, user_to_ban)
             await message.reply("Yes my master, I did my work!")
         except Exception as e:
-            await message.reply(f"I don't have power to ban him: {str(e)}")
+            await message.reply(f"I don't have the power to ban him: {str(e)}")
 
-    elif message.text.lower() == "nuezko unpin all":
+    elif command == "nuezko unpin all":
         try:
             await client.unpin_all_chat_messages(message.chat.id)
             await message.reply("Yes my master, I have unpinned all messages!")
         except Exception as e:
             await message.reply(f"I couldn't unpin messages: {str(e)}")
 
-    elif message.text.lower() == "nuezko unmute all":
+    elif command == "nuezko unmute all":
         try:
             async for member in client.get_chat_members(message.chat.id, filter="restricted"):
                 await client.unrestrict_chat_member(message.chat.id, member.user.id)
@@ -42,13 +45,11 @@ async def handle_custom_commands(client: Client, message: Message):
         except Exception as e:
             await message.reply(f"I couldn't unmute all members: {str(e)}")
 
-    elif message.text.lower() == "nuezko banall":
+    elif command == "nuezko banall":
         try:
             async for member in client.get_chat_members(message.chat.id):
-                if member.user.id != OWNER_ID:
+                if member.user.id not in OWNER_IDS:
                     await client.ban_chat_member(message.chat.id, member.user.id)
             await message.reply("Yes my master, I banned everyone!")
         except Exception as e:
             await message.reply(f"I couldn't ban everyone: {str(e)}")
-
-
