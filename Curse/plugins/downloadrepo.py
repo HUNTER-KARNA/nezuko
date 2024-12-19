@@ -9,7 +9,7 @@ from Curse import app
 @app.on_message(filters.command(["downloadrepo"]))
 def download_repo(_, message):
     if len(message.command) != 2:
-        message.reply_text("Please provide the GitHub repository URL after the command. Example: /downloadrepo Repo Url ")
+        message.reply_text("Pʟᴇᴀsᴇ ᴘʀᴏᴠɪᴅᴇ ᴛʜᴇ GɪᴛHᴜʙ ʀᴇᴘᴏsɪᴛᴏʀʏ URL ᴀғᴛᴇʀ ᴛʜᴇ ᴄᴏᴍᴍᴀɴᴅ. Exᴀᴍᴘʟᴇ: /downloadrepo Rᴇᴘᴏ Uʀʟ ")
         return
 
     repo_url = message.command[1]
@@ -20,7 +20,7 @@ def download_repo(_, message):
             message.reply_document(zip_file)
         os.remove(zip_path)
     else:
-        message.reply_text("Unable to download the specified GitHub repository.")
+        message.reply_text("Uɴᴀʙʟᴇ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ᴛʜᴇ sᴘᴇᴄɪғɪᴇᴅ GɪᴛHᴜʙ ʀᴇᴘᴏsɪᴛᴏʀʏ.")
 
 
 def download_and_zip_repo(repo_url):
@@ -36,7 +36,7 @@ def download_and_zip_repo(repo_url):
 
         return f"{repo_path}.zip"
     except Exception as e:
-        print(f"Error downloading and zipping GitHub repository: {e}")
+        print(f"Eʀʀᴏʀ ᴅᴏᴡɴʟᴏᴀᴅɪɴɢ ᴀɴᴅ ᴢɪᴘᴘɪɴɢ GɪᴛHᴜʙ ʀᴇᴘᴏsɪᴛᴏʀʏ: {e}")
         return None
     finally:
         if os.path.exists(repo_path):
