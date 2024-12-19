@@ -8,7 +8,6 @@ from Curse.bot_class import app
 from Curse.database.group_blacklist import GroupBlacklist
 from Curse.utils.custom_filters import command
 
-# initialise db
 db = GroupBlacklist()
 
 
@@ -16,8 +15,8 @@ db = GroupBlacklist()
 async def blacklist_chat(c: app, m: Message):
     if len(m.text.split()) >= 2:
         chat_ids = m.text.split()[1:]
-        replymsg = await m.reply_text(f"Adding {len(chat_ids)} chats to blacklist")
-        LOGGER.info(f"{m.from_user.id} blacklisted {chat_ids} groups for bot")
+        replymsg = await m.reply_text(f"ᴄʜᴀᴛs ᴀʀᴇ ɢᴏɪɴɢ ᴛᴏ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ {len(chat_ids)} ᴏғ ᴛʜᴇᴍ ᴀʀᴇ ᴄᴏᴍɪɴɢ.")
+        LOGGER.info(f"ᴍᴏʀᴇ ɢʀᴏᴜᴘs ʙʟᴀᴄᴋʟɪsᴛᴇᴅ ʙʏ {m.from_user.id} ᴡɪᴛʜ ᴛʜᴇ ʙᴏᴛ. ᴛʜᴇ ᴄʜᴀᴛ'ʟʟ ᴄᴏᴘᴇ ᴡɪᴛʜᴏᴜᴛ ʏᴏᴜ. 🔥")
         for chat in chat_ids:
             try:
                 get_chat = await c.get_chat(chat)
@@ -25,13 +24,13 @@ async def blacklist_chat(c: app, m: Message):
                 db.add_chat(chat_id)
             except PeerIdInvalid:
                 await replymsg.edit_text(
-                    "Haven't seen this group in this session, maybe try again later?",
+                    "ᴛʜɪs ɢʀᴏᴜᴘ ᴄᴀɴ'ᴛ ᴇᴠᴇɴ ᴅᴇᴀʟ ᴡɪᴛʜ ᴛʜᴇ ᴍɪssɪɴɢ ᴇɴᴇʀɢʏ. ᴡᴀɪᴛ ᴜɴᴛɪʟ ɪᴛ ᴄᴏᴍᴇs ᴏᴠᴇʀ! 💣",
                 )
             except RPCError as ef:
                 LOGGER.error(ef)
                 LOGGER.error(format_exc())
         await replymsg.edit_text(
-            f"Added the following chats to Blacklist.\n<code>{', '.join(chat_ids)}</code>.",
+            f"ᴅᴇᴀʟᴛ ᴡɪᴛʜ ᴛʜᴇsᴇ ᴄʜᴀᴛs. ʟɪsᴛ ɪs ɴᴏᴡ ᴄᴏᴍᴘʟᴇᴛᴇᴅ: <code>{', '.join(chat_ids)}</code>. 💥",
         )
     return
 
@@ -42,26 +41,26 @@ async def blacklist_chat(c: app, m: Message):
 async def unblacklist_chat(c: app, m: Message):
     if len(m.text.split()) >= 2:
         chat_ids = m.text.split()[1:]
-        replymsg = await m.reply_text(f"Removing {len(chat_ids)} chats from blacklist")
-        LOGGER.info(f"{m.from_user.id} removed blacklisted {chat_ids} groups for bot")
+        replymsg = await m.reply_text(f"ᴇxᴛʀᴀᴄᴛɪɴɢ ᴛʜᴇsᴇ ᴄʜᴀᴛs ғʀᴏᴍ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ... ᴅᴏɴ'ᴛ ᴡᴏʀʀʏ, ᴍᴏʀᴇ ᴡɪʟʟ ʙᴇ ᴏᴜᴛ ᴛᴏ ɢᴇᴛ! 💣")
+        LOGGER.info(f"{m.from_user.id} ᴇʀᴀsᴇᴅ ᴛʜᴇsᴇ ᴍᴇᴀɴɪᴇ ᴄʜᴀᴛs ғʀᴏᴍ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ. ᴇʟᴇᴠᴀᴛɪɴɢ ᴛʜᴇ ᴍᴏᴍᴇɴᴛ. 💥")
         bl_chats = db.list_all_chats()
         for chat in chat_ids:
             try:
                 get_chat = await c.get_chat(chat)
                 chat_id = get_chat.id
                 if chat_id not in bl_chats:
-                    # If chat is not blaklisted, continue loop
+
                     continue
                 db.remove_chat(chat_id)
             except PeerIdInvalid:
                 await replymsg.edit_text(
-                    "Haven't seen this group in this session, maybe try again later?",
+                    "ᴅɪᴅɴ'ᴛ ᴄᴏᴍᴇ ᴀᴄʀᴏss ᴛʜɪs ɢʀᴏᴜᴘ ᴛᴏᴅᴀʏ, ᴍᴀʏʙᴇ ᴄʜᴇᴄᴋ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ. 🤷‍♀️",
                 )
             except RPCError as ef:
                 LOGGER.error(ef)
                 LOGGER.error(format_exc())
         await replymsg.edit_text(
-            f"Removed the following chats to Blacklist.\n<code>{', '.join(chat_ids)}</code>.",
+            f"ᴛʜᴇsᴇ ᴄʜᴀᴛs ᴄᴀɴ'ᴛ ʜᴀɴɢᴇ ᴏᴜᴛ ᴀɴʏᴍᴏʀᴇ, ᴛʜᴇʏ'ʀᴇ ɴᴏᴡ ᴏɴ ᴛʜᴇ ʙʟᴀᴄᴋʟɪsᴛ. 💀\n<code>{', '.join(chat_ids)}</code>",
         )
     return
 
@@ -71,16 +70,16 @@ async def unblacklist_chat(c: app, m: Message):
 )
 async def list_blacklist_chats(_, m: Message):
     bl_chats = db.list_all_chats()
-    LOGGER.info(f"{m.from_user.id} checking group blacklists in {m.chat.id}")
+    LOGGER.info(f"{m.from_user.id} ɪs ᴄʜᴇᴄᴋɪɴɢ ᴛʜᴇ ɢʀᴏᴜᴘ's ʙʟᴀᴄᴋʟɪsᴛ ɪɴ {m.chat.id}. 👀")
     if bl_chats:
         txt = (
             (
-                "These Chats are Blacklisted:\n"
+                "ᴛʜᴇsᴇ ᴄʜᴀᴛs ᴀʀᴇ ᴛʜᴇ ᴍᴀᴅ ᴏᴜᴛ ᴏғ ᴄᴏᴍᴍᴀɴᴅ:\n"
                 + "\n".join(f"<code>{i}</code>" for i in bl_chats)
             ),
         )
 
     else:
-        txt = "No chats are currently blacklisted!"
+        txt = "ᴄᴏɴᴏᴛ ᴇᴠᴇɴ ᴛʜᴇ ᴛᴇᴀᴍ ᴏᴘᴇɴ. ɴᴏ ᴄʜᴀᴛs ᴄᴜʀʀᴇɴᴛʟʏ ʙʟᴀᴄᴋʟɪsᴛᴇᴅ!"
     await m.reply_text(txt)
     return
