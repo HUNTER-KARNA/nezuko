@@ -65,7 +65,7 @@ async def remember_me(c: app, m: Message):
     DOB = DOB.split("/")
     if len(DOB) != 3 and len(DOB) != 2:
         await m.reply_text(
-            "Dᴀᴛᴇ ᴏғ ʙɪʀᴛʜ ᴍᴜsᴛ ʙᴇ ɪɴ <ʙ>ᴅᴅ/ᴍᴍ/ʏʏʏʏ ғᴏʀᴍᴀᴛ. Yᴇᴀʀ ɪs ᴏᴘᴛɪᴏɴᴀʟ, ʙᴜᴛ sᴛɪʟʟ, ɢᴇᴛ ɪᴛ ʀɪɢʜᴛ!""
+            "Dᴀᴛᴇ ᴏғ ʙɪʀᴛʜ ᴍᴜsᴛ ʙᴇ ɪɴ <ʙ>ᴅᴅ/ᴍᴍ/ʏʏʏʏ ғᴏʀᴍᴀᴛ. Yᴇᴀʀ ɪs ᴏᴘᴛɪᴏɴᴀʟ, ʙᴜᴛ sᴛɪʟʟ, ɢᴇᴛ ɪᴛ ʀɪɢʜᴛ!"
         )
         return
     is_correct = False
