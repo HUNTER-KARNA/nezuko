@@ -75,7 +75,7 @@ class Development:
     NO_LOAD = []
     GENIUS_API_TOKEN = ""
     RMBG_API = ""
-    PREFIX_HANDLER = ["!", ".", "Komi ", "komi "]
+    PREFIX_HANDLER = ["!", ".", "Komi ", "komi " "/"]
     SUPPORT_GROUP = "hunterxsupport"
     SUPPORT_CHANNEL = ""
     VERSION = "3.O"
