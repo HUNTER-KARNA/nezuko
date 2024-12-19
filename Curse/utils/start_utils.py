@@ -41,17 +41,17 @@ async def gen_start_kb(q: Message or CallbackQuery):
         [
             [
                 (
-                    "➕ 𝗔𝗗𝗗 𝗠𝗘 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 ➕",
+                    "Add ME to your group",
                     f"https://t.me/{Config.BOT_USERNAME}?startgroup=new",
                     "url",
                 ),
             ],
             [
-                ("𝗔𝗕𝗢𝗨𝗧", "details"),
-                ("𝗦𝗨𝗣𝗣𝗢𝗥𝗧", f"https://t.me/{SUPPORT_GROUP}", "url"),
+                ("about☠", "details"),
+                ("support👈", f"https://t.me/{SUPPORT_GROUP}", "url"),
             ],
             [
-                ("🛠 𝗛𝗘𝗟𝗣", "commands"),
+                ("🌋 help", "commands"),
             ],
         ],
     )
@@ -242,7 +242,7 @@ async def get_help_msg(m: Message or CallbackQuery, help_option: str):
         else:
             mes = m
         help_msg = f"""
-☉ 𝗛𝗲𝗿𝗲, 𝘆𝗼𝘂 𝘄𝗶𝗹𝗹 𝗳𝗶𝗻𝗱 𝗮 𝗹𝗶𝘀𝘁 𝗼𝗳 𝗮𝗹𝗹 𝘁𝗵𝗲 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀.
+☉ sab end hogya bkl🦧.
 
 ᴀʟʟ ᴄᴏᴍᴍᴀɴᴅs ᴄᴀɴ ʙᴇ ᴜsᴇᴅ ᴡɪᴛʜ : /
 
