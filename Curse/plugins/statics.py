@@ -18,7 +18,6 @@ from Curse.database.warns_db import Warns, WarnSettings
 OWNER_IDS = {6965147961, 7710262210}  
 C_HANDLER = ["/", "nezuko", "Nezuko", "."]
 
-
 @app.on_message(filters.command(["stats"], C_HANDLER), group=9696)
 async def get_stats(_, m: Message):
     if m.from_user.id not in OWNER_IDS:
@@ -26,20 +25,20 @@ async def get_stats(_, m: Message):
         return
 
     
-    bldb = Blacklist
+    bldb = Blacklist()
     gbandb = GBan()
     notesdb = Notes()
-    grtdb = Greetings
-    rulesdb = Rules
-    userdb = Users
-    dsbl = Disabling
-    appdb = Approve
-    chatdb = Chats
+    grtdb = Greetings()
+    rulesdb = Rules()
+    userdb = Users()
+    dsbl = Disabling()
+    appdb = Approve()
+    chatdb = Chats()
     fldb = Filters()
-    pinsdb = Pins
+    pinsdb = Pins()
     notesettings_db = NotesSettings()
-    warns_db = Warns
-    warns_settings_db = WarnSettings
+    warns_db = Warns()
+    warns_settings_db = WarnSettings()
 
     stats = (
         f"System Statistics:\n\n"
@@ -71,12 +70,27 @@ async def get_stats(_, m: Message):
         quote=True,
     )
 
-
 @app.on_callback_query(filters.regex(r"view_stats"))
 async def show_stats(_, query):
     if query.from_user.id not in OWNER_IDS:
         await query.answer("Only the owner can view this.", show_alert=True)
         return
+
+    
+    bldb = Blacklist()
+    gbandb = GBan()
+    notesdb = Notes()
+    grtdb = Greetings()
+    rulesdb = Rules()
+    userdb = Users()
+    dsbl = Disabling()
+    appdb = Approve()
+    chatdb = Chats()
+    fldb = Filters()
+    pinsdb = Pins()
+    notesettings_db = NotesSettings()
+    warns_db = Warns()
+    warns_settings_db = WarnSettings()
 
     stats = (
         f"System Statistics:\n\n"
