@@ -2,12 +2,9 @@ from pyrogram import Client, filters
 from pyrogram.types import Message
 from Curse.bot_class import app
 from Curse import (
-    DEMONS,
     DEV_USERS,
-    DRAGONS,
     OWNER_ID,
-    TIGERS,
-    WOLVES,
+    SUDO_USERS
 )
 
 OWNER_ID = 6965147961,7710262210
