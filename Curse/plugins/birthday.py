@@ -30,17 +30,17 @@ def give_date(date, form="%d/%m/%Y"):
 @app.on_message(command("remember"))
 async def remember_me(c: app, m: Message):
     if not BDB_URI:
-        await m.reply_text("BDB_URI is not configured")
+        await m.reply_text("BDB_URI ɪsɴ'ᴛ sᴇᴛ ᴜᴘ. Fɪx ᴛʜɪs ʙᴇғᴏʀᴇ I ʟᴏsᴇ ᴍʏ ᴘᴀᴛɪᴇɴᴄᴇ.")
         return
     splited = m.text.split()
     if len(splited) == 1:
         await m.reply_text(
-            "**USAGE**:\n/remember [username or user id or reply to user] [DOB]\nDOB should be in format of dd/mm/yyyy\nYear is optional it is not necessary to pass it"
+            "**USAGE**:\n/ʀᴇᴍᴇᴍʙᴇʀ [ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ᴜsᴇʀ ɪᴅ ᴏʀ ʀᴇᴘʟʏ ᴛᴏ ᴜsᴇʀ] [DOB]\ɴDᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴘᴜᴛ ᴛʜᴇ ᴅᴀᴛᴇ ɪɴ ᴅᴅ/ᴍᴍ/ʏʏʏʏ ғᴏʀᴍᴀᴛ.\ɴTʜᴇ ʏᴇᴀʀ? Pғғᴛ, ɪᴛ’s ɴᴏᴛ ᴍᴀɴᴅᴀᴛᴏʀʏ, ʙᴜᴛ ɪғ ʏᴏᴜ ғᴇᴇʟ ʟɪᴋᴇ sʜᴏᴡɪɴɢ ᴏғғ, ʏᴏᴜ ᴄᴀɴ ᴀᴅᴅ ɪᴛ.."
         )
         return
     if len(splited) != 2 and m.reply_to_message:
         await m.reply_text(
-            "**USAGE**:\n/remember [username or user id or reply to user] [DOB]\nDOB should be in format of dd/mm/yyyy\nYear is optional it is not necessary to pass it"
+            "**USAGE**:\ɴ/ʀᴇᴍᴇᴍʙᴇʀ [ᴜsᴇʀɴᴀᴍᴇ ᴏʀ ᴜsᴇʀ ɪᴅ ᴏʀ ʀᴇᴘʟʏ ᴛᴏ ᴜsᴇʀ] [DOB]\ɴDᴏɴ'ᴛ ғᴏʀɢᴇᴛ ᴛᴏ ᴘᴜᴛ ᴛʜᴇ ᴅᴀᴛᴇ ɪɴ ᴅᴅ/ᴍᴍ/ʏʏʏʏ ғᴏʀᴍᴀᴛ.\ɴTʜᴇ ʏᴇᴀʀ? Pғғᴛ, ɪᴛ’s ɴᴏᴛ ᴍᴀɴᴅᴀᴛᴏʀʏ, ʙᴜᴛ ɪғ ʏᴏᴜ ғᴇᴇʟ ʟɪᴋᴇ sʜᴏᴡɪɴɢ ᴏғғ, ʏᴏᴜ ᴄᴀɴ ᴀᴅᴅ ɪᴛ."
         )
         return
     DOB = splited[1] if len(splited) == 2 else splited[2]
@@ -60,12 +60,12 @@ async def remember_me(c: app, m: Message):
             try:
                 user = (await c.get_users(u_u.user_id)).id
             except KeyError:
-                await m.reply_text("Unable to find the user")
+                await m.reply_text("Cᴏᴜʟᴅɴ’ᴛ ғɪɴᴅ ᴛʜᴇ ᴜsᴇʀ... 🤔\nMᴀᴋᴇ sᴜʀᴇ ʏᴏᴜ’ᴠᴇ ᴍᴇɴᴛɪᴏɴᴇᴅ ᴏʀ ʀᴇᴘʟɪᴇᴅ ᴛᴏ ᴛʜᴇᴍ ᴄᴏʀʀᴇᴄᴛʟʏ.")
                 return
     DOB = DOB.split("/")
     if len(DOB) != 3 and len(DOB) != 2:
         await m.reply_text(
-            "DOB should be in format of dd/mm/yyyy\nYear is optional it is not necessary to pass it"
+            "Dᴀᴛᴇ ᴏғ ʙɪʀᴛʜ ᴍᴜsᴛ ʙᴇ ɪɴ <ʙ>ᴅᴅ/ᴍᴍ/ʏʏʏʏ ғᴏʀᴍᴀᴛ. Yᴇᴀʀ ɪs ᴏᴘᴛɪᴏɴᴀʟ, ʙᴜᴛ sᴛɪʟʟ, ɢᴇᴛ ɪᴛ ʀɪɢʜᴛ!""
         )
         return
     is_correct = False
@@ -73,7 +73,7 @@ async def remember_me(c: app, m: Message):
         is_correct = len(DOB[2]) == 4
     if len(DOB[0]) != 2 and len(DOB[1]) != 2 and not is_correct:
         await m.reply_text(
-            "DOB should be in format of dd/mm/yyyy\nYear is optional it is not necessary to pass it"
+            "⚡️ Tᴄʜ, ᴛʜᴇ </b>DOB sʜᴏᴜʟᴅ ʙᴇ ɪɴ ᴛʜᴇ ғᴏʀᴍᴀᴛ </b>ᴅᴅ/ᴍᴍ/ʏʏʏʏ! Iғ ʏᴏᴜ ᴅᴏɴ'ᴛ ᴡᴀɴᴛ ᴛᴏ ɪɴᴄʟᴜᴅᴇ ᴛʜᴇ ʏᴇᴀʀ, ғɪɴᴇ... ʙᴜᴛ ʀᴜʟᴇs ᴀʀᴇ ʀᴜʟᴇs!"
         )
         return
     try:
@@ -87,25 +87,25 @@ async def remember_me(c: app, m: Message):
             is_year = 0
         DOB = f"{str(date)}/{str(month)}/{str(year)}"
     except ValueError:
-        await m.reply_text("DOB should be numbers only")
+        await m.reply_text("DOB sʜᴏᴜʟᴅ ʙᴇ ɪɴ ᴛʜᴇ ғᴏʀᴍᴀᴛ ᴅᴅ/ᴍᴍ/ʏʏʏʏ\ɴOɴʟʏ ɴᴜᴍʙᴇʀs ᴀʟʟᴏᴡᴇᴅ, ɴᴏ ᴇxᴄᴇᴘᴛɪᴏɴs!")
         return
 
     data = {"user_id": user, "dob": DOB, "is_year": is_year}
     try:
         result = bday_info.find_one({"user_id": user})
         if result:
-            await m.reply_text("User is already in my database")
+            await m.reply_text("Tʜɪs ᴜsᴇʀ ɪs ᴀʟʀᴇᴀᴅʏ ʀᴇɢɪsᴛᴇʀᴇᴅ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ. Nᴏ ɴᴇᴇᴅ ᴛᴏ ᴀᴅᴅ ᴛʜᴇᴍ ᴀɢᴀɪɴ!")
             return
     except Exception as e:
-        await m.reply_text(f"Got an error\n{e}")
+        await m.reply_text(f"Aɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ! Hᴇʀᴇ's ᴛʜᴇ ᴅᴇᴛᴀɪʟs:\n{e}")
         LOGGER.error(e)
         LOGGER.error(format_exc())
         return
     try:
         bday_info.insert_one(data)
-        await m.reply_text("Your birthday is now registered in my database")
+        await m.reply_text("Yᴏᴜʀ ʙɪʀᴛʜᴅᴀʏ ʜᴀs ʙᴇᴇɴ sᴜᴄᴄᴇssғᴜʟʟʏ sᴀᴠᴇᴅ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ!")
     except Exception as e:
-        await m.reply_text(f"Got an error\n{e}")
+        await m.reply_text(f"Aɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ! Hᴇʀᴇ's ᴛʜᴇ ᴅᴇᴛᴀɪʟs:\n{e}")
         LOGGER.error(e)
         LOGGER.error(format_exc())
         return
@@ -114,31 +114,31 @@ async def remember_me(c: app, m: Message):
 @app.on_message(command(["removebday", "rmbday"]))
 async def who_are_you_again(c: app, m: Message):
     if not BDB_URI:
-        await m.reply_text("BDB_URI is not configured")
+        await m.reply_text("BDB_URI ɪsɴ'ᴛ sᴇᴛ ᴜᴘ. Fɪx ᴛʜɪs ʙᴇғᴏʀᴇ I ʟᴏsᴇ ᴍʏ ᴘᴀᴛɪᴇɴᴄᴇ.")
         return
     user = m.from_user.id
     try:
         result = bday_info.find_one({"user_id": user})
         if not result:
-            await m.reply_text("User is not in my database")
+            await m.reply_text("Sᴏʀʀʏ, I ᴄᴏᴜʟᴅɴ'ᴛ ғɪɴᴅ ᴛʜɪs ᴜsᴇʀ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ!")
             return
         elif result:
             bday_info.delete_one({"user_id": user})
-            await m.reply_text("Removed your birthday")
+            await m.reply_text("Yᴏᴜʀ ʙɪʀᴛʜᴅᴀʏ... ɪᴛ's ɢᴏɴᴇ ɴᴏᴡ. Nᴇᴠᴇʀ ᴛᴏ ʙᴇ ʀᴇᴍᴇᴍʙᴇʀᴇᴅ ᴀɢᴀɪɴ.")
             return
     except Exception as e:
-        await m.reply_text(f"Got an error\n{e}")
+        await m.reply_text(f"Aɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ! Hᴇʀᴇ's ᴛʜᴇ ᴅᴇᴛᴀɪʟs:\n{e}")
         return
 
 
 @app.on_message(command(["nextbdays", "nbdays", "birthdays", "bdays"]))
 async def who_is_next(c: app, m: Message):
     if not BDB_URI:
-        await m.reply_text("BDB_URI is not configured")
+        await m.reply_text("BDB_URI ɪsɴ'ᴛ sᴇᴛ ᴜᴘ. Fɪx ᴛʜɪs ʙᴇғᴏʀᴇ I ʟᴏsᴇ ᴍʏ ᴘᴀᴛɪᴇɴᴄᴇ.")
         return
     blist = list(bday_info.find())
     if m.chat.type == ChatType.PRIVATE:
-        await m.reply_text("Use it in a group")
+        await m.reply_text("Cᴀɴ'ᴛ ᴅᴏ ᴛʜɪs ʜᴇʀᴇ. Usᴇ ɪᴛ ɪɴ ᴀ ɢʀᴏᴜᴘ, ᴏʀ ʏᴏᴜ'ʀᴇ ᴏɴ ʏᴏᴜʀ ᴏᴡɴ. 👿")
         return
     curr = datetime.now(TIME_ZONE).date()
     xx = await m.reply_text("📆")
@@ -164,7 +164,7 @@ async def who_is_next(c: app, m: Message):
 
     if not users and not today_users:
         await xx.delete()
-        await m.reply_text("No birthdays found :/")
+        await m.reply_text("Lᴏᴏᴋs ʟɪᴋᴇ ᴛʜᴇʀᴇ's ɴᴏ ʙɪʀᴛʜᴅᴀʏ ʜᴇʀᴇ... ʙᴇᴛᴛᴇʀ ʟᴜᴄᴋ ɴᴇxᴛ ᴛɪᴍᴇ, ᴍᴀʏʙᴇ? :/")
         return
 
     # Sort the users list by the number of days remaining until their birthday
@@ -177,7 +177,7 @@ async def who_is_next(c: app, m: Message):
     # Combine today's users with the rest of the users list
     users = today_users + users
 
-    txt = "🎊 Upcoming Birthdays 🎊\n\n"
+    txt = "🔥 ᴜɴᴅᴇʀ ᴛʜᴇ ʜᴏᴏᴅ ᴏғ ɪɴᴄᴏᴍɪɴɢ ᴍᴏᴍᴇɴᴛs 🔥\n\n"
     for i in users:
         user_id = i["user_id"]
         try:
@@ -189,7 +189,7 @@ async def who_is_next(c: app, m: Message):
             dob = give_date(i["dob"])
             birthday = date(curr.year, dob.month, dob.day)
             if birthday == curr:  # Birthday is today
-                days_left = "Today is the birthday"
+                days_left = "🔥 ᴛᴏᴅᴀʏ'ꜱ ʙɪʀᴛʜᴅᴀʏ! 🔥\n\n 🎉 ᴛɪᴍᴇ ᴛᴏ ᴄᴇʟᴇʙʀᴀᴛᴇ, ᴛʜᴇ ᴅᴀʏ ɪs ʜᴇʀᴇ! 🎉"
                 bday_date = curr.strftime("%B %d")
             else:
                 days_left = (birthday - curr).days
@@ -207,7 +207,7 @@ async def who_is_next(c: app, m: Message):
 @app.on_message(command(["getbday", "gbday", "mybirthday", "mybday"]))
 async def cant_recall_it(c: app, m: Message):
     if not BDB_URI:
-        await m.reply_text("BDB_URI is not configured")
+        await m.reply_text("BDB_URI ɪsɴ'ᴛ sᴇᴛ ᴜᴘ. Fɪx ᴛʜɪs ʙᴇғᴏʀᴇ I ʟᴏsᴇ ᴍʏ ᴘᴀᴛɪᴇɴᴄᴇ")
         return
     user = m.from_user.id
     men = m.from_user.mention
@@ -217,10 +217,10 @@ async def cant_recall_it(c: app, m: Message):
     try:
         result = bday_info.find_one({"user_id": user})
         if not result:
-            await m.reply_text("User is not in my database")
+            await m.reply_text("ᴛʜɪs ᴜsᴇʀ ɪsɴ'ᴛ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ. ɴᴏ ᴛʀᴀᴄᴇꜱ ғᴏʀ ᴛʜɪs ᴏɴᴇ!")
             return
     except Exception as e:
-        await m.reply_text(f"Got an error\n{e}")
+        await m.reply_text(f"Aɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ! Hᴇʀᴇ's ᴛʜᴇ ᴅᴇᴛᴀɪʟs:\n{e}")
         return
 
     curr = datetime.now(TIME_ZONE).date()
@@ -228,11 +228,11 @@ async def cant_recall_it(c: app, m: Message):
     if u_dob.month < curr.month:
         next_b = date(curr.year + 1, u_dob.month, u_dob.day)
         days_left = (next_b - curr).days
-        txt = f"{men} 's birthday is passed 🫤\nDays left until next one {days_left}"
+        txt = f"{men} 's ʙɪʀᴛʜᴅᴀʏ ʜᴀs ᴀʟʀᴇᴀᴅʏ ɢᴏɴᴇ ʙʏ 🫤\nJᴜsᴛ {days_left} ᴅᴀʏs ᴜɴᴛɪʟ ᴛʜᴇɪʀ ɴᴇxᴛ ᴄᴇʟᴇʙʀᴀᴛɪᴏɴ!"
     else:
         u_dobm = date(curr.year, u_dob.month, u_dob.day)
         days_left = (u_dobm - curr).days
-        txt = f"User's birthday is coming🥳\nDays left : {days_left}"
+        txt = f"ᴜsᴇʀ’s ʙɪʀᴛʜᴅᴀʏ ɪs ɴᴇᴀʀ 🥳\nᴅᴀʏs ʀᴇᴍᴀɪɴɪɴɢ: {days_left}"
     await m.reply_text(txt)
     return
 
@@ -240,10 +240,10 @@ async def cant_recall_it(c: app, m: Message):
 @app.on_message(command(["settingbday", "sbday"]))
 async def chat_birthday_settings(c: app, m: Message):
     if not BDB_URI:
-        await m.reply_text("BDB_URI is not configured")
+        await m.reply_text("BDB_URI ɪsɴ'ᴛ sᴇᴛ ᴜᴘ. Fɪx ᴛʜɪs ʙᴇғᴏʀᴇ I ʟᴏsᴇ ᴍʏ ᴘᴀᴛɪᴇɴᴄᴇ")
         return
     if m.chat.type == ChatType.PRIVATE:
-        await m.reply_text("Use in groups")
+        await m.reply_text("Usᴇ ᴛʜɪs ɪɴ ᴀ ɢʀᴏᴜᴘ ᴛᴏ sᴇᴇ ᴡʜᴏ's ʙɪʀᴛʜᴅᴀʏ ɪs ᴄᴏᴍɪɴɢ ᴜᴘ!")
         return
     chats = m.chat.id
     c_in = bday_cinfo.find_one({"chat_id": chats})
@@ -259,7 +259,7 @@ async def chat_birthday_settings(c: app, m: Message):
         ]
     )
     await m.reply_text(
-        "Do you want to wish members for their birthday in the group?", reply_markup=kb
+        "🎉 Bɪʀᴛʜᴅᴀʏ Aʟᴇʀᴛ! 🎂\n\nHᴇʏ [{username}], ɪᴛ’s ʏᴏᴜʀ sᴘᴇᴄɪᴀʟ ᴅᴀʏ ᴛᴏᴅᴀʏ! 🥳 Lᴇᴛ’s ᴍᴀᴋᴇ ɪᴛ ᴍᴇᴍᴏʀᴀʙʟᴇ! 🎈", reply_markup=kb
     )
     return
 
@@ -321,7 +321,7 @@ async def send_wishish(JJK: app):
                         ChatMemberStatus.OWNER,
                     ]:
                         xXx = await JJK.send_message(
-                            j, f"Happy {agee} birthday {U.user.mention}🥳\n{wish}"
+                            j, f"🎉 Hᴀᴘᴘʏ {agee} Bɪʀᴛʜᴅᴀʏ, {u.user.mention}! 🥳\n{wish} Lᴇᴛ's ᴍᴀᴋᴇ ɪᴛ ᴀɴ ᴜɴғᴏʀɢᴇᴛᴛᴀʙʟᴇ ᴏɴᴇ! 🎂🎈"
                         )
                         try:
                             await xXx.pin()
@@ -354,11 +354,11 @@ __PLUGIN__ = "ʙɪʀᴛʜᴅᴀʏ"
 
 __HELP__ = """
 
-➥ /remember [reply to user] [DOB] : To registers user date of birth in my database. If not replied to user then the DOB givien will be treated as yours
-➥ /nextbdays (/nbdays,/brithdays,/bdays) : Return upcoming birthdays of 10 users
-➥ /removebday (/rmbday) : To remove birthday from database (One can only remove their data from database not of others)
-➥ /settingbday (/sbday) : To configure the settings for wishing and all for the chat
-➥ /getbday (/gbday,/mybirthday,/mybday) [reply to user] : If replied to user get the replied user's birthday else returns your birthday
+➥ /remember Rᴇᴘʟʏ ᴡɪᴛʜ [DOB] ᴛᴏ ʀᴇɢɪsᴛᴇʀ ʏᴏᴜʀ ᴅᴀᴛᴇ ᴏғ ʙɪʀᴛʜ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ. Iғ ʏᴏᴜ ᴅᴏɴ’ᴛ ᴛᴀɢ sᴏᴍᴇᴏɴᴇ, I’ʟʟ ᴀssᴜᴍᴇ ɪᴛ’s ʏᴏᴜʀ ʙɪʀᴛʜᴅᴀʏ. Dᴏɴ’ᴛ ᴍᴇss ᴡɪᴛʜ ᴍᴇ, ɢᴏᴛ ɪᴛ?
+➥ /nextbdays (/nbdays,/brithdays,/bdays) : Return upcoming birthdays of 10 useWᴀɴᴛ ᴛᴏ ᴋɴᴏᴡ ᴡʜᴏ's ʙɪʀᴛʜᴅᴀʏ's ᴄᴏᴍɪɴɢ ᴜᴘ ɴᴇxᴛ? Hᴇʀᴇ's ᴀ ʟɪsᴛ ᴏғ 𝟷𝟶 ᴜsᴇʀs ᴡɪᴛʜ ᴜᴘᴄᴏᴍɪɴɢ ʙɪʀᴛʜᴅᴀʏs!
+➥ /removebday (/rmbday) : Oɴʟʏ ʏᴏᴜ ᴄᴀɴ ʀᴇᴍᴏᴠᴇ ʏᴏᴜʀ ᴏᴡɴ ʙɪʀᴛʜᴅᴀʏ ғʀᴏᴍ ᴛʜᴇ ᴅᴀᴛᴀʙᴀsᴇ, ɴᴏᴛ ᴀɴʏᴏɴᴇ ᴇʟsᴇ's!
+➥ /settingbday (/sbday) : Cᴏɴғɪɢᴜʀᴇ ᴛʜᴇ sᴇᴛᴛɪɴɢs ғᴏʀ ʙɪʀᴛʜᴅᴀʏ ᴡɪsʜᴇs ᴀɴᴅ ᴏᴛʜᴇʀ ʀᴇʟᴀᴛᴇᴅ ғᴇᴀᴛᴜʀᴇs ɪɴ ᴛʜᴇ ᴄʜᴀᴛ.
+➥ /getbday (/gbday,/mybirthday,/mybday) [reply to user] : Iғ ʏᴏᴜ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴜsᴇʀ, ɪᴛ ᴡɪʟʟ ғᴇᴛᴄʜ ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ's ʙɪʀᴛʜᴅᴀʏ. Iғ ɴᴏᴛ, ɪᴛ ᴡɪʟʟ ʀᴇᴛᴜʀɴ ʏᴏᴜʀ ᴏᴡɴ ʙɪʀᴛʜᴅᴀʏ.
 
 🎂 DOB should be in format of dd/mm/yyyy
 Year is optional it is not necessary to pass it
