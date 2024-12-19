@@ -991,14 +991,14 @@ async def unbanbutton(c: app, q: CallbackQuery):
 
     if not user:
         await q.answer(
-            "You don't have enough permission to do this!\nStay in your limits!",
+            "Iɴsᴜғғɪᴄɪᴇɴᴛ ᴘᴇʀᴍɪssɪᴏɴs! Kɴᴏᴡ ʏᴏᴜʀ ʙᴏᴜɴᴅᴀʀɪᴇs ᴀɴᴅ sᴛᴀʏ ɪɴ ʏᴏᴜʀ ʟᴀɴᴇ!",
             show_alert=True,
         )
         return
 
     if not user.privileges.can_restrict_members and q.from_user.id != OWNER_ID:
         await q.answer(
-            "You don't have enough permission to do this!\nStay in your limits!",
+            "Pᴇʀᴍɪssɪᴏɴ ᴅᴇɴɪᴇᴅ! Sᴛɪᴄᴋ ᴛᴏ ʏᴏᴜʀ ʟᴀɴᴇ ᴀɴᴅ ʀᴇsᴘᴇᴄᴛ ᴛʜᴇ ʀᴜʟᴇs!",
             show_alert=True,
         )
         return
@@ -1009,7 +1009,7 @@ async def unbanbutton(c: app, q: CallbackQuery):
     except RPCError as e:
         await q.message.edit_text(f"Error: {e}")
         return
-    await q.message.edit_text(f"{q.from_user.mention} unbanned {doneto}!")
+    await q.message.edit_text(f"{q.from_user.mention} ʜᴀs ʟɪғᴛᴇᴅ ᴛʜᴇ ʙᴀɴ ᴏɴ {doneto}!")
     return
 
 
@@ -1026,20 +1026,20 @@ __alt_name__ = [
 __HELP__ = """
 **⚠️ ʙᴀɴs**
 
-**Admin only:**
-➥ /kick: Kick the user replied or tagged.
-➥ /skick: Kick the user replied or tagged and delete your messsage.
-➥ /dkick: Kick the user replied and delete their message.
-➥ /ban: Bans the user replied to or tagged.
-➥ /sban: Bans the user replied or tagged and delete your messsage.
-➥ /dban: Bans the user replied and delete their message.
-➥ /tban <userhandle> x(m/h/d): Bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-➥ /stban <userhandle> x(m/h/d): Silently bans a user for x time. (via handle, or reply). m = minutes, h = hours, d = days.
-➥ /dtban <userhandle> x(m/h/d): Silently bans a user for x time and delete the replied message. (via reply). m = minutes, h = hours, d = days.
-➥ /unban: Unbans the user replied to or tagged.
+**Fᴏʀ Aᴅᴍɪɴs Oɴʟʏ:**
+➥ /kick: Kɪᴄᴋ ᴛʜᴇ ᴛᴀɢɢᴇᴅ ᴏʀ ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ
+➥ /skick: Kɪᴄᴋ ᴛʜᴇ ᴛᴀɢɢᴇᴅ ᴏʀ ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ ᴀɴᴅ ʀᴇᴍᴏᴠᴇ ʏᴏᴜʀ ᴍᴇssᴀɢᴇ
+➥ /dkick: Rᴇᴍᴏᴠᴇ ᴛʜᴇ ᴍᴇssᴀɢᴇ ᴀɴᴅ ᴋɪᴄᴋ ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴜsᴇʀ.
+➥ /ban: Bᴀɴ ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴏʀ ᴛᴀɢɢᴇᴅ ᴜsᴇʀ.
+➥ /sban: Bᴀɴ ᴛʜᴇ ᴜsᴇʀ ᴀɴᴅ ᴇʀᴀsᴇ ᴛʜᴇɪʀ ᴍᴇssᴀɢᴇ.
+➥ /dban: Bᴀɴ ᴛʜᴇ ᴜsᴇʀ ʏᴏᴜ ʀᴇsᴘᴏɴᴅᴇᴅ ᴛᴏ ᴀɴᴅ ʀᴇᴍᴏᴠᴇ ᴛʜᴇɪʀ ᴍᴇssᴀɢᴇ.
+➥ /tban <ᴜsᴇʀʜᴀɴᴅʟᴇ>x(ᴍ/ʜ/ᴅ): Bᴀɴs ᴀ ᴜsᴇʀ ғᴏʀ x ᴛɪᴍᴇ (ʀᴇᴘʟʏ ᴏʀ ʜᴀɴᴅʟᴇ). ᴍ = ᴍɪɴ, ʜ = ʜʀs, ᴅ = ᴅᴀʏs.
+➥ /stban <ᴜsᴇʀʜᴀɴᴅʟᴇ>x(ᴍ/ʜ/ᴅ): Bᴀɴs ᴛʜᴇ ᴜsᴇʀ ғᴏʀ x ᴛɪᴍᴇ (ᴠɪᴀ ʜᴀɴᴅʟᴇ ᴏʀ ʀᴇᴘʟʏ). ᴍ = ᴍɪɴ, ʜ = ʜʀs, ᴅ = ᴅᴀʏs.
+➥ /dtban <ᴜsᴇʀʜᴀɴᴅʟᴇ>x(ᴍ/ʜ/ᴅ): Bᴀɴs ᴀ ᴜsᴇʀ sɪʟᴇɴᴛʟʏ ғᴏʀ x ᴛɪᴍᴇ ᴀɴᴅ ᴅᴇʟᴇᴛᴇs ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴍᴇssᴀɢᴇ. (ᴠɪᴀ ʀᴇᴘʟʏ).
+➥ /unban: ᴜɴʙᴀɴs ᴛʜᴇ ʀᴇᴘʟɪᴇᴅ ᴏʀ ᴛᴀɢɢᴇᴅ ᴜsᴇʀ.
 
 disable kickme by this command 
-➥ /kickme off
+➥ /kickme ᴏғғ
 
 **Example:**
-`/ban @username`: this bans a user in the chat."""
+`/ban @username`: Tʜɪs ᴄᴏᴍᴍᴀɴᴅ ʙᴀɴs ᴀ ᴜsᴇʀ ғʀᴏᴍ ᴛʜᴇ ᴄʜᴀᴛ."""
